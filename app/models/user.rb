@@ -8,6 +8,6 @@ class User < ApplicationRecord
   has_many :questions
   has_many :surveys
 
-  validates :first_name, presence: true
-  validates :last_name, presence: true
+  # validates :first_name, presence: true
+  # validates :last_name, presence: true
 end
