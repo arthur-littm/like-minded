@@ -1,8 +1,8 @@
 class QuestionsController < ApplicationController
-  before_action :get_survey_id
+  before_action :get_survey_id, only: [:create]
 
   def index
-    @all_questions = survey.questions
+    @questions = Question.all
   end
 
   def new
