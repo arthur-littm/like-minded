@@ -6,5 +6,5 @@ class User < ApplicationRecord
 
   has_many :answers
   has_many :questions
-  has_one :trip, through: :survey
+  has_many :surveys
 end
