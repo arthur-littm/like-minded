@@ -10,7 +10,7 @@ class SurveysController < ApplicationController
   end
 
   def create
-    @survey = Survey.new(survey_params)
+    @survey = Survey.new(city: params[:city], start_date: params[:start_date])
     @survey.user = current_user
      if @survey.save
       redirect_to survey_path(@survey)
