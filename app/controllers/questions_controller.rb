@@ -1,4 +1,4 @@
-class QuestionController < ApplicationController
+class QuestionsController < ApplicationController
   before_action :get_survey_id
 
   def index
@@ -27,5 +27,10 @@ class QuestionController < ApplicationController
 
   def get_survey_id
     @survey = Survey.find(params[:survey_id])
+  end
+
+  def question_params
+    params.require(:question).permit(:user_id, :survey_id, :category)
+    #check if permit is correct, is it survey or survey_id
   end
 end
