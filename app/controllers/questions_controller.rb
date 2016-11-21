@@ -1,5 +1,4 @@
 class QuestionsController < ApplicationController
-  before_action :get_survey_id, only: [:create]
 
   def index
     @questions = Question.all
@@ -10,9 +9,10 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    @question = current_user.question.build(question_params)
+    @question = Question.new(question_params)
+    @question.user = current_user
     if @question.save
-      redirect_to question_index_path
+      redirect_to questions_path
     else
       render :new
     end
@@ -25,12 +25,8 @@ class QuestionsController < ApplicationController
 
   private
 
-  def get_survey_id
-    @survey = Survey.find(params[:survey_id])
-  end
-
   def question_params
-    params.require(:question).permit(:user_id, :survey_id, :category)
+    params.require(:question).permit(:content, :category_id)
     #check if permit is correct, is it survey or survey_id
   end
 end

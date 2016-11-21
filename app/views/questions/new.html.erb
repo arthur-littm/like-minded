@@ -1,2 +1,7 @@
 <h1>Question#new</h1>
-<p>Find me in app/views/question/new.html.erb</p>
+<%= simple_form_for @question do |f| %>
+<%= f.input :content %>
+<%= f.association :category %>
+<%= f.button :submit, class: "btn btn-primary" %>
+<% end %>
+
