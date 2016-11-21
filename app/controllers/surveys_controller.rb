@@ -3,6 +3,7 @@ class SurveysController < ApplicationController
   end
 
   def show
+    @questions = Question.all
   end
 
   def new
