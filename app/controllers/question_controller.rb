@@ -18,10 +18,10 @@ class QuestionController < ApplicationController
     end
   end
 
-  def destroy
-    @question = Question.find(params[:id])
-    @question.destroy
-  end
+  # def destroy
+  #   @question = Question.find(params[:id])
+  #   @question.destroy
+  # end
 
   private
 
