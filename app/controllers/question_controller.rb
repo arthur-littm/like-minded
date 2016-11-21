@@ -10,7 +10,7 @@ class QuestionController < ApplicationController
   end
 
   def create
-    @question = current_user.question.create(question_params)
+    @question = current_user.question.build(question_params)
     if @question.save
       redirect_to question_index_path
     else
@@ -26,6 +26,6 @@ class QuestionController < ApplicationController
   private
 
   def get_survey_id
-    @question = Question.find(params[:id])
+    @survey = Survey.find(params[:id])
   end
 end
