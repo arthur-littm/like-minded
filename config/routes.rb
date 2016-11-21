@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :surveys, except: [:index] do
-    resources :questions, except: [:show]
-  end
+  resources :surveys, except: [:index]
+  resources :questions, except: [:show]
+
 
   devise_for :users
 
