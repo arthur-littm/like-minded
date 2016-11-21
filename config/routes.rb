@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+  get 'survey/index'
+
+  get 'survey/show'
+
+  get 'survey/new'
+
+  get 'survey/create'
+
+  get 'survey/edit'
+
+  get 'survey/update'
+
+  get 'survey/destroy'
+
   get 'question/index'
 
   get 'question/new'
