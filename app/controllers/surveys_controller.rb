@@ -13,7 +13,7 @@ class SurveysController < ApplicationController
     @survey = Survey.new(city: params[:city], start_date: params[:start_date])
     @survey.user = current_user
      if @survey.save
-      redirect_to edit_survey_path(@survey)
+      redirect_to survey_path(@survey)
     else
       render :new
     end

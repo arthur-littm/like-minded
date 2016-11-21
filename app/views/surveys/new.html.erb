@@ -4,7 +4,8 @@
       <div class="devise">
         <h1>Survey#new</h1>
         <%= simple_form_for @survey do |f| %>
-        <%= f.association :question %>
+        <%= f.input :city, placeholder: "London" %>
+        <%= f.input :start_date %>
         <%= f.submit "Search", class: "btn btn-primary" %>
         <% end %>
       </div>
