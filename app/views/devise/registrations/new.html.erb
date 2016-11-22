@@ -1,15 +1,19 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-6 col-xs-offset-3">
-      <div class="devise">
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(<%= image_path("background.jpg")%>);">
+  <div class="container login-container">
+    <div class="row">
+      <div class="col-xs-12">
+      <p>Welcome to <span style="color: #EE6352">Like</span><span style="color: #2F323A">Minded</span style="color: #2F323A"> <%= image_tag "logo_red.png" %></p>      </div>
+    </div>
+    <div class="row login-content">
+      <div class="col-xs-12">
         <h2>Sign up</h2>
 
         <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= f.error_notification %>
 
         <div class="form-inputs">
-        <%= f.input :first_name, required: true %>
-        <%= f.input :last_name, required: true %>
+          <%= f.input :first_name, required: true %>
+          <%= f.input :last_name, required: true %>
           <%= f.input :email, required: true, autofocus: true %>
           <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
         </div>
@@ -19,6 +23,8 @@
         </div>
         <% end %>
       </div>
+      <p></p>
+      <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path, class: "btn btn-primary" %>
     </div>
   </div>
 </div>

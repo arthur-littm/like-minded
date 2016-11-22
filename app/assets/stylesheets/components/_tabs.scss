@@ -10,6 +10,8 @@
   cursor: pointer;
   text-decoration: none;
   opacity: 0.8;
+  background: none !important;
+  border: none !important;
 }
 .tabs h3 {
   font-size: 17px;
@@ -33,10 +35,20 @@
   border-radius: 0 10px 0 0;
 }
 .tab.active {
-  background: white;
+  background: rgba(62, 156, 218, 0.21);
   color: #3E9CDA;
+  a {
+    border: 0px !important;
+    background: rgba(62, 156, 218, -0.79) !important;
+  }
+  li {
+    margin-bottom: 0 !important;
+  }
 }
 
 .questions {
-  background-color: white;
+  background-color: rgba(62, 156, 218, 0.21);
+  height: 70vh;
+  margin-bottom: 20px;
+  border-radius: 0 0 10px 10px;
 }

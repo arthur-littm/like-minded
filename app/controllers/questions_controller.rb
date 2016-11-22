@@ -11,7 +11,7 @@ class QuestionsController < ApplicationController
     @question = Question.new(question_params)
     @question.user = current_user
     if @question.save
-      redirect_to questions_path
+      redirect_to survey_path(@survey)
     else
       render :new
     end

@@ -1,43 +1,44 @@
-<div class="container-fluid">
+<div class="container">
   <p><%= @survey.city %></p>
   <p><%= @survey.start_date %></p>
   <div class="row">
     <div class="col-xs-8">
       <div class="questions">
         <ul class="tabs nav nav-tabs" role="tablist">
-          <% Category.all.sort.each do |category| %>
-          <li role="presentation"><a href="#<%= category.name.downcase %>" aria-controls="<%= category.name.downcase %>" role="tab" data-toggle="tab">
-            <h3><%= category.name %></h3>
+          <li role="presentation" class="tab active"><a href="#myquestions" aria-controls="My Questions" role="tab" data-toggle="tab">
+            <h3>My Questions</h3>
             <p>Category icon</p>
           </a>
         </li>
-        <% end %>
-        <li role="presentation" class="active"><a href="#myquestions" aria-controls="My Questions" role="tab" data-toggle="tab">
-          <h3>My Questions</h3>
+        <% Category.all.sort.each do |category| %>
+        <li role="presentation" class="tab"><a href="#<%= category.name.downcase %>" aria-controls="<%= category.name.downcase %>" role="tab" data-toggle="tab">
+          <h3><%= category.name %></h3>
           <p>Category icon</p>
         </a>
       </li>
+      <% end %>
     </ul>
     <div class="tab-content">
+      <div role="tabpanel" class="tab-pane active" id="myquestions">
+        <%= link_to "New question", new_question_path, class: "btn btn-primary" %>
+      </div>
       <% Category.all.sort.each do |category| %>
       <div role="tabpanel" class="tab-pane" id="<%= category.name.downcase %>">
         <%= simple_form_for [@survey] do |f| %>
-        <%= f.association :questions, label: false, as: :check_boxes, collection: category.questions.all, label_method: :content, selected: @survey.questions, class: "question-card" %>
+        <%= f.association :questions, label: false, as: :check_boxes, collection: category.questions.all, label_method: :content, selected: @survey.questions, wrapper_html:{class: "question-card"} %>
         <%= f.submit "Add question", class: "btn btn-primary" %>
         <% end %>
       </div>
       <% end %>
-      <div role="tabpanel" class="tab-pane active" id="myquestions">
-      </div>
     </div>
   </div>
 </div>
-<div class="col-xs-4" style="border: 1px solid black; background-color: #5D737E">
-  <h1>Summary</h1>
+<div class="col-xs-4 survey-summary">
+  <h3>Summary</h3>
   <ul>
     <% if @survey.questions %>
     <% @survey.questions.each do |question| %>
-    <li><%= question.content %></li>
+    <li class="summary-question-card"><%= question.content %></li>
     <% end %>
     <% end %>
   </ul>
