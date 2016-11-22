@@ -16,6 +16,7 @@
 
 .banner-content {
   margin-top: 150px;
+  position: relative;
 }
 
 .banner-phrase {
@@ -27,4 +28,16 @@
 
 .banner-form {
   margin-top: 75px;
+}
+
+.login-message {
+  font-size: 25px;
+  font-weight: 100;
+  color: #2F323A;
+  position:absolute;
+  bottom: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
 }

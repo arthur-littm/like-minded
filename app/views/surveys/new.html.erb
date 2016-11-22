@@ -4,28 +4,34 @@
       <p>Get <span style="color: #EE6352">personal travel advice</span> from your friends</p>
     </div>
     <div class="banner-form">
+      <% if user_signed_in? %>
       <%= simple_form_for @survey, html: { class: "new-survey-form form-inline"} do |f| %>
       <%= f.input :city, placeholder: "Enter city", class: "new-survey-from-city", label: false %>
       <%= f.input :start_date, placeholder: "Select date", as: :string, input_html: { type: "text", class: "datepicker" }, label: false %>
       <%= f.submit "Create trip", class: "btn btn-primary new-survey-form-button" %>
       <% end %>
+      <% end %>
     </div>
+    <% if user_signed_in? %>
+    <% else %>
+    <p class="login-message">Login to start planning your next trip</p>
+    <% end %>
   </div>
 </div>
 
 <%= content_for (:after_js) do %>
-  <script type="text/javascript">
-    $(document).ready(function(){
-      var date = new Date();
-      var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
-      $('.datepicker').datepicker({
-        format: "dd/mm/yyyy",
-        todayHighlight: true,
-        autoclose: true
-      });
-
+<script type="text/javascript">
+  $(document).ready(function(){
+    var date = new Date();
+    var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    $('.datepicker').datepicker({
+      format: "dd/mm/yyyy",
+      todayHighlight: true,
+      autoclose: true
     });
-  </script>
+
+  });
+</script>
 
 
 <% end %>

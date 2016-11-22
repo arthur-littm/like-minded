@@ -1,4 +1,5 @@
 class SurveysController < ApplicationController
+  before_action :authenticate_user!, except: :new
 
   before_action :find_survey, only: [:show, :update, :destroy]
 
