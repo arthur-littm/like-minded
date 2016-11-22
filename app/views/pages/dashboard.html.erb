@@ -1,2 +1,11 @@
-<%= @user.first_name %>
+<h1><%= @user.first_name %></h1>
+
+<div>
+<% current_user.surveys.each do |survey| %>
+  <p><%= survey.city %></p>
+  <p><%= survey.start_date %></p>
+  <% end %>
+  </div>
+
+
 
