@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   end
   resources :questions
   devise_for :users
+  resources :users, only: [:edit, :update]
 
   root to: 'surveys#new'
   get '/dashboard', to: 'pages#dashboard'

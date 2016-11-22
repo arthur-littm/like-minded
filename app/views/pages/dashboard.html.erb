@@ -1,2 +1,12 @@
-<%= @user.first_name %>
+<h1><%= link_to "#{@user.first_name}", edit_user_path(@user) %></h1>
+
+<div>
+  <% current_user.surveys.each do |survey| %>
+  <p><%= survey.city %></p>
+  <p><%= survey.start_date %></p>
+  <%= link_to 'My Trip', surveys_path %>
+  <% end %>
+</div>
+
+
 
