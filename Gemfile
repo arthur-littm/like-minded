@@ -17,10 +17,15 @@ end
 
 gem "coffee-rails"
 gem "gmaps4rails"
+gem 'country_select'
 
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
 end
+
+#Google autocomplete
+gem 'jquery-ui-rails'
+gem 'gmaps-autocomplete-rails'
 
 gem 'sass-rails'
 gem 'jquery-rails'
