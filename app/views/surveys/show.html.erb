@@ -43,10 +43,10 @@
                 <h4 class="modal-title" id="myModalLabel">Add new question</h4>
               </div>
               <div class="modal-body">
-                <%= simple_form_for @question do |f| %>
-                <%= f.input :content, label: "Question" %>
-                <%= f.association :category %>
-                <%= f.button :submit, class: "btn btn-primary" %>
+                <%= simple_form_for @question, remote: true do |f| %>
+                  <%= f.input :content, label: "Question" %>
+                  <%= f.association :category %>
+                  <%= f.submit class: "btn btn-primary" %>
                 <% end %>
               </div>
             </div>
