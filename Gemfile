@@ -10,11 +10,23 @@ gem 'devise'
 gem 'redis'
 gem 'pundit'
 
+source "https://rails-assets.org" do
+  gem 'rails-assets-bootstrap-datepicker'
+end
+
+
+gem "coffee-rails"
+gem "gmaps4rails"
+
+source 'https://rails-assets.org' do
+  gem "rails-assets-underscore"
+end
 
 gem 'sass-rails'
 gem 'jquery-rails'
 gem 'uglifier'
 gem 'bootstrap-sass'
+gem 'bootstrap-datepicker-rails'
 gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
