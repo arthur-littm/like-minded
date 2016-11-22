@@ -1,12 +1,11 @@
 class SurveysController < ApplicationController
 
-  before_action :find_survey, only: [:show, :update]
+  before_action :find_survey, only: [:show, :update, :destroy]
 
   def index
   end
 
   def show
-    # @question = Question.first
   end
 
   def new
@@ -29,11 +28,13 @@ class SurveysController < ApplicationController
 
   def update
     @question_ids = params[:survey][:question_ids].select{|id| !id.blank?}
+    @survey.survey_questions.each { |q| q.delete }
     @question_ids.each { |id| SurveyQuestion.create(survey: @survey, question_id: id.to_i) }
     redirect_to survey_path(@survey)
   end
 
   def destroy
+    @survey.delete
   end
 
   private
