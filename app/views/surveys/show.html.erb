@@ -1,24 +1,46 @@
-<h1>Survey#show</h1>
-<p><%= @survey.city %></p>
-<p><%= @survey.start_date %></p>
-<div class="container">
+<div class="container-fluid">
+  <p><%= @survey.city %></p>
+  <p><%= @survey.start_date %></p>
   <div class="row">
-    <div class="col-xs-6">
-      <%= simple_form_for [@survey] do |f| %>
-      <%= f.association :questions, as: :check_boxes, collection: Question.all, label_method: :content, selected: @survey.questions %>
-      <%= f.submit %>
+    <div class="col-xs-8">
+      <div class="questions">
+        <ul class="tabs nav nav-tabs" role="tablist">
+          <% Category.all.sort.each do |category| %>
+          <li role="presentation"><a href="#<%= category.name.downcase %>" aria-controls="<%= category.name.downcase %>" role="tab" data-toggle="tab">
+            <h3><%= category.name %></h3>
+            <p>Category icon</p>
+          </a>
+        </li>
+        <% end %>
+        <li role="presentation" class="active"><a href="#myquestions" aria-controls="My Questions" role="tab" data-toggle="tab">
+          <h3>My Questions</h3>
+          <p>Category icon</p>
+        </a>
+      </li>
+    </ul>
+    <div class="tab-content">
+      <% Category.all.sort.each do |category| %>
+      <div role="tabpanel" class="tab-pane" id="<%= category.name.downcase %>">
+        <%= simple_form_for [@survey] do |f| %>
+        <%= f.association :questions, label: false, as: :check_boxes, collection: category.questions.all, label_method: :content, selected: @survey.questions, class: "question-card" %>
+        <%= f.submit "Add question", class: "btn btn-primary" %>
+        <% end %>
+      </div>
       <% end %>
-    </div>
-    <div class="col-xs-6" style="border: 1px solid black;">
-      <h1>Summary</h1>
-      <ul>
-      <% if @survey.questions %>
-        <% @survey.questions.each do |question| %>
-        <li><%= question.content %></li>
-        <% end %>
-        <% end %>
-      </ul>
+      <div role="tabpanel" class="tab-pane active" id="myquestions">
+      </div>
     </div>
   </div>
 </div>
-
+<div class="col-xs-4" style="border: 1px solid black; background-color: #5D737E">
+  <h1>Summary</h1>
+  <ul>
+    <% if @survey.questions %>
+    <% @survey.questions.each do |question| %>
+    <li><%= question.content %></li>
+    <% end %>
+    <% end %>
+  </ul>
+</div>
+</div>
+</div>
