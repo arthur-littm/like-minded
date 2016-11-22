@@ -1,0 +1,30 @@
+.banner {
+  color: white;
+  text-align: center;
+  height: calc(100vh - 70px);
+  background-size: cover !important;
+  background-position: top;
+  display: flex;
+  justify-content: center;
+}
+
+.filter {
+  position: relative;
+  -webkit-filter: contrast(65%) brightness(120%) saturate(110%) grayscale(10%);
+  filter: contrast(65%) brightness(120%) saturate(110%) grayscale(10%);
+}
+
+.banner-content {
+  margin-top: 150px;
+}
+
+.banner-phrase {
+  font-size: 45px;
+  font-weight: 100;
+  color: #2F323A;
+  margin-top: -75px;
+}
+
+.banner-form {
+  margin-top: 75px;
+}

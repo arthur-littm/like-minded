@@ -1,14 +1,14 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-6 col-xs-offset-3">
-      <div class="devise">
-        <h1>Survey#new</h1>
-        <%= simple_form_for @survey do |f| %>
-        <%= f.input :city, placeholder: "London" %>
-        <%= f.input :start_date %>
-        <%= f.submit "Search", class: "btn btn-primary" %>
-        <% end %>
-      </div>
+<div class="banner filter" style="background-image: url(<%= image_path ("background.jpg") %>)">
+  <div class="banner-content">
+    <div class="banner-phrase">
+      <p>Get <span style="color: #EE6352">personal travel advice</span> from your friends</p>
+    </div>
+    <div class="banner-form">
+      <%= simple_form_for @survey, html: { class: "new-survey-form form-inline"} do |f| %>
+      <%= f.input :city, placeholder: "Enter city", class: "new-survey-from-city", label: false %>
+      <%= f.input :start_date, class: "new-survey-form-date", label: false %>
+      <%= f.submit "Create trip", class: "btn btn-primary new-survey-form-button" %>
+      <% end %>
     </div>
   </div>
 </div>
