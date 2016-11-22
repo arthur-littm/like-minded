@@ -58,6 +58,7 @@
       <div role="tabpanel" class="tab-pane" id="<%= category.name.downcase %>">
         <%= simple_form_for [@survey] do |f| %>
         <%= f.association :questions, label: false, as: :check_boxes, collection: category.questions.all, label_method: :content, selected: @survey.questions, wrapper_html:{class: "question-card"} %>
+        <%= f.hidden_field :category, value: category.id %>
         <%= f.submit "Add to survey", class: "btn btn-primary" %>
         <% end %>
       </div>
