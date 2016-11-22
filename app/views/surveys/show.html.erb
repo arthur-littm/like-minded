@@ -1,11 +1,24 @@
 <h1>Survey#show</h1>
-<p>Find me in app/views/survey/show.html.erb</p>
+<p><%= @survey.city %></p>
+<p><%= @survey.start_date %></p>
 <div class="container">
   <div class="row">
-    <%= simple_form_for [@survey] do |f| %>
+    <div class="col-xs-6">
+      <%= simple_form_for [@survey] do |f| %>
       <%= f.association :questions, as: :check_boxes, collection: Question.all, label_method: :content, selected: @survey.questions %>
       <%= f.submit %>
-    <% end %>
+      <% end %>
+    </div>
+    <div class="col-xs-6" style="border: 1px solid black;">
+      <h1>Summary</h1>
+      <ul>
+      <% if @survey.questions %>
+        <% @survey.questions.each do |question| %>
+        <li><%= question.content %></li>
+        <% end %>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </div>
 
