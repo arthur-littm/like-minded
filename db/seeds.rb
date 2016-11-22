@@ -5,9 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+SurveyQuestion.destroy_all
+Question.destroy_all
+Category.destroy_all
+
 a = Category.create(name: "Food")
 b = Category.create(name: "Nightlife")
 c = Category.create(name: "Activity")
+d = Category.create(name: "Accomodation")
+
 
 Question.create(category: a, content: "Best restaurant ?")
 Question.create(category: a, content: "Gluten free restaurant ?")
@@ -18,3 +24,6 @@ Question.create(category: b, content: "Best late night food ?")
 Question.create(category: c, content: "Best tourist attraction ?")
 Question.create(category: c, content: "Best view ?")
 Question.create(category: c, content: "Best city escape ?")
+Question.create(category: d, content: "Best hostel ?")
+Question.create(category: d, content: "Best luxurious hotel ?")
+Question.create(category: d, content: "Best neighbourhood to stay in ?")
