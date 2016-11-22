@@ -4,7 +4,6 @@ Rails.application.routes.draw do
    resources :questions, only: [:index]
   end
   resources :questions
-  resources :users, only: [:show]
   devise_for :users
 
   root to: 'surveys#new'
