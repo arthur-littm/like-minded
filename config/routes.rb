@@ -4,9 +4,10 @@ Rails.application.routes.draw do
    resources :questions, only: [:index]
   end
   resources :questions
-
+  resources :users, only: [:show]
   devise_for :users
 
   root to: 'surveys#new'
+  get '/dashboard', to: 'pages#dashboard'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
