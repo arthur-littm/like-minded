@@ -1,0 +1,13 @@
+<% if @question.errors.any? %>
+  // Render new question form with errors
+  $('#new_question').html("<%= j render 'questions/form', restaurant: @restaurant, question: @question %>");
+<% else %>
+  // Create a paragraph for the new question. But hide it.
+  var new_question = $("<%= j render 'questions/show', question: @question %>").hide();
+  // Add it to the DOM, at the end of the existing questions. It's still hidden.
+  $('#questions').append(new_question);
+  // Show the new question with an animation!
+  new_question.slideDown();
+  // Reset the form
+  $('#new_question').html("<%= j render 'questions/form', restaurant: @restaurant, question: Question.new %>");
+<% end %>
