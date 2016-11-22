@@ -10,11 +10,8 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params)
     @question.user = current_user
-    if @question.save
-      redirect_to URI(request.referer).path
-    else
-      render :new
-    end
+    @question.save
+    redirect_to URI(request.referer).path
   end
 
   # def destroy
