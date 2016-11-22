@@ -27,6 +27,9 @@ end
 gem 'jquery-ui-rails'
 gem 'gmaps-autocomplete-rails'
 
+#Facebook login
+gem 'omniauth-facebook'
+
 gem 'sass-rails'
 gem 'jquery-rails'
 gem 'uglifier'
