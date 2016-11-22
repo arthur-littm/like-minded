@@ -4,7 +4,7 @@
   flex-direction: row;
   justify-content: space-around;
   color: #E8EEF2;
-  padding: 20px;
+  padding: 20px 20px 0px 0px;
   align-items: baseline;
   h4 {
     margin-top: 0px;
@@ -16,7 +16,12 @@
   list-style-type: none;
   i {
     font-size: 35px;
-    margin: 25px 20px;
+    margin: 20px 20px;
+    color: #E8EEF2;
+  }
+  i:hover {
+    color: #5D737E;
+    transition-duration: 1s;
   }
 }
 
@@ -28,7 +33,12 @@
     margin: 15px 20px 0px 20px;
     width: 65px;
   }
+  img:hover {
+    opacity: 0.3;
+    transition-duration: 1s;
+  }
 }
+
 
 .footer-right {
   ul {
@@ -36,12 +46,18 @@
     text-align: left;
     padding-left: 0px;
     margin-top: 20px;
+    font-weight: 100;
     li {
       margin: 10px auto;
+      i {
+        font-size: 20px;
+        padding-right: 10px;
+      }
     }
   }
   a:hover {
-    color: #5D737E
+    color: #5D737E;
+    transition-duration: 1.25s;
   }
 }
 
