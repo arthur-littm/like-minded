@@ -1,0 +1,28 @@
+<div class="container">
+  <p><%= @survey.city %></p>
+  <p><%= @survey.start_date %></p>
+  <div class="row">
+    <div class="col-xs-4">
+      <div class="survey-summary">
+        <h3>Summary</h3>
+        <ul>
+          <% if @survey.questions %>
+          <% @survey.questions.each do |question| %>
+          <li class="summary-question-card"><%= question.content %></li>
+          <% end %>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-xs-8">
+      <div class="friends">
+        <ul>
+
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
