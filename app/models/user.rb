@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :surveys
   has_many :survey_friends
   has_many :answered_surveys, through: :survey_friends
+  has_many :answers
 
   # validates :first_name, presence: true
   # validates :last_name, presence: true
