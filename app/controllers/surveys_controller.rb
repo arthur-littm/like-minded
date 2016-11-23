@@ -25,7 +25,7 @@ class SurveysController < ApplicationController
     @survey = Survey.new(survey_params)
     @survey.user = current_user
     authorize @survey
-     if @survey.save
+    if @survey.save
       redirect_to survey_path(@survey)
     else
       render :new
@@ -36,42 +36,18 @@ class SurveysController < ApplicationController
   # end
 
   def update
-    # pulls ids of questions checked
-    authorize @survey
-    @question_ids = params[:survey][:question_ids].select{|id| !id.blank?}
-    # sets the category so that we only update questions of that category in our survey questions
-    category = Category.find(params[:survey][:category].to_i)
 
     @question_ids = params[:survey][:question_ids].select{|id| !id.blank?}
     @question_ids.map! { |id| id.to_i }
     ids = @survey.questions.map { |q| q.id }
-
     new_questions = @question_ids - ids
     new_questions.each do |q|
       sq = SurveyQuestion.create(survey: @survey, question_id: q)
+      authorize sq
       sq.save
-    end
-
-    # binding.pry
-
-  #   binding.pry
-  #   @question_ids.any? { |id| @survey.survey_questions }
-
-  #   if params[:survey][:category].nil?
-  #     @question_ids.each do |id|
-  #       id.to_i
-  #       category = Category.find(Question.find(id))
-  #   end
-  # end
-
-  #   category = Category.find(params[:survey][:category].to_i)
-  #   @survey.survey_questions.select{|q| q.question.category == category}.each{ |q| q.delete }
-  #   unless @question_ids.empty?
-  #     @question_ids.each { |id| SurveyQuestion.create(survey: @survey, question_id: id.to_i) }
-  #   end
+   end
 
     redirect_to survey_path(@survey)
-
   end
 
   def destroy

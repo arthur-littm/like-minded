@@ -3,7 +3,7 @@ class SurveyQuestionsController < ApplicationController
 
   def destroy
     survey_question = SurveyQuestion.find(params[:id])
-    survey_question.delete
+    survey_question.destroy
     redirect_to survey_path(@survey)
   end
 
