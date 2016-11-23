@@ -11,7 +11,7 @@ class SurveysController < ApplicationController
   end
 
   def new
-    @survey = Survey.new
+   @survey = Survey.new
   end
 
   def create
