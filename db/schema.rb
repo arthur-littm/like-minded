@@ -15,7 +15,6 @@ ActiveRecord::Schema.define(version: 20161123160429) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-
   create_table "answers", force: :cascade do |t|
     t.string   "content"
     t.integer  "user_id"
@@ -97,6 +96,9 @@ ActiveRecord::Schema.define(version: 20161123160429) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "answers", "questions"
+  add_foreign_key "answers", "surveys"
+  add_foreign_key "answers", "users"
   add_foreign_key "questions", "categories"
   add_foreign_key "questions", "users"
   add_foreign_key "survey_friends", "surveys"
