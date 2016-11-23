@@ -10,7 +10,7 @@ Rails.application.routes.draw do
    resources :questions, only: [:index]
    resources :survey_questions, only: [:destroy]
    member do
-    get '/response', to: 'surveys#response'
+    get '/answering', to: 'surveys#answering', as: :survey_answer
    end
   end
   resources :questions

@@ -21,4 +21,8 @@ class SurveyPolicy < ApplicationPolicy
     record.user == user  # Only survey creator can update it
   end
 
+  def answering?
+    true #going to be survey_friends .each ... or something like this
+  end
+
 end
