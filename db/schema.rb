@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20161123132508) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "icon_name"
   end
 
   create_table "questions", force: :cascade do |t|
