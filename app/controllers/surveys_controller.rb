@@ -9,7 +9,7 @@ class SurveysController < ApplicationController
 
   def show
     @question = Question.new
-    authorize @question
+    authorize @survey
     # authorize @survey
     @friends = User.all
     @friends.each { |friend| SurveyFriend.create(survey_id: @survey.id, user_id: friend.id) }
