@@ -1,7 +1,7 @@
 class SurveysController < ApplicationController
   before_action :authenticate_user!, except: :new
 
-  before_action :find_survey, only: [:show, :update, :destroy]
+  before_action :find_survey, only: [:show, :update, :destroy, :answering]
 
   def index
 
@@ -30,6 +30,10 @@ class SurveysController < ApplicationController
     else
       render :new
     end
+  end
+
+  def answering
+    authorize @survey
   end
 
   # def edit
