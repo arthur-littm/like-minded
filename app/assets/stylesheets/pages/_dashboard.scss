@@ -10,3 +10,17 @@
   height: 150px;
   border-radius: 5px;
 }
+
+.trip-card-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  z-index:2;
+  background: #EE6352;
+  opacity: 0;
+}
+.trip-card-link:hover{
+  opacity: 0.1;
+}
