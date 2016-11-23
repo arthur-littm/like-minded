@@ -68,6 +68,7 @@ class SurveysController < ApplicationController
     @survey.delete
   end
 
+
   private
 
   def survey_params
