@@ -1,0 +1,6 @@
+<%= simple_form_for question, remote: true do |f| %>
+  <%= f.input :content, label: "Question" %>
+  <%= hidden_field :survey, :id, value: survey.id %>
+  <%= f.association :category %>
+  <%= f.submit class: "btn btn-primary" %>
+<% end %>

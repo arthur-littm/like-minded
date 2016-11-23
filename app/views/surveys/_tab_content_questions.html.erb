@@ -1,0 +1,45 @@
+<div class="tab-content">
+  <div role="tabpanel" class="tab-pane active" id="myquestions">
+    <% if survey.user.questions %>
+    <%= simple_form_for [survey] do |f| %>
+    <%= f.association :questions, label: false, as: :check_boxes, collection: survey.user.questions, label_method: :content, selected: survey.questions, wrapper_html:{class: "question-card"} %>
+    <%= f.submit "Add to survey", class: "btn btn-primary" %>
+    <% end %>
+    <% end %>
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+      New question
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel">Add new question</h4>
+          </div>
+          <div class="modal-body">
+            <div id="new_question_form">
+              <%= render 'surveys/question_form', question: question, survey: survey %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <% Category.all.sort.each do |category| %>
+    <div role="tabpanel" class="tab-pane" id="<%= category.name.downcase %>">
+      <%= simple_form_for [survey] do |f| %>
+      <%= f.association :questions, label: false, as: :check_boxes, collection: category.questions.all, label_method: :content, selected: survey.questions, wrapper_html:{class: "question-card"} %>
+      <%= f.hidden_field :category, value: category.id %>
+      <%= f.submit "Add to survey", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  <% end %>
+
+</div>
