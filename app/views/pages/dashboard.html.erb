@@ -1,12 +1,14 @@
-<h1><%= link_to "#{@user.first_name}", edit_user_path(@user) %></h1>
-
-<div>
-  <% current_user.surveys.each do |survey| %>
-  <p><%= survey.city %></p>
-  <p><%= survey.start_date %></p>
-  <%= link_to 'My Trip', surveys_path %>
-  <% end %>
+<div class="container-fluid">
+  <div class="dashboard-profile">
+    <img src="<%= @user.facebook_picture_url %>" alt="">
+    <h1><%= @user.first_name %> <%= @user.last_name %></h1>
+  </div>
+  <div class="row">
+    <% @user.surveys.each do |survey| %>
+    <div class="col-xs-11 col-sm-5 col-md-3 dashboard-trip-card" style="background-image: linear-gradient(rgba(47, 50, 58, 0.35), rgba(47, 50, 58, 0.65) ), url(<%= image_path("default.jpg") %>);">
+      <p><%= survey.city %></p>
+      <p><%= survey.start_date %></p>
+    </div>
+    <% end %>
+  </div>
 </div>
-
-
-

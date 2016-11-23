@@ -242,7 +242,6 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-datepicker-rails
   bootstrap-sass
-  cocoon
   bootstrap-social-rails
   cocoon (= 1.2.9)
   coffee-rails
