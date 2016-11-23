@@ -4,22 +4,27 @@ class SurveysController < ApplicationController
   before_action :find_survey, only: [:show, :update, :destroy]
 
   def index
+
   end
 
   def show
     @question = Question.new
+    authorize @question
+    # authorize @survey
     @friends = User.all
     @friends.each { |friend| SurveyFriend.create(survey_id: @survey.id, user_id: friend.id) }
   end
 
   def new
     @survey = Survey.new
+    authorize @survey
   end
 
   def create
     # binding.pry
     @survey = Survey.new(survey_params)
     @survey.user = current_user
+    authorize @survey
      if @survey.save
       redirect_to survey_path(@survey)
     else
@@ -31,6 +36,11 @@ class SurveysController < ApplicationController
   # end
 
   def update
+    # pulls ids of questions checked
+    authorize @survey
+    @question_ids = params[:survey][:question_ids].select{|id| !id.blank?}
+    # sets the category so that we only update questions of that category in our survey questions
+    category = Category.find(params[:survey][:category].to_i)
 
     @question_ids = params[:survey][:question_ids].select{|id| !id.blank?}
     @question_ids.map! { |id| id.to_i }
