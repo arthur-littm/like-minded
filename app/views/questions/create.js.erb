@@ -1,13 +1,11 @@
 <% if @question.errors.any? %>
   // Render new question form with errors
-  $('#new_question').html("<%= j render 'questions/form', restaurant: @restaurant, question: @question %>");
+  $('#new_question_form').html("<%= j render 'surveys/question_form', question: @question, survey: @survey %>");
 <% else %>
-  // Create a paragraph for the new question. But hide it.
-  var new_question = $("<%= j render 'questions/show', question: @question %>").hide();
-  // Add it to the DOM, at the end of the existing questions. It's still hidden.
-  $('#questions').append(new_question);
-  // Show the new question with an animation!
-  new_question.slideDown();
-  // Reset the form
-  $('#new_question').html("<%= j render 'questions/form', restaurant: @restaurant, question: Question.new %>");
+  var new_tab_content_questions = "<%= j render 'surveys/tab_content_questions', question: @question, survey: @survey %>";
+  console.log(new_tab_content_questions);
+  $('#tab_content_questions').html(new_tab_content_questions);
+  $('#myModal').modal('hide');
+  $('body').removeClass('modal-open');
+  $('.modal-backdrop').remove();
 <% end %>
