@@ -9,11 +9,12 @@ class QuestionsController < ApplicationController
   end
 
   def create
+    @survey = Survey.find(params[:survey][:id])
     @question = Question.new(question_params)
     @question.user = current_user
     if @question.save
       respond_to do |format|
-        format.html { redirect_to root_path }
+        format.html { redirect_to URI(request.referer).path }
         format.js
       end
     else
@@ -34,5 +35,9 @@ class QuestionsController < ApplicationController
   def question_params
     params.require(:question).permit(:content, :category_id)
     #check if permit is correct, is it survey or survey_id
+  end
+
+  def survey_params
+    params.require(:survey).permit(:id)
   end
 end
