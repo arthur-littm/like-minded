@@ -7,8 +7,10 @@
       <% if user_signed_in? %>
       <%= simple_form_for @survey, html: { class: "new-survey-form form-inline"} do |f| %>
       <%= f.input :city, placeholder: "Enter city", class: "new-survey-from-city", label: false %>
-      <%= f.input :start_date, placeholder: "Select date", as: :string, input_html: { type: "text", class: "datepicker" }, label: false %>
-      <%= f.submit "Create trip", class: "btn btn-primary new-survey-form-button" %>
+      <%= f.input :start_date, placeholder: "date", as: :string, input_html: { type: "text", class: "new-survey-form-date datepicker" }, label: false %>
+      <%= button_tag(type: 'submit', class: "new-survey-form-button") do %>
+      <i class="fa fa-paper-plane"></i>
+      <% end %>
       <% end %>
       <% end %>
     </div>

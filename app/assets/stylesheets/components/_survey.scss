@@ -2,14 +2,30 @@
  margin: 30px auto;
 }
 
-.new-survey-form-city {
-
+#survey_city {
+  border: none;
+  width: 250px;
+  border-radius: 5px;
 }
 
-.new-survey-form-date {
-
+#survey_start_date {
+  width: 95px;
+  margin-left: -10px;
+  border: none
 }
 
 .new-survey-form-button {
-
+ font-size: 25px;
+ background: none;
+ border: none;
+ color: #EE6352;
+ margin-left: -50px;
+ position: relative;
+ i {
+  position:absolute;
+  bottom: -5px;
+ }
+}
+.new-survey-form-button:hover {
+ color: #2F323A;
 }
