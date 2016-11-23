@@ -27,3 +27,18 @@ Question.create(category: c, content: "Best city escape ?")
 Question.create(category: d, content: "Best hostel ?")
 Question.create(category: d, content: "Best luxurious hotel ?")
 Question.create(category: d, content: "Best neighbourhood to stay in ?")
+
+
+question1 = Question.create(category: a, content: "Best restaurant in town?")
+question2 = Question.create(category: d, content: "Best hotel in town ?")
+arthur = User.create(email: "arthur@litt.com", encrypted_password: "123456", first_name: "arthur" )
+responder = User.create(email: "responder@test.com", encrypted_password: "123456", first_name: "responder" )
+s = Survey.create(city: "Paris", user: arthur)
+
+SurveyQuestion.create(survey: s, question: question1)
+SurveyQuestion.create(survey: s, question: question2)
+
+ans11 = Answer.create()
+ans12 = Answer.create()
+ans21 = Answer.create()
+ans22 = Answer.create()
