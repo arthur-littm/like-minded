@@ -6,12 +6,15 @@ class QuestionsController < ApplicationController
 
   def new
     @question = Question.new
+    authorize @question
   end
 
   def create
     @survey = Survey.find(params[:survey][:id])
     @question = Question.new(question_params)
+    authorize @question
     @question.user = current_user
+
     if @question.save
       respond_to do |format|
         format.html { redirect_to URI(request.referer).path }

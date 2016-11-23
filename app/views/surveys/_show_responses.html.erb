@@ -1,0 +1,18 @@
+<div class="container-fluid response-survey-banner" style="background-image: url(<%= image_path("response-banner.jpg") %>);">
+  <h3>My recommendations for <%= @survey.city %></h3>
+  <h4><%= @survey.start_date %></h4>
+</div>
+<div class="container response-survey-answers-container">
+  <% @survey.questions.each do |question|%>
+  <div class="response-question">
+    <p><%= question.content %> (<%= question.category.name %>)</p>
+    <ul>
+      <% question.answers.each do |answer| %>
+      <div class="response-answer">
+      <li><%= answer.content %></li>
+      </div>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+</div>
