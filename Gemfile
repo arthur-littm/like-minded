@@ -16,6 +16,8 @@ source "https://rails-assets.org" do
   gem 'rails-assets-bootstrap-datepicker'
 end
 
+#Pundit
+gem "pundit"
 
 gem "coffee-rails"
 gem "gmaps4rails"
