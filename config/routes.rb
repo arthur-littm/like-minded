@@ -2,6 +2,9 @@ Rails.application.routes.draw do
 
   resources :surveys, except: [:index] do
    resources :questions, only: [:index]
+   member do
+    get '/response', to: 'surveys#response'
+   end
   end
   resources :questions
   devise_for :users,
