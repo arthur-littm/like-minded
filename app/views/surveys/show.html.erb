@@ -6,14 +6,14 @@
       <div class="questions">
         <ul class="tabs nav nav-tabs" role="tablist">
           <li role="presentation" class="tab active"><a href="#myquestions" aria-controls="My Questions" role="tab" data-toggle="tab">
+            <%= image_tag("categories/myquestions.png", class: "category-icon") %>
             <h3>My Questions</h3>
-            <p>Category icon</p>
           </a>
         </li>
         <% Category.all.sort.each do |category| %>
         <li role="presentation" class="tab"><a href="#<%= category.name.downcase %>" aria-controls="<%= category.name.downcase %>" role="tab" data-toggle="tab">
+          <%= image_tag(("categories/" + category.icon_name), class: "category-icon") %>
           <h3><%= category.name %></h3>
-          <p>Category icon</p>
         </a>
       </li>
       <% end %>
