@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     get '/response', to: 'surveys#response'
    end
   end
+
   resources :questions
   devise_for :users,
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }

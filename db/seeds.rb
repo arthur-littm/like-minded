@@ -15,15 +15,17 @@ c = Category.create(name: "Activity", icon_name: "activity.png")
 d = Category.create(name: "Accomodation", icon_name: "accomodation.png")
 
 
-Question.create(category: a, content: "Best restaurant ?")
+question1 = Question.create(category: a, content: "Best restaurant ?")
 Question.create(category: a, content: "Gluten free restaurant ?")
 Question.create(category: a, content: "Best sushi restaurant ?")
 Question.create(category: b, content: "Best club ?")
-Question.create(category: b, content: "Best bar ?")
+question2 = Question.create(category: b, content: "Best bar ?")
 Question.create(category: b, content: "Best late night food ?")
 Question.create(category: c, content: "Best tourist attraction ?")
 Question.create(category: c, content: "Best view ?")
 Question.create(category: c, content: "Best city escape ?")
-Question.create(category: d, content: "Best hostel ?")
+question3 = Question.create(category: d, content: "Best hostel ?")
 Question.create(category: d, content: "Best luxurious hotel ?")
 Question.create(category: d, content: "Best neighbourhood to stay in ?")
+
+
