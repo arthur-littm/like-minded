@@ -51,9 +51,6 @@ class SurveysController < ApplicationController
     @survey.delete
   end
 
-  def response
-
-  end
 
   private
 
