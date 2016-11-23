@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.3.1'
 
-gem 'cocoon'
+gem 'cocoon', '1.2.9'
 gem 'geocoder'
 gem 'rails', '5.0.0.1'
 gem 'puma'
