@@ -18,7 +18,9 @@
     <div class="col-xs-8">
       <div class="friends">
         <ul>
-
+          <% @friends.each do |friend| %>
+            <%= friend.first_name %>
+          <% end %>
         </ul>
       </div>
     </div>
