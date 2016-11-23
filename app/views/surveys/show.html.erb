@@ -27,11 +27,17 @@
   <h3>Summary</h3>
   <ul>
     <% if @survey.questions %>
-    <% @survey.questions.each do |question| %>
-    <li class="summary-question-card"><%= question.content %></li>
+    <% @survey.survey_questions.each do |sq| %>
+    <li class="summary-question-card">
+      <%= sq.question.content %>
+      <%= link_to survey_survey_question_path(survey_id: @survey.id, id: sq.id), method: :delete do %>
+        <i class="fa fa-times" aria-hidden="true"></i>
+      <% end %>
+    </li>
     <% end %>
     <% end %>
   </ul>
 </div>
 </div>
+<%= render 'select_friends' %>
 </div>

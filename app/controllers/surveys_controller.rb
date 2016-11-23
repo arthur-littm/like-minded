@@ -8,6 +8,8 @@ class SurveysController < ApplicationController
 
   def show
     @question = Question.new
+    @friends = User.all
+    @friends.each { |friend| SurveyFriend.create(survey_id: @survey.id, user_id: friend.id) }
   end
 
   def new
@@ -29,22 +31,37 @@ class SurveysController < ApplicationController
   # end
 
   def update
-    # pulls ids of questions checked
+
     @question_ids = params[:survey][:question_ids].select{|id| !id.blank?}
-    # sets the category so that we only update questions of that category in our survey questions
-    category = Category.find(params[:survey][:category].to_i)
+    @question_ids.map! { |id| id.to_i }
+    ids = @survey.questions.map { |q| q.id }
 
-    # delete questions of category selected above, in preparation to re-populate
-    # with selected questions
-    @survey.survey_questions.select{|q| q.question.category == category}.each{ |q| q.delete }
-
-    #creates new questions using the question_ids from the url
-    unless @question_ids.empty?
-      @question_ids.each { |id| SurveyQuestion.create(survey: @survey, question_id: id.to_i) }
+    new_questions = @question_ids - ids
+    new_questions.each do |q|
+      sq = SurveyQuestion.create(survey: @survey, question_id: q)
+      sq.save
     end
 
-    #redirect to current page (refreshes page)
+    # binding.pry
+
+  #   binding.pry
+  #   @question_ids.any? { |id| @survey.survey_questions }
+
+  #   if params[:survey][:category].nil?
+  #     @question_ids.each do |id|
+  #       id.to_i
+  #       category = Category.find(Question.find(id))
+  #   end
+  # end
+
+  #   category = Category.find(params[:survey][:category].to_i)
+  #   @survey.survey_questions.select{|q| q.question.category == category}.each{ |q| q.delete }
+  #   unless @question_ids.empty?
+  #     @question_ids.each { |id| SurveyQuestion.create(survey: @survey, question_id: id.to_i) }
+  #   end
+
     redirect_to survey_path(@survey)
+
   end
 
   def destroy
@@ -61,6 +78,4 @@ class SurveysController < ApplicationController
   def find_survey
     @survey = Survey.find(params[:id])
   end
-
-
 end

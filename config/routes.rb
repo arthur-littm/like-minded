@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resources :surveys, except: [:index] do
    resources :questions, only: [:index]
+   resources :survey_questions, only: [:destroy]
    member do
     get '/response', to: 'surveys#response'
    end
