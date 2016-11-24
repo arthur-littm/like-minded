@@ -24,3 +24,24 @@
 .trip-card-link:hover{
   opacity: 0.1;
 }
+
+.dashboard-card-new {
+  background-color: white;
+  border: 0.5 solid #D3D8D8;
+  color: #2F323A;
+  font-size: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  p {
+    font-size: 30px;
+  }
+  i {
+    font-size: 40px;
+  }
+}
+
+.dashboard-card-new:hover {
+  color: #EE6352;
+}
