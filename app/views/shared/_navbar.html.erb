@@ -6,6 +6,11 @@
   <%= image_tag "linelogo.png" %>
   <% end %>
 
+  <% if @survey %>
+  <div class="navbar-city">
+  <p><%= @survey.city %></p>
+  </div>
+  <% end %>
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 

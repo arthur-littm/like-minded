@@ -24,6 +24,15 @@
   width: 170px;
 }
 
+.navbar-city {
+  color: #616668;
+  font-weight: 100;
+  font-size: 20px;
+  p {
+    margin: 0;
+  }
+}
+
 /* Navbar right section (with form, links, button) */
 .navbar-wagon-right {
   display: flex;
