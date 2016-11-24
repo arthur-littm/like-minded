@@ -28,10 +28,21 @@ class QuestionsController < ApplicationController
     end
   end
 
-  # def destroy
-  #   @question = Question.find(params[:id])
-  #   @question.destroy
-  # end
+  def edit
+
+  end
+
+  def update
+
+  end
+
+  def destroy
+    # @survey = Survey.find(params[:id])
+    @question = Question.find(params[:id])
+    authorize @question
+    @question.user = current_user
+    @question.destroy
+  end
 
   private
 
