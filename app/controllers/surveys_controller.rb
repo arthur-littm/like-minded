@@ -11,8 +11,6 @@ class SurveysController < ApplicationController
     @question = Question.new
     authorize @survey
     # authorize @survey
-    @friends = User.all
-    @friends.each { |friend| SurveyFriend.create(survey_id: @survey.id, user_id: friend.id) }
   end
 
   def new
@@ -60,27 +58,25 @@ class SurveysController < ApplicationController
     @responder_ids.map! { |id| id.to_i }
     ids = @survey.responders.map { |r| r.id }
     new_responders = @responder_ids - ids
-    new_responders.each do |r|
-      sr = SurveyFriend.create(survey: @survey, responder_id: r)
-      authorize sr
-      sq.save
+    new_responders.uniq.each do |r|
+      sr = SurveyFriend.create(answered_survey: @survey, user_id: r)
+      sr.save
     end
-
     redirect_to survey_path(@survey)
   end
 
-    def destroy
-      @survey.delete
-    end
-
-
-    private
-
-    def survey_params
-      params.require(:survey).permit(:city, :start_date)
-    end
-
-    def find_survey
-      @survey = Survey.find(params[:id])
-    end
+  def destroy
+    @survey.delete
   end
+
+
+  private
+
+  def survey_params
+    params.require(:survey).permit(:city, :start_date)
+  end
+
+  def find_survey
+    @survey = Survey.find(params[:id])
+  end
+end
