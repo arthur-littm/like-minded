@@ -1,13 +1,12 @@
 <h1>Test</h1>
 
-<%= simple_form_for @survey do |survey_form| %>
+<%= simple_form_for @survey, url: answer_update_survey_path(@survey) do |survey_form| %>
   <% @survey.questions.each do |q| %>
     <%= field_set_tag q.content do %>
       <%= survey_form.simple_fields_for :questions, q do |question_form| %>
         <%= question_form.simple_fields_for :answers, Answer.new(question: q) do |f| %>
           <%= f.input :content %>
         <% end %>
-
       <% end %>
     <% end %>
   <% end %>
