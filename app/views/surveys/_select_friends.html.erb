@@ -2,29 +2,27 @@
   <p><%= @survey.city %></p>
   <p><%= @survey.start_date %></p>
   <div class="row">
-    <div class="col-xs-4">
-      <div class="survey-summary">
-        <h3>Summary</h3>
-        <ul>
-          <% if @survey.questions %>
-          <% @survey.questions.each do |question| %>
-          <li class="summary-question-card"><%= question.content %></li>
-          <% end %>
-          <% end %>
-        </ul>
-      </div>
+    <div class="col-xs-4 survey-summary">
+      <h3>Summary</h3>
+      <ul>
+        <% if @survey.questions %>
+        <% @survey.questions.each do |question| %>
+        <li class="summary-question-card"><%= question.content %></li>
+        <% end %>
+        <% end %>
+      </ul>
     </div>
 
     <div class="col-xs-8 friends">
-    <h4>Select friends to ask: </h4>
-        <% @friends.each do |friend| %>
-        <div class="col-xs-11 col-sm-5 col-md-3 friends-card">
-          <p><%= friend.first_name %></p>
-          <% avatar_url = friend.facebook_picture_url || "http://placehold.it/30x30" %>
+      <h4>Select friends to ask: </h4>
+      <% @friends.each do |friend| %>
+      <div class="col-xs-11 col-sm-5 col-md-3 friends-card">
+        <p><%= friend.first_name %></p>
+        <% avatar_url = friend.facebook_picture_url || "http://placehold.it/30x30" %>
 
-          <%= image_tag avatar_url, class: "avatar-lg" %>
-        </div>
-        <% end %>
+        <%= image_tag avatar_url, class: "avatar-lg" %>
+      </div>
+      <% end %>
     </div>
   </div>
 </div>
