@@ -3,6 +3,7 @@ class SurveyQuestionsController < ApplicationController
 
   def destroy
     survey_question = SurveyQuestion.find(params[:id])
+    authorize @survey
     survey_question.destroy
     redirect_to survey_path(@survey)
   end
