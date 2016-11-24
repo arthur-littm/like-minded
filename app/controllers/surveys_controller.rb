@@ -1,7 +1,7 @@
 class SurveysController < ApplicationController
   before_action :authenticate_user!, except: :new
 
-  before_action :find_survey, only: [:show, :update, :destroy, :answering]
+  before_action :find_survey, only: [:show, :update, :update_responders, :destroy, :answering]
 
   def index
 
@@ -49,23 +49,38 @@ class SurveysController < ApplicationController
       sq = SurveyQuestion.create(survey: @survey, question_id: q)
       authorize sq
       sq.save
-   end
+    end
 
     redirect_to survey_path(@survey)
   end
 
-  def destroy
-    @survey.delete
+  def update_responders
+    authorize @survey
+    @responder_ids = params[:survey][:responder_ids].select{|id| !id.blank?}
+    @responder_ids.map! { |id| id.to_i }
+    ids = @survey.responders.map { |r| r.id }
+    new_responders = @responder_ids - ids
+    new_responders.each do |r|
+      sr = SurveyFriend.create(survey: @survey, responder_id: r)
+      authorize sr
+      sq.save
+    end
+
+    redirect_to survey_path(@survey)
   end
 
+    def destroy
+      @survey.delete
+    end
 
-  private
 
-  def survey_params
-    params.require(:survey).permit(:city, :start_date)
+    private
+
+    def survey_params
+      params.require(:survey).permit(:city, :start_date)
+    end
+
+    def find_survey
+      @survey = Survey.find(params[:id])
+    end
   end
-
-  def find_survey
-    @survey = Survey.find(params[:id])
-  end
-end

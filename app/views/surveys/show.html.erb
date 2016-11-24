@@ -1,44 +1,5 @@
 <div class="container">
-  <p><%= @survey.city %></p>
-  <p><%= @survey.start_date %></p>
-  <div class="row">
-    <div class="col-xs-8">
-      <div class="questions">
-        <ul class="tabs nav nav-tabs" role="tablist">
-          <li role="presentation" class="tab active"><a href="#myquestions" aria-controls="My Questions" role="tab" data-toggle="tab">
-            <i class="fa fa-question-circle"></i>
-            <h3>My Questions</h3>
-          </a>
-        </li>
-        <% Category.all.sort.each do |category| %>
-        <li role="presentation" class="tab"><a href="#<%= category.name.downcase %>" aria-controls="<%= category.name.downcase %>" role="tab" data-toggle="tab">
-          <i class="<%= category.icon_name %>"></i>
-          <h3><%= category.name %></h3>
-        </a>
-      </li>
-      <% end %>
-    </ul>
-    <div id="tab_content_questions">
-      <%= render 'surveys/tab_content_questions', question: @question, survey: @survey %>
-    </div>
-  </div>
-</div>
-<div class="col-xs-4 survey-summary">
-  <h3>Summary</h3>
-  <ul>
-    <% if @survey.questions %>
-    <% @survey.survey_questions.each do |sq| %>
-    <li class="summary-question-card">
-      <%= sq.question.content %>
-      <%= link_to survey_survey_question_path(survey_id: @survey.id, id: sq.id), method: :delete do %>
-      <i class="fa fa-times" aria-hidden="true"></i>
-      <% end %>
-    </li>
-    <% end %>
-    <% end %>
-  </ul>
-</div>
-</div>
-<%= render 'select_friends' %>
-</div>
+<%= render 'select_questions', survey: @survey, question: @question %>
+<%= render 'select_friends', survey: @survey %>
 <%= render 'surveys/show_responses', question: @question, survey: @survey %>
+</div>
