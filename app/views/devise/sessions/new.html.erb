@@ -12,28 +12,32 @@
             <h3 class="panel-title text-center">Log in</h3>
           </div>
           <div class="panel-body">
-              <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                  <div class="form-group">
-                    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-                    <%= f.input :email, required: false, label: false, autofocus: true, placeholder: "Email" %>
-                  </div>
-                </div>
-
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                  <div class="form-group">
-                    <%= f.input :password, required: false, placeholder: "Password" %>
-                    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-                  </div>
-                </div>
-              </div>
-
-              <%= f.button :submit, "Log in", class:"btn btn-primary btn-block"  %>
-              <% end %>
+            <div class="form-group">
               <%= link_to user_facebook_omniauth_authorize_path, class: "btn btn-block btn-social btn-facebook facebook-button" do %>
               <span class="fa fa-facebook"></span>
               Log in with Facebook
+              <% end %>
+              <hr>
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                  <%= f.input :email, required: false, label: false, autofocus: true, placeholder: "Email" %>
+                </div>
+              </div>
+
+              <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                  <%= f.input :password, required: false, label: false, placeholder: "Password" %>
+                  <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+                </div>
+              </div>
+            </div>
+
+            <%= f.button :submit, "Log in", class:"btn btn-primary btn-block"  %>
             <% end %>
+
           </div>
         </div>
       </div>
