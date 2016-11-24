@@ -17,7 +17,7 @@ class SurveyPolicy < ApplicationPolicy
     record.user == user  # Only survey creator can update it
   end
 
-  def update_responders?
+  def update_survey_friends?
     record.user == user # Only survey creator can update it
   end
 
