@@ -5,9 +5,10 @@ Rails.application.routes.draw do
     resources :answers, only: [:show, :new, :create]
   end
    resources :survey_questions, only: [:destroy]
+   resources :survey_friends, only: [:destroy]
    member do
     get '/answering', to: 'surveys#answering', as: :survey_answer
-    patch '/update', to: 'surveys#update_responders', as: :update_responders
+    patch '/update', to: 'surveys#update_survey_friends', as: :update_survey_friends
    end
   end
   resources :questions
