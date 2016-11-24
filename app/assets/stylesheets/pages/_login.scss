@@ -35,14 +35,13 @@
 }
 
 .facebook-button {
-  margin: 28px;
   text-align: center;
-  width: 90% !important;
+  width: 100% !important;
   font-weight: 100;
 }
 
 body{
-    background-color: #525252;
+  background-color: #525252;
 }
 .centered-form{
   margin-top: 60px;
@@ -51,4 +50,13 @@ body{
 .centered-form .panel{
   background: rgba(255, 255, 255, 0.8);
   box-shadow: rgba(0, 0, 0, 0.3) 5px 5px 5px;
+}
+
+.checkbox {
+  color: black;
+  margin-top: 3px;
+}
+
+.form-group .placeholder {
+  font-size: 15px !important;
 }
