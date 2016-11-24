@@ -6,7 +6,7 @@ class SurveyPolicy < ApplicationPolicy
   end
 
   def show?
-    record.user == user  # Anyone can view a survey
+    record.user == user  # Only survey creator can view a survey
   end
 
   def create?
