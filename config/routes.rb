@@ -8,6 +8,7 @@ Rails.application.routes.draw do
    member do
     get '/answering', to: 'surveys#answering', as: :survey_answer
     patch '/update', to: 'surveys#update_responders', as: :update_responders
+    patch '/answerupdate', to: 'surveys#answer_update', as: :answer_update
    end
   end
   resources :questions
