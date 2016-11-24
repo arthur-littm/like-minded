@@ -1,12 +1,15 @@
 <h1>Test</h1>
 
-<%= simple_form_for @survey do |f| %>
+<%= simple_form_for @survey do |survey_form| %>
   <% @survey.questions.each do |q| %>
     <%= field_set_tag q.content do %>
-      <%= f.simple_fields_for :answer do |pq| %>
-        <%= pq.input :content, label: 'Your Answer' %>
+      <%= survey_form.simple_fields_for :questions, q do |question_form| %>
+        <%= question_form.simple_fields_for :answers, Answer.new(question: q) do |f| %>
+          <%= f.input :content %>
+        <% end %>
+
       <% end %>
     <% end %>
   <% end %>
-  <%= f.submit "submit answers", class: "btn btn-primary" %>
+  <%= survey_form.submit "submit answers", class: "btn btn-primary" %>
 <% end %>

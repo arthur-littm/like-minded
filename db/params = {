@@ -1,0 +1,30 @@
+params = {
+  "utf8"=>"✓",
+  "_method"=>"patch",
+  "authenticity_token"=>"fZiPeO+CpuY4Yp70FW3C5lsCk87z9/FVtew9FUmYPvWotgG5uBt1piVvvoiHKbhvNxZg9Qq3h63VDv4nZKgvuA==",
+  "survey"=>{
+    "questions_attributes"=>{
+      "0"=>{"answers_attributes"=>{"0"=>{"content"=>""}}, "id"=>"3"},
+      "1"=>{"answers_attributes"=>{"0"=>{"content"=>"hjhkjhhjkh"}}, "id"=>"6"}, "2"=>{"answers_attributes"=>{"0"=>{"content"=>"hjhkjhkjhkjh"}}, "id"=>"8"}, "3"=>{"answers_attributes"=>{"0"=>{"content"=>"hkjhjkhkjhkjh"}}, "id"=>"11"}
+    }
+  },
+  "commit"=>"submit answers",
+  "controller"=>"surveys",
+  "action"=>"update",
+  "id"=>"2"}
+
+
+  params[:survey][:questions_attributes] do |k|
+    # k = ["0"=>{"answers_attributes"=>{"0"=>{"content"=>"sdgshsd"}}, "id"=>"3"]
+    # k[0] = "0"=>{"answers_attributes"=>{"0"=>{"content"=>"sdgshsd"}}
+    # k[0][0] = "answers_attributes"=>{"0"=>{"content"=>"sdgshsd"}
+    # k[0][0]["answers_attributes"] = "0"=>{"content"=>"sdgshsd"}
+    # k[0][0]["answers_attributes"][0] = "content"=>"sdgshsd"
+    # k[0][0]["answers_attributes"][0]["content"] = "sdgshsd"
+    # k[1] = "id"=>"3"
+    # k[1]["id"] = "3"
+
+    q = Question.find(k[1]["id"])
+    answer = Answer.new(question: q, content: k[0][0]["answers_attributes"][0]["content"])
+    answer
+  end

@@ -38,6 +38,13 @@ class SurveysController < ApplicationController
   # end
 
   def update
+    binding.pry
+
+
+
+
+
+
 
     @question_ids = params[:survey][:question_ids].select{|id| !id.blank?}
     @question_ids.map! { |id| id.to_i }
