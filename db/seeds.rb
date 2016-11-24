@@ -27,20 +27,3 @@ Question.create(category: c, content: "Best city escape ?")
 Question.create(category: d, content: "Best hostel ?")
 Question.create(category: d, content: "Best luxurious hotel ?")
 Question.create(category: d, content: "Best neighbourhood to stay in ?")
-
-
-question1 = Question.create(category: a, content: "Best restaurant in town?")
-question2 = Question.create(category: d, content: "Best hotel in town ?")
-arthur = User.create(email: "arthur@litt.com", password: "123456", first_name: "arthur" )
-responder = User.create(email: "responder@test.com", password: "123456", first_name: "responder" )
-responder2 = User.create(email: "responder2@test.com", password: "123456", first_name: "responder2" )
-s = Survey.create(city: "Paris", user: arthur)
-
-SurveyQuestion.create(survey: s, question: question1)
-SurveyQuestion.create(survey: s, question: question2)
-
-ans11 = Answer.create(question: question1, survey: s, user: responder, content: "Chez Elles, really cool french restaurant with dwoedjweodjrifheifbefbrjfhbrwjhfbjhb bfjb ejhrb fehjrb fehjrb fhjer fhjerbf jhber fhjer fhbehjr bfehjr bfehjr bfhjer")
-ans12 = Answer.create(question: question2, survey: s, user: responder, content: "Hotel F1 dwoedjweodjrifheifbefbrjfhbrwjhfbjhb bfjb ejhrb fehjrb fehjrb fhjer fhjerbf jhber fhjer fhbehjr bfehjr bfehjr bfhjer")
-ans21 = Answer.create(question: question1, survey: s, user: responder2, content: "Mcdonalds, really cool french restaurant with dwoedjweodjrifheifbefbrjfhbrwjhfbjhb bfjb ejhrb fehjrb fehjrb fhjer fhjerbf jhber fhjer fhbehjr bfehjr bfehjr bfhjer")
-ans22 = Answer.create(question: question2, survey: s, user: responder2, content: "Luxurious hotel dwoedjweodjrifheifbefbrjfhbrwjhfbjhb bfjb ejhrb fehjrb fehjrb fhjer fhjerbf jhber fhjer fhbehjr bfehjr bfehjr bfhjer")
-
