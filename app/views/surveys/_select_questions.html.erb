@@ -67,20 +67,25 @@
   </div>
 </div>
 </div>
-<div class="col-xs-4 survey-summary">
-  <h3>Summary</h3>
-  <ul>
-    <% if @survey.questions %>
-    <% @survey.survey_questions.each do |sq| %>
-    <li class="summary-question-card">
-      <%= sq.question.content %>
-      <%= link_to survey_survey_question_path(survey_id: @survey.id, id: sq.id), method: :delete do %>
-      <i class="fa fa-times" aria-hidden="true"></i>
+<div class="col-xs-4">
+  <div class="survey-summary">
+    <h3>Summary</h3>
+    <ul>
+      <% if @survey.questions %>
+      <% @survey.survey_questions.each do |sq| %>
+      <li class="summary-question-card">
+        <%= sq.question.content %>
+        <%= link_to survey_survey_question_path(survey_id: @survey.id, id: sq.id), method: :delete do %>
+        <i class="fa fa-times" aria-hidden="true"></i>
+        <% end %>
+      </li>
       <% end %>
-    </li>
-    <% end %>
-    <% end %>
-  </ul>
+      <% end %>
+    </ul>
+  </div>
+  <div class="survey-button-container">
+    <%= link_to "Next", update_status_survey_path, method: :patch, class: "btn btn-danger" %>
+  </div>
 </div>
 </div>
 

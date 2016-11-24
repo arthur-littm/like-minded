@@ -10,20 +10,25 @@
         <% end %>
       </div>
     </div>
-    <div class="col-xs-4 survey-summary">
+    <div class="col-xs-4">
+    <div class="survey-summary">
       <h3>Sending to</h3>
       <ul>
         <% if @survey.survey_friends %>
-          <% @survey.survey_friends.each do |sf| %>
-          <li class="summary-question-card">
-            <%= sf.user.first_name %>
-            <%= link_to survey_survey_friend_path(survey_id: @survey.id, id: sf.id), method: :delete do %>
-            <i class="fa fa-times" aria-hidden="true"></i>
-            <% end %>
-          </li>
+        <% @survey.survey_friends.each do |sf| %>
+        <li class="summary-question-card">
+          <%= sf.user.first_name %>
+          <%= link_to survey_survey_friend_path(survey_id: @survey.id, id: sf.id), method: :delete do %>
+          <i class="fa fa-times" aria-hidden="true"></i>
           <% end %>
+        </li>
+        <% end %>
         <% end %>
       </ul>
+      </div>
+      <div class="survey-button-container">
+        <%= link_to "Next", update_status_survey_path, method: :patch, class: "btn btn-danger" %>
+      </div>
     </div>
   </div>
 
