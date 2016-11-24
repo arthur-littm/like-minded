@@ -1,9 +1,18 @@
-<div class="container">
   <p><%= @survey.city %></p>
   <p><%= @survey.start_date %></p>
   <div class="row">
+    <div class="col-xs-8">
+    <div class="friends">
+        <h4>Select friends to ask: </h4>
+
+        <%= simple_form_for [survey], url: update_responders_survey_path do |f| %>
+        <%= f.association :responders, label: false, as: :check_boxes, collection: User.all, label_method: :first_name, wrapper_html:{class: "question-card"} %>
+        <%= f.submit "Add to survey", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
     <div class="col-xs-4 survey-summary">
-      <h3>Summary</h3>
+      <h3>Sending to</h3>
       <ul>
         <% if @survey.responders %>
         <% @survey.responders.each do |responder| %>
@@ -12,17 +21,7 @@
         <% end %>
       </ul>
     </div>
-
-    <div class="col-xs-8 friends">
-      <h4>Select friends to ask: </h4>
-
-      <%= simple_form_for [survey], url: update_responders_survey_path do |f| %>
-      <%= f.association :responders, label: false, as: :check_boxes, collection: User.all, label_method: :first_name, wrapper_html:{class: "question-card"} %>
-      <%= f.submit "Add to survey", class: "btn btn-primary" %>
-      <% end %>
-    </div>
   </div>
-</div>
 
 
 
