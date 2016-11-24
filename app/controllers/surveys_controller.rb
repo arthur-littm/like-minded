@@ -1,7 +1,7 @@
 class SurveysController < ApplicationController
   before_action :authenticate_user!, except: :new
 
-  before_action :find_survey, only: [:show, :update, :update_friends, :destroy, :answering]
+  before_action :find_survey, only: [:show, :update, :update_friends, :destroy, :answering, :update_status]
 
   def index
 
@@ -65,6 +65,17 @@ class SurveysController < ApplicationController
 
   def destroy
     @survey.delete
+  end
+
+  def update_status
+    authorize @survey
+    if @survey.status.downcase == "select questions"
+      @survey.status = "Select friends"
+    elsif @survey.status.downcase == "select friends"
+      @survey.status = "Sent"
+    end
+    @survey.save
+    redirect_to survey_path(@survey)
   end
 
 
