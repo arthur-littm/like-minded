@@ -71,11 +71,13 @@ class SurveysController < ApplicationController
     authorize @survey
     if @survey.status.downcase == "select questions"
       @survey.status = "Select friends"
+      @survey.save
+      redirect_to survey_path(@survey)
     elsif @survey.status.downcase == "select friends"
       @survey.status = "Sent"
+      @survey.save
+      redirect_to survey_answer_survey_path(@survey)
     end
-    @survey.save
-    redirect_to survey_path(@survey)
   end
 
 
