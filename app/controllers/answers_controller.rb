@@ -17,6 +17,6 @@ class AnswersController < ApplicationController
   private
 
   def answer_params
-    params.require(:answer).permit(:user_id, :question_id, :survey_id, answers_attributes: [:content])
+    params.require(:answer).permit(:user_id, :question_id, :survey_id) # answers_attributes: [:content])
   end
 end
