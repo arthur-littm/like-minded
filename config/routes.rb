@@ -8,7 +8,7 @@ Rails.application.routes.draw do
    resources :survey_friends, only: [:destroy]
    member do
     get '/answering', to: 'surveys#answering', as: :survey_answer
-    patch '/update', to: 'surveys#update_survey_friends', as: :update_survey_friends
+    patch '/update', to: 'surveys#update_friends', as: :update_friends
    end
   end
   resources :questions

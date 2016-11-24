@@ -4,7 +4,7 @@
     <div class="col-xs-8">
       <div class="friends">
         <h4>Select friends to ask: </h4>
-        <%= simple_form_for survey, url: update_survey_friends_survey_path do |f| %>
+        <%= simple_form_for survey, url: update_friends_survey_path do |f| %>
         <%= f.association :friends, label: false, as: :check_boxes, collection: User.all, label_method: :first_name, selected: survey.friends, wrapper_html:{class: "question-card"} %>
         <%= f.submit "Add to survey", class: "btn btn-primary" %>
         <% end %>
