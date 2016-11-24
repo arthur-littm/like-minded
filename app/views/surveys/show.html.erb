@@ -6,13 +6,13 @@
       <div class="questions">
         <ul class="tabs nav nav-tabs" role="tablist">
           <li role="presentation" class="tab active"><a href="#myquestions" aria-controls="My Questions" role="tab" data-toggle="tab">
-            <%= image_tag("categories/myquestions.png", class: "category-icon") %>
+            <i class="fa fa-question-circle"></i>
             <h3>My Questions</h3>
           </a>
         </li>
         <% Category.all.sort.each do |category| %>
         <li role="presentation" class="tab"><a href="#<%= category.name.downcase %>" aria-controls="<%= category.name.downcase %>" role="tab" data-toggle="tab">
-          <%= image_tag(("categories/" + category.icon_name), class: "category-icon") %>
+          <i class="<%= category.icon_name %>"></i>
           <h3><%= category.name %></h3>
         </a>
       </li>
@@ -31,7 +31,7 @@
     <li class="summary-question-card">
       <%= sq.question.content %>
       <%= link_to survey_survey_question_path(survey_id: @survey.id, id: sq.id), method: :delete do %>
-        <i class="fa fa-times" aria-hidden="true"></i>
+      <i class="fa fa-times" aria-hidden="true"></i>
       <% end %>
     </li>
     <% end %>

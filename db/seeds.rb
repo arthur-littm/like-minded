@@ -9,10 +9,10 @@ SurveyQuestion.destroy_all
 Question.destroy_all
 Category.destroy_all
 
-a = Category.create(name: "Food", icon_name: "food.png")
-b = Category.create(name: "Nightlife", icon_name: "nightlife.png")
-c = Category.create(name: "Activity", icon_name: "activity.png")
-d = Category.create(name: "Accomodation", icon_name: "accomodation.png")
+a = Category.create(name: "Food", icon_name: "fa fa-cutlery")
+b = Category.create(name: "Nightlife", icon_name: "fa fa-glass")
+c = Category.create(name: "Activity", icon_name: "fa fa-bicycle")
+d = Category.create(name: "Accomodation", icon_name: "fa fa-bed")
 
 
 Question.create(category: a, content: "Best restaurant ?")
