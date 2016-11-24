@@ -31,6 +31,11 @@
           New question
         </button>
 
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal">
+          Edit questions
+        </button>
+
         <!-- Modal -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
@@ -45,6 +50,26 @@
                 <div id="new_question_form">
                   <%= render 'surveys/question_form', question: question, survey: survey %>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Modal -->
+      <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <h4 class="modal-title" id="myModalLabel">Edit questions</h4>
+            </div>
+            <div class="modal-body">
+              <div id="new_question_form">
+              <%= render 'surveys/edit_questions', question: question, survey: survey %>
               </div>
             </div>
           </div>
