@@ -1,7 +1,7 @@
 class SurveysController < ApplicationController
   before_action :authenticate_user!, except: :new
 
-  before_action :find_survey, only: [:show, :update, :update_responders, :destroy, :answering, :answer_update]
+  before_action :find_survey, only: [:show, :update, :update_friends, :destroy, :answering, :update_status, :answer_update]
 
   def index
 
@@ -19,7 +19,6 @@ class SurveysController < ApplicationController
   end
 
   def create
-    # binding.pry
     @survey = Survey.new(survey_params)
     @survey.user = current_user
     authorize @survey
@@ -48,7 +47,6 @@ class SurveysController < ApplicationController
   end
 
   def update
-
     @question_ids = params[:survey][:question_ids].select{|id| !id.blank?}
     @question_ids.map! { |id| id.to_i }
     ids = @survey.questions.map { |q| q.id }
@@ -61,13 +59,13 @@ class SurveysController < ApplicationController
     redirect_to survey_path(@survey)
   end
 
-  def update_responders
+  def update_friends
     authorize @survey
-    @responder_ids = params[:survey][:responder_ids].select{|id| !id.blank?}
-    @responder_ids.map! { |id| id.to_i }
-    ids = @survey.responders.map { |r| r.id }
-    new_responders = @responder_ids - ids
-    new_responders.uniq.each do |r|
+    friend_ids = params[:survey][:friend_ids].select{|id| !id.blank?}
+    friend_ids.map! { |id| id.to_i }
+    ids = @survey.friends.map { |r| r.id }
+    new_friends = friend_ids - ids
+    new_friends.each do |r|
       sr = SurveyFriend.create(answered_survey: @survey, user_id: r)
       sr.save
     end
@@ -76,6 +74,17 @@ class SurveysController < ApplicationController
 
   def destroy
     @survey.delete
+  end
+
+  def update_status
+    authorize @survey
+    if @survey.status.downcase == "select questions"
+      @survey.status = "Select friends"
+    elsif @survey.status.downcase == "select friends"
+      @survey.status = "Sent"
+    end
+    @survey.save
+    redirect_to survey_path(@survey)
   end
 
   private

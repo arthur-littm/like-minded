@@ -1,0 +1,12 @@
+<p><% survey.user.questions.each do |question| %>
+  <li>
+    <%= question.content %>
+    <%= link_to question_path(question), method: :delete do %>
+    <i class="fa fa-times" aria-hidden="true"></i>
+    <% end %>
+    <% end %>
+  </li>
+</p>
+
+
+
