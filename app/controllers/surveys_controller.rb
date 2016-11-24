@@ -38,11 +38,13 @@ class SurveysController < ApplicationController
   # end
 
   def update
-    binding.pry
 
 
-
-
+    # params[:survey][:questions_attributes] do |k|
+    #   q = Question.find(k[1]["id"])
+    #   answer = Answer.new(question: q, content: k[0][0]["answers_attributes"][0]["content"])
+    #   answer
+    # end
 
 
 

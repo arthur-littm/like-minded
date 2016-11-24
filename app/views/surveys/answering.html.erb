@@ -7,7 +7,6 @@
         <%= question_form.simple_fields_for :answers, Answer.new(question: q) do |f| %>
           <%= f.input :content %>
         <% end %>
-
       <% end %>
     <% end %>
   <% end %>
