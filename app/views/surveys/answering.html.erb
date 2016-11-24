@@ -10,5 +10,5 @@
       <% end %>
     <% end %>
   <% end %>
-  <%= survey_form.submit "submit answers", class: "btn btn-primary" %>
+  <%= survey_form.submit, url: survey_answer_survey_path(@survey), "submit answers", class: "btn btn-primary" %>
 <% end %>
