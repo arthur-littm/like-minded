@@ -1,17 +1,52 @@
 .new-survey-form {
  margin: 30px auto;
+ width: 42%;
+ position: relative;
+ background-color: #2F323A;
+ opacity: 0.85;
+}
+
+.new-survey-form:focus {
+ opacity: 1;
 }
 
 #survey_city {
   border: none;
+  box-shadow: none;
+  font-size: 18px;
+  font-weight: 100;
   width: 250px;
-  border-radius: 5px;
+  border-radius: 4px;
+  height: 53px;
+  position: absolute;
+  left: 0;
+  top: 20px;
+  transition: ease-in-out, color .8s ease-in-out;
+}
+#survey_city:focus {
+color: #EE6352;
+box-shadow: none;
+
+}
+
+#survey_start_date:focus {
+color: #EE6352;
+box-shadow: none;
 }
 
 #survey_start_date {
-  width: 95px;
+  width: 145px;
+  font-size: 18px;
+  font-weight: 100;
   margin-left: -10px;
-  border: none
+  height: 53px;
+  border: none;
+  position: absolute;
+  right: 0;
+  top: 20px;
+  outline: none;
+  box-shadow: none;
+  transition: ease-in-out, color, .8s ease-in-out;
 }
 
 .new-survey-form-button {
@@ -20,11 +55,9 @@
  border: none;
  color: #EE6352;
  margin-left: -50px;
- position: relative;
- i {
-  position:absolute;
-  bottom: -5px;
- }
+ position: absolute;
+ right: 5px;
+ top: 25px;
 }
 .new-survey-form-button:hover {
  color: #2F323A;

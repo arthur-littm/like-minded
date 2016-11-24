@@ -4,20 +4,14 @@
       <p>Get <span style="color: #EE6352">personal travel advice</span> from your friends</p>
     </div>
     <div class="banner-form">
-      <% if user_signed_in? %>
-      <%= simple_form_for @survey, html: { class: "new-survey-form form-inline"} do |f| %>
-      <%= f.input :city, placeholder: "Enter city", class: "new-survey-from-city", label: false %>
-      <%= f.input :start_date, placeholder: "date", as: :string, input_html: { type: "text", class: "new-survey-form-date datepicker" }, label: false %>
+      <%= simple_form_for @survey, html: { class: "new-survey-form"} do |f| %>
+      <%= f.input :city, placeholder: "Where to ?", class: "new-survey-from-city", label: false, required: true %>
+      <%= f.input :start_date, placeholder: "When ?", as: :string, input_html: { type: "text", class: "new-survey-form-date datepicker" }, label: false %>
       <%= button_tag(type: 'submit', class: "new-survey-form-button") do %>
       <i class="fa fa-paper-plane"></i>
       <% end %>
       <% end %>
-      <% end %>
     </div>
-    <% if user_signed_in? %>
-    <% else %>
-    <p class="login-message">Login to start planning your next trip</p>
-    <% end %>
   </div>
 </div>
 
