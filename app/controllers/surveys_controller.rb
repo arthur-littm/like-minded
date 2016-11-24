@@ -51,7 +51,7 @@ class SurveysController < ApplicationController
     redirect_to survey_path(@survey)
   end
 
-  def update_survey_friends
+  def update_friends
     authorize @survey
     friend_ids = params[:survey][:friend_ids].select{|id| !id.blank?}
     friend_ids.map! { |id| id.to_i }
