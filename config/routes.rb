@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :surveys, except: [:index] do
    resources :questions, only: [:index]
    resources :survey_questions, only: [:destroy]
+   # get '/responders', to: 'survey#update_responders', as: :update_survey_responders
+   # get '/questions', to: 'survey#update_questions', as: :update_survey_questions
    member do
     get '/answering', to: 'surveys#answering', as: :survey_answer
    end

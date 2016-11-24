@@ -47,11 +47,13 @@ class SurveysController < ApplicationController
     new_questions = @question_ids - ids
     new_questions.each do |q|
       sq = SurveyQuestion.create(survey: @survey, question_id: q)
-      authorize sq
       sq.save
-   end
+    end
 
     redirect_to survey_path(@survey)
+  end
+
+  def update_responders
   end
 
   def destroy

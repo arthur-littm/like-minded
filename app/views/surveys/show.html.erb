@@ -39,6 +39,6 @@
   </ul>
 </div>
 </div>
-<%= render 'select_friends' %>
+<%= render 'select_friends', friend: @friend, survey: @survey %>
 </div>
 <%= render 'surveys/show_responses', question: @question, survey: @survey %>
