@@ -1,13 +1,9 @@
 Rails.application.routes.draw do
 
-  get 'answers/show'
-
-  get 'answers/new'
-
-  get 'answers/create'
-
   resources :surveys, except: [:index] do
-   resources :questions, only: [:index]
+   resources :questions, only: [:index] do
+    resources :answers, only: [:show, :new, :create]
+  end
    resources :survey_questions, only: [:destroy]
    member do
     get '/answering', to: 'surveys#answering', as: :survey_answer
