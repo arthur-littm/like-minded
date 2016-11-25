@@ -29,18 +29,30 @@ class QuestionsController < ApplicationController
   end
 
   def edit
-
+    @survey = Survey.find(params[:survey_id])
+    @question = Question.find(params[:id])
+    @question.user = current_user
+    authorize @question
   end
 
   def update
-
+    @survey = Survey.find(params[:survey_id])
+    @question = Question.find(params[:id])
+    authorize @question
+    @question.user = current_user
+    @question.update(question_params)
+    if @question.save
+      redirect_to survey_path(@survey)
+    else
+      render :edit
+    end
   end
 
   def destroy
     @survey = Survey.find(params[:survey_id])
     @question = Question.find(params[:id])
     authorize @question
-    # @question.user = current_user
+    @question.user = current_user
     @question.delete
     redirect_to survey_path(@survey)
   end
