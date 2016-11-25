@@ -1,6 +1,14 @@
-<div class="container-fluid response-survey-banner" style="background-image: url(<%= image_path("response-banner.jpg") %>);">
-  <h3>My recommendations for <%= @survey.city %></h3>
-  <h4><%= @survey.start_date %></h4>
+<div class="container-fluid response-survey-banner filter" style="background-image: url(<%= image_path("plane.jpg") %>);">
+  <div class="response-banner-phrase">
+  <p>Almost <span style="color: #EE6352">there</span></p>
+  </div>
+  <div class="response-survey-title">
+    <span><%= @survey.city %></span>
+  </div>
+    <%= link_to "#", class: "survey-image-button" do %>
+      <i class="fa fa-camera" aria-hidden="true"></i>
+    <% end %>
+  </div>
 </div>
 <div class="container response-survey-answers-container">
   <% @survey.questions.each do |question|%>
