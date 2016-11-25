@@ -1,36 +1,37 @@
-  <p><%= @survey.city %></p>
-  <p><%= @survey.start_date %></p>
+<div class="container">
   <div class="row">
     <div class="col-xs-8">
       <div class="friends">
         <h4>Select friends to ask: </h4>
         <%= simple_form_for survey, url: update_friends_survey_path do |f| %>
-        <%= f.association :friends, label: false, as: :check_boxes, collection: User.all, label_method: :first_name, selected: survey.friends, wrapper_html:{class: "question-card"} %>
-        <%= f.submit "Add to survey", class: "btn btn-primary" %>
+        <%= f.association :friends, label: false, as: :check_boxes, collection: User.all, label_method: :first_name, selected: survey.friends, wrapper_html:{class: "friends-container"} %>
+        <%= f.submit "Add friends", class: "btn btn-primary add-to-button" %>
         <% end %>
       </div>
     </div>
     <div class="col-xs-4">
-    <div class="survey-summary">
-      <h3>Sending to</h3>
-      <ul>
-        <% if @survey.survey_friends %>
-        <% @survey.survey_friends.each do |sf| %>
-        <li class="summary-question-card">
-          <%= sf.user.first_name %>
-          <%= link_to survey_survey_friend_path(survey_id: @survey.id, id: sf.id), method: :delete do %>
-          <i class="fa fa-times" aria-hidden="true"></i>
+      <div class="survey-summary">
+        <h3>Sending to</h3>
+        <ul>
+          <% if @survey.survey_friends %>
+          <% @survey.survey_friends.each do |sf| %>
+          <li class="summary-question-card">
+            <%= sf.user.first_name %>
+            <%= sf.user.last_name %>
+            <img src="<%= sf.user.facebook_picture_url %>" alt="" class="avatar-bordered card-picture">
+            <%= link_to survey_survey_friend_path(survey_id: @survey.id, id: sf.id), method: :delete, class: "delete-questions" do %>
+            <i class="fa fa-times" aria-hidden="true"></i>
+            <% end %>
+          </li>
           <% end %>
-        </li>
-        <% end %>
-        <% end %>
-      </ul>
+          <% end %>
+        </ul>
       </div>
       <div class="survey-button-container">
-        <%= link_to "Next", update_status_survey_path, method: :patch, class: "btn btn-danger" %>
+        <%= link_to "Send", update_status_survey_path, method: :patch, class: "btn btn-danger survey-button" %>
       </div>
     </div>
   </div>
 
-
+</div>
 

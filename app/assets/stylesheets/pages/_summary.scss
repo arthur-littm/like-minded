@@ -48,6 +48,11 @@
     padding: 3px;
     transition: ease-in-out, opacity .3s ease-in-out;
   }
+  .card-picture {
+    position: absolute;
+    right: 15px;
+    top: 6px;
+  }
 }
 
 .summary-question-card:hover {
