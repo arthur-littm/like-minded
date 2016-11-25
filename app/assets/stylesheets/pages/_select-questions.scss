@@ -1,0 +1,33 @@
+.question-container {
+  display: flex;
+  flex-direction: row;
+  .checkbox {
+    background-color: white;
+    margin: 10px;
+    border-radius: 5px;
+    padding: 5px;
+    width : 250px;
+    height: 150px;
+  }
+}
+
+.questions {
+  background-color: rgba(62, 156, 218, 0.21);
+  height: 85vh;
+  margin: 20px auto;
+  border-radius: 0 0 5px 5px;
+}
+
+.survey-button-container {
+  margin: 20px auto;
+  .survey-button {
+    width: 100%;
+    font-weight: 100;
+    font-size: 20px;
+    height: 10vh;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
