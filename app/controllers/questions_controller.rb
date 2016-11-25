@@ -54,7 +54,7 @@ class QuestionsController < ApplicationController
     authorize @question
     @question.user = current_user
     @question.delete
-    redirect_to survey_path(@survey)
+    redirect_to survey_path(@survey), notice: "Question successfully deleted"
   end
 
   private
