@@ -1,4 +1,3 @@
-<div class="container">
   <% if @survey.status.downcase == "select questions" %>
     <%= render 'select_questions', survey: @survey, question: @question %>
   <% elsif @survey.status.downcase == "select friends" %>
@@ -6,4 +5,3 @@
   <% elsif @survey.status.downcase == "sent" %>
     <%= render 'surveys/show_responses', question: @question, survey: @survey %>
   <% end %>
-</div>

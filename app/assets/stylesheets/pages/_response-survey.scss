@@ -1,7 +1,51 @@
 .response-survey-banner {
-  height: 50vh;
+  height: 35vh;
   background-size: cover !important;
-  background-position: center;
+  background-position: 50% 70%;
+  position: relative;
+  a {
+    transition: ease-in-out, opacity .8s ease-in-out;
+    opacity: 0;
+  }
+}
+
+.response-survey-banner:hover {
+  a {
+    opacity: 0.8;
+  }
+}
+
+.response-banner-phrase {
+  font-size: 30px;
+  font-weight: 100;
+  position: absolute;
+  bottom: 10px;
+  right: 50px;
+  span {
+    border-bottom: 3px solid #2F323A;
+  }
+}
+
+.survey-image-button {
+  position: absolute;
+  top: 10px;
+  right: 50px;
+  color: #2F323A;
+  font-size: 22px;
+}
+
+.survey-image-button:hover {
+  color: #EE6352;
+}
+
+.response-survey-title {
+  font-size: 26px;
+  color: #eeeeee;
+  font-weight: 100;
+  position: absolute;
+  top: 10px;
+  left: 50px;
+  font-style: italic;
 }
 
 .response-survey-answers-container {

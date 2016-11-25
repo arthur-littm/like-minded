@@ -5,9 +5,10 @@
   </div>
   <div class="row">
     <% @user.surveys.each do |survey| %>
-    <div class="col-xs-11 col-sm-5 col-md-3 dashboard-trip-card" style="background-image: linear-gradient(rgba(47, 50, 58, 0.35), rgba(47, 50, 58, 0.65) ), url(<%= image_path("default.jpg") %>);">
+    <div class="col-xs-11 col-sm-5 col-md-3 dashboard-trip-card" style="background-image: linear-gradient(rgba(47, 50, 58, 0.35), rgba(47, 50, 58, 0.65) ), url(<%= image_path("default-card.jpg") %>);">
       <p><%= survey.city %></p>
       <p><%= survey.start_date %></p>
+      <p><%= survey.status %></p>
       <%= link_to "", survey_path(survey), class: "trip-card-link" %>
     </div>
     <% end %>
