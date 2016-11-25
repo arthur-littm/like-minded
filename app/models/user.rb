@@ -6,12 +6,11 @@ class User < ApplicationRecord
   :recoverable, :rememberable, :trackable, :validatable,
   :omniauthable, omniauth_providers: [:facebook]
 
-  has_many :answers
-  has_many :questions
-  has_many :surveys
-  has_many :survey_friends
-  has_many :answered_surveys, through: :survey_friends
-  has_many :answers
+  has_many :answers, dependent: :destroy
+  has_many :questions, dependent: :destroy
+  has_many :surveys, dependent: :destroy
+  has_many :survey_friends, dependent: :destroy
+  has_many :answered_surveys, through: :survey_friends, dependent: :destroy
 
   # validates :first_name, presence: true
   # validates :last_name, presence: true
