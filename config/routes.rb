@@ -1,8 +1,15 @@
 Rails.application.routes.draw do
 
   resources :surveys, except: [:index] do
-   resources :questions, only: [:index] do
-    resources :answers, only: [:show, :new, :create]
+    resources :questions, only: [:index, :destroy] do
+      resources :answers, only: [:show, :new, :create]
+    end
+    resources :survey_questions, only: [:destroy]
+    resources :survey_friends, only: [:destroy]
+    member do
+      get '/answering', to: 'surveys#answering', as: :survey_answer
+      patch '/update', to: 'surveys#update_friends', as: :update_friends
+    end
   end
   resources :survey_questions, only: [:destroy]
   resources :survey_friends, only: [:destroy]
@@ -13,7 +20,7 @@ Rails.application.routes.draw do
     patch '/update', to: 'surveys#update_status', as: :update_status
   end
 end
-resources :questions
+resources :questions, except: [:index, :destroy]
 devise_for :users,
 controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 resources :users, only: [:edit, :update]
