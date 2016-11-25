@@ -1,2 +1,3 @@
-$('.question_form_edit').remove();
-$('ul').append('<li><%= @question.content %></li>');
+$('.question_form_edit').addClass('hidden');
+$('#<%= "#{@question.id}_question" %>').remove();
+$('#list-of-questions').append('<li><%= @question.content %></li>');
