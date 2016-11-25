@@ -1,7 +1,9 @@
 <p><% survey.user.questions.each do |question| %>
   <li>
     <%= question.content %>
+
     <%= link_to edit_survey_question_path(survey, question) do %>
+
     <i class="fa fa-wrench" aria-hidden="true"></i>
     <%= link_to survey_question_path(survey, question), method: :delete do %>
     <i class="fa fa-trash" aria-hidden="true"></i>
@@ -10,6 +12,9 @@
     <% end %>
   </li>
 </p>
+
+
+
 
 
 
