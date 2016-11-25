@@ -1,0 +1,65 @@
+.survey-summary {
+  text-align: center;
+  height: 70vh;
+  color: white;
+  background-color: #5D737E;
+  border-radius: 5px;
+  h3 {
+    padding-top: 10px;
+  }
+  ul {
+    padding: 0;
+  }
+  li {
+    list-style: none;
+  }
+}
+
+.fixed-cards {
+  overflow: scroll;
+  height: 60vh;
+}
+
+.summary-question-card {
+  padding: 10px;
+  margin: 10px auto;
+  width: 80%;
+  background-color: white;
+  color: #2F323A;
+  border-radius: 5px;
+  text-align: center;
+  position:relative;
+  .delete-questions {
+    position: absolute;
+    right: 5px;
+    top: 0px;
+    opacity: 0;
+    color: #EE6352;
+    transition: ease-in-out, opacity .5s ease-in-out;
+  }
+  .card-category {
+    position :absolute;
+    right: 0px;
+    top: 0px;
+    opacity: 0.9;
+    color: white;
+    background-color: #3E9CDA;
+    border-radius: 10%;
+    padding: 3px;
+    transition: ease-in-out, opacity .3s ease-in-out;
+  }
+}
+
+.summary-question-card:hover {
+  .delete-questions {
+    opacity: 1;
+  }
+  .card-category {
+    opacity: 0;
+  }
+}
+
+.category-icon {
+  width: 30px;
+}
+
