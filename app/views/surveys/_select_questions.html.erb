@@ -1,113 +1,120 @@
-<div class="row">
-  <div class="col-xs-8">
-    <div class="questions">
-      <ul class="tabs nav nav-tabs" role="tablist">
-        <li role="presentation" class="tab active"><a href="#myquestions" aria-controls="My Questions" role="tab" data-toggle="tab">
-          <i class="fa fa-question-circle"></i>
-          <h3>My Questions</h3>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-8">
+      <div class="questions">
+        <ul class="tabs nav nav-tabs" role="tablist">
+          <li role="presentation" class="tab active"><a href="#myquestions" aria-controls="My Questions" role="tab" data-toggle="tab">
+            <i class="fa fa-question-circle"></i>
+            <h3>My Questions</h3>
+          </a>
+        </li>
+        <% Category.all.sort.each do |category| %>
+        <li role="presentation" class="tab"><a href="#<%= category.name.downcase %>" aria-controls="<%= category.name.downcase %>" role="tab" data-toggle="tab">
+          <i class="<%= category.icon_name %>"></i>
+          <h3><%= category.name %></h3>
         </a>
       </li>
-      <% Category.all.sort.each do |category| %>
-      <li role="presentation" class="tab"><a href="#<%= category.name.downcase %>" aria-controls="<%= category.name.downcase %>" role="tab" data-toggle="tab">
-        <i class="<%= category.icon_name %>"></i>
-        <h3><%= category.name %></h3>
-      </a>
-    </li>
-    <% end %>
-  </ul>
-  <div id="tab_content_questions">
+      <% end %>
+    </ul>
+    <div id="tab_content_questions">
 
-    <div class="tab-content">
-      <div role="tabpanel" class="tab-pane active" id="myquestions">
-        <% if survey.user.questions %>
-        <%= simple_form_for [survey] do |f| %>
-        <%= f.association :questions, label: false, as: :check_boxes, collection: survey.user.questions, label_method: :content, selected: survey.questions, wrapper_html:{ id: "#{f.object.id}", class: "question-card"} %>
-        <%= f.submit "Add to survey", class: "btn btn-primary" %>
-        <% end %>
-        <% end %>
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="myquestions">
+          <% if survey.user.questions %>
+          <%= simple_form_for [survey] do |f| %>
+          <%= f.association :questions, label: false, as: :check_boxes, collection: survey.user.questions, label_method: :content, selected: survey.questions, wrapper_html:{ id: "#{f.object.id}", class: "question-container"} %>
+          <%= f.submit "Add to survey", class: "btn btn-primary" %>
+          <% end %>
+          <% end %>
 
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-          New question
-        </button>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+            New question
+          </button>
 
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal">
-          Edit questions
-        </button>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal">
+            Edit questions
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <h4 class="modal-title" id="myModalLabel">Add new question</h4>
+                </div>
+                <div class="modal-body">
+                  <div id="new_question_form">
+                    <%= render 'surveys/question_form', question: question, survey: survey %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
 
         <!-- Modal -->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title" id="myModalLabel">Add new question</h4>
+                <h4 class="modal-title" id="myModalLabel">Edit questions</h4>
               </div>
               <div class="modal-body">
                 <div id="new_question_form">
-                  <%= render 'surveys/question_form', question: question, survey: survey %>
+                  <%= render 'surveys/edit_questions', question: question, survey: survey %>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-
-      <!-- Modal -->
-      <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-              <h4 class="modal-title" id="myModalLabel">Edit questions</h4>
-            </div>
-            <div class="modal-body">
-              <div id="new_question_form">
-              <%= render 'surveys/edit_questions', question: question, survey: survey %>
-              </div>
-            </div>
-          </div>
+        <% Category.all.sort.each do |category| %>
+        <div role="tabpanel" class="tab-pane" id="<%= category.name.downcase %>">
+          <%= simple_form_for [survey] do |f| %>
+          <%= f.association :questions, label: false, as: :check_boxes, collection: category.questions.all, label_method: :content, selected: survey.questions, wrapper_html:{class: "question-container"} %>
+          <%= f.hidden_field :category, value: category.id %>
+          <%= f.submit "Add to survey", class: "btn btn-primary" %>
+          <% end %>
         </div>
-      </div>
-
-      <% Category.all.sort.each do |category| %>
-      <div role="tabpanel" class="tab-pane" id="<%= category.name.downcase %>">
-        <%= simple_form_for [survey] do |f| %>
-        <%= f.association :questions, label: false, as: :check_boxes, collection: category.questions.all, label_method: :content, selected: survey.questions, wrapper_html:{class: "question-card"} %>
-        <%= f.hidden_field :category, value: category.id %>
-        <%= f.submit "Add to survey", class: "btn btn-primary" %>
         <% end %>
       </div>
       <% end %>
+
+      </div>
+
     </div>
   </div>
-</div>
 </div>
 <div class="col-xs-4">
   <div class="survey-summary">
     <h3>Summary</h3>
-    <ul>
-      <% if @survey.questions %>
-      <% @survey.survey_questions.each do |sq| %>
-      <li class="summary-question-card">
-        <%= sq.question.content %>
-        <%= link_to survey_survey_question_path(survey_id: @survey.id, id: sq.id), method: :delete do %>
-        <i class="fa fa-times" aria-hidden="true"></i>
+    <div class="fixed-cards">
+      <ul>
+        <% if @survey.questions %>
+        <% @survey.survey_questions.each do |sq| %>
+        <li class="summary-question-card">
+          <%= sq.question.content %>
+          <i class="<%= sq.question.category.icon_name %> card-category" aria-hidden="true"></i>
+          <%= link_to survey_survey_question_path(survey_id: @survey.id, id: sq.id), method: :delete, class: "delete-questions" do %>
+          <i class="fa fa-times" aria-hidden="true"></i>
+          <% end %>
+        </li>
         <% end %>
-      </li>
-      <% end %>
-      <% end %>
-    </ul>
+        <% end %>
+      </ul>
+    </div>
   </div>
   <div class="survey-button-container">
-
   </div>
 </div>
 </div>
-
+</div>
