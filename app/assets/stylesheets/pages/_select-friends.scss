@@ -1,11 +1,33 @@
 .friends {
-  background-color: #CFE2EF;
+  background-color: rgba(62, 156, 218, 0.21);
+  height: 85vh;
+  margin: 20px auto;
+  border-radius: 5px;
+  h4 {
+    margin-top: 20px;
+  }
 }
 
-.friends-card {
-  height: 100px;
-  background-color: white;
-  padding: 30px;
-  margin: 20px;
+.friends-container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow: scroll;
+  position: relative;
+  .checkbox {
+    background-color: white;
+    margin: 10px;
+    border-radius: 5px;
+    border: 0.5px solid #A7B9DD;
+    padding: 5px;
+    width : 220px;
+    height: 80px;
+    text-align: center;
+    overflow: scroll;
+    position: relative;
+  }
+  .checkbox:hover {
+    box-shadow: 1px 1px 6px 0px #96A6C7;
+  }
 }
-
