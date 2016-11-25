@@ -23,20 +23,18 @@
           <% if survey.user.questions %>
           <%= simple_form_for [survey] do |f| %>
           <%= f.association :questions, label: false, as: :check_boxes, collection: survey.user.questions, label_method: :content, selected: survey.questions, wrapper_html:{ id: "#{f.object.id}", class: "question-container"} %>
-          <%= f.submit "Add to survey", class: "btn btn-primary" %>
+          <%= f.submit "Add to survey", class: "btn btn-primary add-to-button" %>
           <% end %>
           <% end %>
-
           <!-- Button trigger modal -->
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-            New question
+          <button type="button" class="new-question-button" data-toggle="modal" data-target="#myModal">
+            <i class="fa fa-plus" aria-hidden="true"></i>
           </button>
 
           <!-- Button trigger modal -->
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal">
-            Edit questions
+          <button type="button" class="edit-question-button" data-toggle="modal" data-target="#editModal">
+            <i class="fa fa-pencil" aria-hidden="true"></i>
           </button>
-
           <!-- Modal -->
           <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -56,7 +54,6 @@
             </div>
           </div>
         </div>
-
 
         <!-- Modal -->
         <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -82,7 +79,7 @@
           <%= simple_form_for [survey] do |f| %>
           <%= f.association :questions, label: false, as: :check_boxes, collection: category.questions.all, label_method: :content, selected: survey.questions, wrapper_html:{class: "question-container"} %>
           <%= f.hidden_field :category, value: category.id %>
-          <%= f.submit "Add to survey", class: "btn btn-primary" %>
+          <%= f.submit "Add to survey", class: "btn btn-primary add-to-button" %>
           <% end %>
         </div>
         <% end %>

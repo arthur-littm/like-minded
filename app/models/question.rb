@@ -6,4 +6,6 @@ class Question < ApplicationRecord
   has_many :answers
 
   accepts_nested_attributes_for :answers
+
+  validates :content, length: {minimum: 5, maximum: 70}, allow_blank: false
 end

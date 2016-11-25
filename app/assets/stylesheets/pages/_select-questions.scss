@@ -1,13 +1,24 @@
 .question-container {
   display: flex;
+  justify-content: space-between;
   flex-direction: row;
+  flex-wrap: wrap;
+  overflow: scroll;
+  position: relative;
   .checkbox {
     background-color: white;
     margin: 10px;
     border-radius: 5px;
+    border: 0.5px solid #A7B9DD;
     padding: 5px;
-    width : 250px;
-    height: 150px;
+    width : 220px;
+    height: 80px;
+    text-align: center;
+    overflow: scroll;
+    position: relative;
+  }
+  .checkbox:hover {
+    box-shadow: 1px 1px 6px 0px #96A6C7;
   }
 }
 
@@ -30,4 +41,25 @@
     justify-content: center;
     align-items: center;
   }
+}
+
+.edit-question-button {
+  font-size: 15px;
+  position: absolute;
+  right:25px;
+  bottom: 30px;
+}
+
+.new-question-button {
+  font-size: 15px;
+  position: absolute;
+  right:60px;
+  bottom: 30px;
+}
+
+.add-to-button {
+  align-self: flex-end;
+  position: absolute;
+  left:25px;
+  bottom: 30px;
 }
