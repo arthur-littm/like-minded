@@ -21,7 +21,7 @@
       <div role="tabpanel" class="tab-pane active" id="myquestions">
         <% if survey.user.questions %>
         <%= simple_form_for [survey] do |f| %>
-        <%= f.association :questions, label: false, as: :check_boxes, collection: survey.user.questions, label_method: :content, selected: survey.questions, wrapper_html:{class: "question-card"} %>
+        <%= f.association :questions, label: false, as: :check_boxes, collection: survey.user.questions, label_method: :content, selected: survey.questions, wrapper_html:{ id: "#{f.object.id}", class: "question-card"} %>
         <%= f.submit "Add to survey", class: "btn btn-primary" %>
         <% end %>
         <% end %>

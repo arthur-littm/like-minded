@@ -37,11 +37,12 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
-    # @survey = Survey.find(params[:id])
+    @survey = Survey.find(params[:survey_id])
     @question = Question.find(params[:id])
     authorize @question
-    @question.user = current_user
-    @question.destroy
+    # @question.user = current_user
+    @question.delete
+    redirect_to survey_path(@survey)
   end
 
   private
