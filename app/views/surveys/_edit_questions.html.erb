@@ -1,6 +1,6 @@
-<ul>
+<ul id="list-of-questions">
   <% survey.user.questions.each do |question| %>
-    <li id="<%= question.id %>">
+    <li id='<%= "#{question.id}_question" %>'>
       <%= question.content %>
 
       <%= link_to edit_survey_question_path(survey, question), class: "link_to_edit_quest", id: "#{question.id}" do %>
@@ -19,16 +19,14 @@
   <% end %>
 </ul>
 
+<%= link_to "Done", survey_path(@survey), class: 'btn btn-primary' %>
+
 <%= content_for(:after_js) do %>
   <script>
     $('.link_to_edit_quest').click(function(e) {
       e.preventDefault();
-      var index = $(this).index();
-      console.log(index)
       var id = $(this).attr('id');
       $('#' + id + '_form').toggleClass('hidden');
-      $('#' + id).remove()
-
     });
   </script>
 <% end %>

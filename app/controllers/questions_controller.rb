@@ -17,7 +17,7 @@ class QuestionsController < ApplicationController
 
     if @question.save
       respond_to do |format|
-        format.html { redirect_to URI(request.referer).path }
+        format.html { redirect_to survey_path(@survey) }
         format.js
       end
     else
