@@ -41,10 +41,21 @@ class QuestionsController < ApplicationController
     authorize @question
     @question.user = current_user
     @question.update(question_params)
+    # if @question.save
+    #   redirect_to survey_path(@survey)
+    # else
+    #   render :edit
+    # end
     if @question.save
-      redirect_to survey_path(@survey)
+      respond_to do |format|
+        format.html { redirect_to survey_path(@survey) }
+        format.js
+      end
     else
-      render :edit
+      respond_to do |format|
+        format.html { render :edit }
+        format.js
+      end
     end
   end
 

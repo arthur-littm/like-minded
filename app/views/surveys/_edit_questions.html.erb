@@ -1,19 +1,37 @@
-<p><% survey.user.questions.each do |question| %>
-  <li>
-    <%= question.content %>
+<ul>
+  <% survey.user.questions.each do |question| %>
+    <li id="<%= question.id %>">
+      <%= question.content %>
 
-    <%= link_to edit_survey_question_path(survey, question) do %>
+      <%= link_to edit_survey_question_path(survey, question), class: "link_to_edit_quest", id: "#{question.id}" do %>
+      <i class="fa fa-wrench" aria-hidden="true"></i>
+      <% end %>
+      <%= link_to survey_question_path(survey, question), method: :delete, data: { confirm: "Are you sure?" } do %>
+      <i class="fa fa-trash" aria-hidden="true"></i>
+      <% end %>
+    </li>
+    <li id="<%= question.id %>_form" class="hidden question_form_edit">
+      <%= simple_form_for([survey, question], remote: true, html: { class: "form-inline" } ) do |f| %>
+      <%= f.input :content, label: "Content: " %>
+      <%= f.submit class:"btn btn-primary" %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
 
-    <i class="fa fa-wrench" aria-hidden="true"></i>
-    <%= link_to survey_question_path(survey, question), method: :delete, data: { confirm: "Are you sure?" } do %>
-    <i class="fa fa-trash" aria-hidden="true"></i>
-    <% end %>
-    <% end %>
-    <% end %>
-  </li>
-</p>
+<%= content_for(:after_js) do %>
+  <script>
+    $('.link_to_edit_quest').click(function(e) {
+      e.preventDefault();
+      var index = $(this).index();
+      console.log(index)
+      var id = $(this).attr('id');
+      $('#' + id + '_form').toggleClass('hidden');
+      $('#' + id).remove()
 
-
+    });
+  </script>
+<% end %>
 
 
 
