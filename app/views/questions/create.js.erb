@@ -2,7 +2,7 @@
   // Render new question form with errors
   $('#new_question_form').html("<%= j render 'surveys/question_form', question: @question, survey: @survey %>");
 <% else %>
-  var new_tab_content_questions = "<%= j render 'surveys/tab_content_questions', question: @question, survey: @survey %>";
+  var new_tab_content_questions = "<%= j render 'surveys/select_questions', survey: @survey, question: @question %>";
   console.log(new_tab_content_questions);
   $('#tab_content_questions').html(new_tab_content_questions);
   $('#myModal').modal('hide');
