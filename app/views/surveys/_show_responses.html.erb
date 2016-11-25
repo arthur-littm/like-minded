@@ -1,14 +1,14 @@
 <div class="container-fluid response-survey-banner filter" style="background-image: url(<%= image_path("plane.jpg") %>);">
   <div class="response-banner-phrase">
-  <p>Almost <span style="color: #EE6352">there</span></p>
+    <p>Almost <span style="color: #EE6352">there</span></p>
   </div>
   <div class="response-survey-title">
     <span><%= @survey.city %></span>
   </div>
-    <%= link_to "#", class: "survey-image-button" do %>
-      <i class="fa fa-camera" aria-hidden="true"></i>
-    <% end %>
-  </div>
+  <%= link_to "#", class: "survey-image-button" do %>
+  <i class="fa fa-camera" aria-hidden="true"></i>
+  <% end %>
+</div>
 </div>
 <div class="container response-survey-answers-container">
   <% @survey.questions.each do |question|%>
@@ -17,7 +17,10 @@
     <ul>
       <% question.answers.where(survey_id: @survey.id).each do |answer| %>
       <div class="response-answer">
-        <li><%= answer.content %></li>
+        <li>
+          <h4><%= answer.content %></h4>
+          <p> (by <%= answer.user.first_name %> <%= answer.user.last_name %>)</p>
+        </li>
       </div>
       <% end %>
     </ul>
