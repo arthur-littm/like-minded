@@ -13,6 +13,10 @@ class QuestionPolicy < ApplicationPolicy
     true # Anyone can create a question
   end
 
+  def edit?
+    record.user == user  # Only question creator can update it
+  end
+
   def update?
     record.user == user  # Only question creator can update it
   end

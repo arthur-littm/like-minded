@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   resources :surveys, except: [:index] do
-    resources :questions, only: [:index, :destroy] do
+    resources :questions, only: [:index, :edit, :update, :destroy] do
       resources :answers, only: [:show, :new, :create]
     end
     resources :survey_questions, only: [:destroy]
