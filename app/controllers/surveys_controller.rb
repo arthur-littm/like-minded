@@ -1,7 +1,7 @@
 class SurveysController < ApplicationController
   before_action :authenticate_user!, except: :new
 
-  before_action :find_survey, only: [:show, :update, :update_friends, :destroy, :answering, :update_status, :answer_update]
+  before_action :find_survey, only: [:show, :update, :update_friends, :destroy, :answering, :update_status, :answer_update, :update_cover_picture]
 
   def index
 
@@ -36,7 +36,7 @@ class SurveysController < ApplicationController
   def answer_update
     authorize @survey
     params[:survey][:questions_attributes].each do |k,v|
-        q = Question.find(v[:id].to_i)
+      q = Question.find(v[:id].to_i)
       answer = Answer.new(question: q, content: v['answers_attributes']['0'][:content])
       answer.update(question_id: q.id)
       answer.user = current_user
@@ -87,10 +87,18 @@ class SurveysController < ApplicationController
     redirect_to survey_path(@survey)
   end
 
+  def update_cover_picture
+    authorize @survey
+    @survey.update(survey_params)
+    if @survey.save
+      redirect_to survey_path(@survey)
+    end
+  end
+
   private
 
   def survey_params
-    params.require(:survey).permit(:city, :start_date)
+    params.require(:survey).permit(:city, :start_date, :cover_picture)
   end
 
   def find_survey

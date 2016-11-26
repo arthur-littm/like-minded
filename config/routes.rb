@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       get '/answering', to: 'surveys#answering', as: :survey_answer
       patch '/answerupdate', to: 'surveys#answer_update', as: :answer_update
       patch '/update_status', to: 'surveys#update_friends', as: :update_friends
+      patch '/update_cover_picture', to: 'surveys#update_cover_picture', as: :update_cover_picture
       patch '/update', to: 'surveys#update_status', as: :update_status
     end
   end
@@ -22,5 +23,8 @@ Rails.application.routes.draw do
 
   root to: 'surveys#new'
   get '/dashboard', to: 'pages#dashboard'
+
+  mount Attachinary::Engine => "/attachinary"
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
