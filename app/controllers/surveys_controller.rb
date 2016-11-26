@@ -90,7 +90,7 @@ class SurveysController < ApplicationController
   private
 
   def survey_params
-    params.require(:survey).permit(:city, :start_date)
+    params.require(:survey).permit(:city, :start_date, :cover_picture)
   end
 
   def find_survey
