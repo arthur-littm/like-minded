@@ -37,4 +37,8 @@ class SurveyPolicy < ApplicationPolicy
     true
   end
 
+  def update_cover_picture?
+    record.user == user  # Only survey creator can update it
+  end
+
 end

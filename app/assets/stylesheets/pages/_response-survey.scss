@@ -1,16 +1,16 @@
 .response-survey-banner {
   height: 35vh;
   background-size: cover !important;
-  background-position: 50% 70%;
+  background-position: center;
   position: relative;
-  a {
+  button {
     transition: ease-in-out, opacity .8s ease-in-out;
     opacity: 0;
   }
 }
 
 .response-survey-banner:hover {
-  a {
+  button {
     opacity: 0.8;
   }
 }
@@ -32,6 +32,8 @@
   right: 50px;
   color: #2F323A;
   font-size: 22px;
+  background-color: transparent;
+  border: none;
 }
 
 .survey-image-button:hover {

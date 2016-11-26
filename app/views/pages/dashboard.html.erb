@@ -5,7 +5,13 @@
   </div>
   <div class="row">
     <% @user.surveys.each do |survey| %>
-    <div class="col-xs-11 col-sm-5 col-md-3 dashboard-trip-card" style="background-image: linear-gradient(rgba(47, 50, 58, 0.35), rgba(47, 50, 58, 0.65) ), url(<%= image_path("default-card.jpg") %>);">
+    <div class="col-xs-11 col-sm-5 col-md-3 dashboard-trip-card" style="background-image: linear-gradient(rgba(47, 50, 58, 0.35), rgba(47, 50, 58, 0.65) ), url(
+      <% if survey.cover_picture? %>
+      <%= cl_image_path survey.cover_picture.path, width: 550, height: 300, crop: :fill %>
+      <% else %>
+      <%= image_path("default-card.jpg") %>
+      <% end %>
+      );">
       <p><%= survey.city %></p>
       <p><%= survey.start_date %></p>
       <p><%= survey.status %></p>
