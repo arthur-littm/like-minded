@@ -106,9 +106,11 @@
       </ul>
     </div>
   </div>
+  <% if @survey.survey_questions.count > 0 %>
   <div class="survey-button-container">
     <%= link_to "Go to friends selection", update_status_survey_path, method: :patch, class: "btn btn-danger survey-button" %>
   </div>
+  <% end %>
 </div>
 </div>
 </div>
