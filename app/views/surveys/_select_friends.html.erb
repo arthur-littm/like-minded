@@ -27,9 +27,11 @@
           <% end %>
         </ul>
       </div>
+        <% if @survey.survey_friends.count > 0 %>
       <div class="survey-button-container">
         <%= link_to "Send", update_status_survey_path, method: :patch, class: "btn btn-danger survey-button" %>
       </div>
+      <% end %>
     </div>
   </div>
 
