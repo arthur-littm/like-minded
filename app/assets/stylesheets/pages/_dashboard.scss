@@ -4,11 +4,36 @@
 
 .dashboard-trip-card {
   margin:20px;
-  color: white;
+  color: #2F323A;
   background-size: cover !important;
   background-position: center;
-  height: 150px;
-  border-radius: 5px;
+  height: 175px;
+  border-radius: 4px;
+  position: relative;
+  .trip-title {
+    margin: 10px auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 40px;
+    text-align: center;
+    font-size: 26px;
+    font-weight: 100;
+  }
+  .trip-info {
+    position: absolute;
+    font-weight: 100;
+    bottom: 0;
+    padding: 5px;
+    opacity: 0;
+    transition: ease-in-out, opacity .3s ease-in-out;
+  }
+}
+
+.dashboard-trip-card:hover {
+  .trip-info {
+    opacity: 1;
+  }
 }
 
 .trip-card-link {
