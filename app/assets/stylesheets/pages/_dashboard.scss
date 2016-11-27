@@ -5,34 +5,84 @@
 .dashboard-trip-card {
   margin:20px;
   color: #2F323A;
-  background-size: cover !important;
-  background-position: center;
-  height: 175px;
+  height: 250px;
+  width: 200px;
   border-radius: 4px;
   position: relative;
+  padding: 0;
+  background-color: white;
+  border: 0.5px solid rgba(167, 185, 221, 0.43);
+  .trip-status-sent {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    background-color: #54C77F;
+    border-radius: 15px;
+    color: white;
+    width: 60px;
+    height: 25px;
+    padding-top: 2px;
+    text-align: center;
+    font-weight: 100;
+  }
+  .trip-status-tosend {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    background-color: #EE6352;
+    border-radius: 15px;
+    text-align: center;
+    color: white;
+    width: 80px;
+    height: 25px;
+    padding-top: 2px;
+    font-weight: 100;
+  }
   .trip-title {
     margin: 10px auto;
     position: absolute;
-    left: 0;
-    right: 0;
-    top: 40px;
+    left: 10px;
+    bottom: 15px;
     text-align: center;
-    font-size: 26px;
+    font-size: 20px;
+    font-weight: 100;
+  }
+  .trip-date {
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    font-size: 12px;
     font-weight: 100;
   }
   .trip-info {
     position: absolute;
     font-weight: 100;
-    bottom: 0;
+    top: 70px;
+    left: 0;
+    right: 0;
+    text-align: center;
     padding: 5px;
     opacity: 0;
+    transition: ease-in-out, opacity .3s ease-in-out;
+  }
+  .card-image {
+    background-size: cover !important;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 175px;
     transition: ease-in-out, opacity .3s ease-in-out;
   }
 }
 
 .dashboard-trip-card:hover {
+  box-shadow: 1px 1px 6px 0px #96A6C7;
   .trip-info {
     opacity: 1;
+  }
+  .card-image {
+    opacity: 0.5;
   }
 }
 
@@ -43,13 +93,8 @@
   right: 0;
   width: 100%;
   z-index:2;
-  background: #EE6352;
   opacity: 0;
 }
-.trip-card-link:hover{
-  opacity: 0.1;
-}
-
 .dashboard-card-new {
   background-color: white;
   border: 0.5 solid #D3D8D8;
