@@ -1,3 +1,4 @@
 $('.question_form_edit').addClass('hidden');
+var index = $('#<%= "#{@question.id}_question" %>').index();
 $('#<%= "#{@question.id}_question" %>').remove();
-$('#list-of-questions').append('<li><%= @question.content %></li>');
+$('#list-of-questions > li:nth-child(' + (index - 1) + ')').after('<li><%= @question.content %></li>');
