@@ -1,24 +1,26 @@
-<ol id="list-of-questions">
+<ul id="list-of-questions">
   <% survey.user.questions.each do |question| %>
     <li id='<%= "#{question.id}_question" %>'>
+    <p></p>
+      <i class="<%= question.category.icon_name %>" aria-hidden="true"></i>
       <%= question.content %>
-
       <%= link_to edit_survey_question_path(survey, question), class: "link_to_edit_quest", id: "#{question.id}" do %>
       <i class="fa fa-wrench" aria-hidden="true"></i>
       <% end %>
       <%= link_to survey_question_path(survey, question), method: :delete, data: { confirm: "Are you sure?" } do %>
       <i class="fa fa-trash" aria-hidden="true"></i>
       <% end %>
+      <hr>
     </li>
     <li id="<%= question.id %>_form" class="hidden question_form_edit">
-      <%= simple_form_for([survey, question], html: { class: "form-inline" } ) do |f| %>
+      <%= simple_form_for([survey, question]) do |f| %>
       <%= f.input :content, label: "Content: " %>
       <%= f.association :category %>
       <%= f.submit "Update", class:"btn btn-primary" %>
       <% end %>
     </li>
   <% end %>
-</ol>
+</ul>
 
 <%= content_for(:after_js) do %>
   <script>
