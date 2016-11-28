@@ -53,11 +53,11 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     authorize @question
     @question.user = current_user
-    if @question.surveys
-      redirect_to survey_path(@survey), alert: "This question can not be deleted because it's already been added to your trip!"
+  unless  @survey.questions.include?(@question)
+      @question.delete
+      redirect_to survey_path(@survey), notice: "Question successfully deleted"
     else
-    @question.delete
-    redirect_to survey_path(@survey), notice: "Question successfully deleted"
+      redirect_to survey_path(@survey), alert: "This question can not be deleted because it's already been added to your trip!"
     end
   end
 
