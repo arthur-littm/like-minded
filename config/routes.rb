@@ -25,6 +25,7 @@ Rails.application.routes.draw do
 
   root to: 'surveys#new'
   get '/dashboard', to: 'pages#dashboard'
+  # get '/dashboard/sentsurveys', to 'pages#dashboard#'
 
   mount Attachinary::Engine => "/attachinary"
 
