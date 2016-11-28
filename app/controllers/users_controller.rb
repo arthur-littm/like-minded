@@ -7,12 +7,12 @@ class UsersController < ApplicationController
   end
 
   def update
-    authorize @user
-    if current_user.update(user_params)
+    authorize current_user
+     current_user.update(user_params)
       redirect_to dashboard_path
-    else
-      render :edit
-    end
+    # else
+    #   render :edit
+    # end
   end
 
   private
