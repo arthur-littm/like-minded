@@ -11,8 +11,6 @@ gem 'jbuilder', '~> 2.0'
 gem 'devise'
 gem 'redis'
 
-gem "gmaps4rails"
-
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
 end
@@ -28,6 +26,8 @@ end
 
 #Pundit
 gem "pundit"
+
+#Google maps
 
 gem "coffee-rails"
 gem "gmaps4rails"
