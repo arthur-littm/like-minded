@@ -1,4 +1,4 @@
-<ul id="list-of-questions">
+<ol id="list-of-questions">
   <% survey.user.questions.each do |question| %>
     <li id='<%= "#{question.id}_question" %>'>
       <%= question.content %>
@@ -11,15 +11,14 @@
       <% end %>
     </li>
     <li id="<%= question.id %>_form" class="hidden question_form_edit">
-      <%= simple_form_for([survey, question], remote: true, html: { class: "form-inline" } ) do |f| %>
+      <%= simple_form_for([survey, question], html: { class: "form-inline" } ) do |f| %>
       <%= f.input :content, label: "Content: " %>
-      <%= f.submit class:"btn btn-primary" %>
+      <%= f.association :category %>
+      <%= f.submit "Update", class:"btn btn-primary" %>
       <% end %>
     </li>
   <% end %>
-</ul>
-
-<%= link_to "Done", survey_path(@survey), class: 'btn btn-primary' %>
+</ol>
 
 <%= content_for(:after_js) do %>
   <script>

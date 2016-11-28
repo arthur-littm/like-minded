@@ -14,9 +14,17 @@
           <h3><%= category.name %></h3>
         </a>
       </li>
+      <!-- Button trigger modal -->
+      <button type="button" class="new-question-button-add" data-toggle="modal" data-target="#myModal">
+        <i class="fa fa-plus" aria-hidden="true"></i>
+      </button>
+
       <% end %>
+
+
     </ul>
    <%= render 'surveys/tab_content_questions', question: question, survey: survey %>
+
   </div>
 </div>
 <div class="col-xs-4">
