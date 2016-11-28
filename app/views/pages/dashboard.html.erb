@@ -1,15 +1,107 @@
 <div class="container-fluid">
-  <div class="dashboard-profile">
-    <img src="<% if @user.facebook_picture_url %>
-    <%= @user.facebook_picture_url %>
-    <% elsif @user.profile_picture %>
-    <%= @user.profile_picture %>
-    <% else %>
-    <%= image_path("ninja.png") %>
-    <% end %>
-    " alt="", class="avatar-large">
-    <h1><%= @user.first_name %> <%= @user.last_name %></h1>
+  <div class="row profile">
+    <div class="col-md-2">
+      <div class="profile-sidebar">
+        <!-- SIDEBAR USERPIC -->
+        <div class="profile-userpic">
+          <img src="<% if @user.facebook_picture_url %>
+          <%= @user.facebook_picture_url %>
+          <% elsif @user.profile_picture %>
+          <%= @user.profile_picture %>
+          <% else %>
+          <%= image_path("ninja.png") %>
+          <% end %>" class="img-responsive" alt="">
+        </div>
+        <!-- END SIDEBAR USERPIC -->
+        <!-- SIDEBAR USER TITLE -->
+        <div class="profile-usertitle">
+          <div class="profile-usertitle-name">
+            <%= @user.first_name %> <%= @user.last_name %>
+          </div>
+          <div class="profile-usertitle-job">
+            Paris
+          </div>
+        </div>
+        <!-- END SIDEBAR USER TITLE -->
+        <!-- SIDEBAR MENU -->
+        <div class="profile-usermenu">
+          <ul class="nav">
+            <li class="active" id="toProfile">
+              <a href="#">
+                <i class="fa fa-home" aria-hidden="true"></i>
+                Profile
+              </a>
+            </li>
+            <li id="toMytrips">
+              <a href="#">
+                <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                My trips
+              </a>
+            </li>
+            <li id="toSentsurveys">
+              <a href="#">
+                <i class="fa fa-users" aria-hidden="true"></i>
+                Friends trips
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="glyphicon glyphicon-flag"></i>
+                Help
+              </a>
+            </li>
+          </ul>
+        </div>
+        <!-- END MENU -->
+      </div>
+    </div>
+    <div class="col-md-10">
+      <div class="profile-content">
+        <div class="" id="profile">
+          <%= render 'profile' %>
+        </div>
+        <div class="hidden" id="mytrips">
+          <%= render 'mytrips' %>
+        </div>
+        <div class="hidden" id="sentsurveys">
+          <%= render 'sentsurveys' %>
+        </div>
+      </div>
+    </div>
   </div>
-  <%= render 'mytrips' %>
-  <%= render 'sentsurveys' %>
+</div>
 
+<%= content_for (:after_js) do %>
+<script>
+ $("#toProfile").click(function(e){
+  e.preventDefault();
+  $("#toProfile").toggleClass("active");
+  $("#toMytrips").removeClass("active");
+  $("#toSentsurveys").removeClass("active");
+  $('#profile').removeClass("hidden");
+  $('#mytrips').toggleClass("hidden");
+  $('#sentsurveys').toggleClass("hidden");
+});
+
+$("#toMytrips").click(function(e){
+  e.preventDefault();
+  $("#toMytrips").toggleClass("active");
+  $("#toProfile").removeClass("active");
+  $("#toSentsurveys").removeClass("active");
+  $('#mytrips').removeClass("hidden");
+  $('#profile').toggleClass("hidden");
+  $('#sentsurveys').toggleClass("hidden");
+});
+
+$("#toSentsurveys").click(function(e){
+  e.preventDefault();
+  $("#toSentsurveys").toggleClass("active");
+  $("#toProfile").removeClass("active");
+  $("#toMytrips").removeClass("active");
+  $('#sentsurveys').removeClass("hidden");
+  $('#profile').toggleClass("hidden");
+  $('#mytrips').toggleClass("hidden");
+});
+
+</script>
+<% end %>
