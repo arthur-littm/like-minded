@@ -15,10 +15,14 @@
     );">
     </div>
     <div class="trip-title">
+      <% if survey.city %>
       <p><%= survey.city.split(",").first %></p>
+      <% end %>
     </div>
     <div class="trip-date">
+      <% if survey.start_date %>
       <p><%= survey.start_date %></p>
+      <% end %>
     </div>
     <div class="trip-info">
       <p><%= pluralize(survey.answers.count, 'answer') %></p>
