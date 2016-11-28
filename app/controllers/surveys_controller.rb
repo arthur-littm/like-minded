@@ -1,7 +1,9 @@
 class SurveysController < ApplicationController
   before_action :authenticate_user!, except: :new
 
-  before_action :find_survey, only: [:show, :update, :update_friends, :destroy, :answering, :update_status, :answer_update, :update_cover_picture, :reverse_status]
+  before_action :find_survey, only: [:show, :update, :update_friends, :destroy,
+    :answering, :update_status, :answer_update, :update_cover_picture,
+    :reverse_status]
 
   def index
 

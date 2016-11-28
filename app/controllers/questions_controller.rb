@@ -22,7 +22,7 @@ class QuestionsController < ApplicationController
       end
     else
       respond_to do |format|
-        format.html { render 'surveys/show' }
+        format.html { render "surveys/question_form" }
         format.js
       end
     end
