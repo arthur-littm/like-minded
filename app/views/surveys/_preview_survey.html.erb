@@ -10,11 +10,11 @@
   </div>
   <div class="answering-avatar">
     <img src="<% if @survey.user.facebook_picture_url %>
-    <%= @survey.user.facebook_picture_url %>
+    <%= @survey.user.facebook_picture_url.gsub("type=square","type=large") %>
     <% elsif @survey.user.profile_picture %>
     <%= @survey.user.profile_picture %>
     <% end %>
-    " alt="", class="avatar-large">
+    " alt="", class="avatar-larger">
   </div>
 </div>
 <div class="container">

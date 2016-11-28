@@ -8,7 +8,7 @@
 
   <% if @survey %>
   <div class="navbar-city">
-  <p><%= @survey.city %></p>
+    <p><%= @survey.city %></p>
   </div>
   <% end %>
   <!-- Right Navigation -->
@@ -31,8 +31,13 @@
     <!-- Profile picture and dropdown -->
     <div class="navbar-wagon-item">
       <div class="dropdown">
-        <% avatar_url = current_user.facebook_picture_url || current_user.profile_picture || "ninja.png" %>
-
+        <%  if current_user.facebook_picture_url %>
+        <% avatar_url = current_user.facebook_picture_url.gsub("type=square","type=large") %>
+        <% elsif current_user.profile_picture %>
+        <% avatar_url = current_user.profile_picture %>
+        <% else %>
+        <% avatar_url = "ninja.png" %>
+        <% end %>
         <%= image_tag avatar_url, class: "avatar-large dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
 
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
@@ -64,7 +69,7 @@
     <% end %>
 
     <!-- Button (call-to-action) -->
-</div>
+  </div>
 
   <!-- Dropdown list appearing on mobile only -->
   <div class="navbar-wagon-item hidden-md hidden-lg">
