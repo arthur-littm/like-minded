@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user = current_user
     authorize @user
     if current_user.update(user_params)
       redirect_to dashboard_path

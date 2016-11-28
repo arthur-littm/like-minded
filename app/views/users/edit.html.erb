@@ -1,13 +1,20 @@
-<h1><%= @user.first_name %></h1>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+      <div class="edit">
+        <h1>Edit your profile below <%= @user.first_name.capitalize %></h1>
 
-<div class="form-container">
-  <h1>Profile settings</h1>
-  <%= simple_form_for current_user, url: user_path do |f| %>
-  <%= f.input :first_name %>
-  <%= f.input :last_name %>
-  <%= f.input :email %>
-  <%= f.input :profile_picture, as: :attachinary %>
-  <%= f.button :submit, class: "btn btn-primary" %>
-  <%= link_to "Cancel", class: "btn btn-default" %>
-  <% end %>
+        <div class="form-container">
+          <%= simple_form_for current_user, url: user_path do |f| %>
+          <%= f.input :first_name %>
+          <%= f.input :last_name %>
+          <%= f.input :email %>
+          <%= f.input :profile_picture, as: :attachinary %>
+          <%= f.button :submit, "Save Changes", class: "btn btn-primary" %>
+          <%= link_to "Cancel", dashboard_path, class: "btn btn-default" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
