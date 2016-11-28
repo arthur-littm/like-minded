@@ -31,7 +31,7 @@
     <!-- Profile picture and dropdown -->
     <div class="navbar-wagon-item">
       <div class="dropdown">
-        <% avatar_url = current_user.facebook_picture_url || current_user.profile_picture || "ninja.png" %>
+        <% avatar_url = current_user.facebook_picture_url.gsub("type=square","type=large") || current_user.profile_picture || "ninja.png" %>
 
         <%= image_tag avatar_url, class: "avatar-large dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
 

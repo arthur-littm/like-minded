@@ -5,7 +5,7 @@
         <!-- SIDEBAR USERPIC -->
         <div class="profile-userpic">
           <img src="<% if @user.facebook_picture_url %>
-          <%= @user.facebook_picture_url %>
+          <%= @user.facebook_picture_url.gsub("type=square","type=large") %>
           <% elsif @user.profile_picture %>
           <%= @user.profile_picture %>
           <% else %>
