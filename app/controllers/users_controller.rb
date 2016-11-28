@@ -14,6 +14,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def sent_surveys
+    @user = current_user
+    @surveys = Survey.find(friends: current_user)
+  end
+  helper_method :find_sent_surveys
+
   private
 
   def user_params
