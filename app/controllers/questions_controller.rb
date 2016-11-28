@@ -41,21 +41,10 @@ class QuestionsController < ApplicationController
     authorize @question
     @question.user = current_user
     @question.update(question_params)
-    # if @question.save
-    #   redirect_to survey_path(@survey)
-    # else
-    #   render :edit
-    # end
     if @question.save
-      respond_to do |format|
-        format.html { redirect_to survey_path(@survey) }
-        format.js
-      end
+      redirect_to survey_path(@survey)
     else
-      respond_to do |format|
-        format.html { render :edit }
-        format.js
-      end
+      redirect_to survey_path(@survey), alert: "Content too short."
     end
   end
 
