@@ -5,6 +5,7 @@
         <h4>Select friends to ask: </h4>
         <%= simple_form_for survey, url: update_friends_survey_path do |f| %>
         <%= f.association :friends, label: false, as: :check_boxes, collection: User.all, label_method: :first_name, selected: survey.friends, wrapper_html:{class: "friends-container"} %>
+        <%= link_to "Back to Questions", reverse_status_survey_path, method: :patch, class: "btn btn-danger survey-button" %>
         <%= f.submit "Add friends", class: "btn btn-primary add-to-button" %>
         <% end %>
       </div>

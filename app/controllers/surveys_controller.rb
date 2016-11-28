@@ -1,7 +1,7 @@
 class SurveysController < ApplicationController
   before_action :authenticate_user!, except: :new
 
-  before_action :find_survey, only: [:show, :update, :update_friends, :destroy, :answering, :update_status, :answer_update, :update_cover_picture]
+  before_action :find_survey, only: [:show, :update, :update_friends, :destroy, :answering, :update_status, :answer_update, :update_cover_picture, :reverse_status]
 
   def index
 
@@ -82,6 +82,17 @@ class SurveysController < ApplicationController
       @survey.status = "Select friends"
     elsif @survey.status.downcase == "select friends"
       @survey.status = "Sent"
+    end
+    @survey.save
+    redirect_to survey_path(@survey)
+  end
+
+  def reverse_status
+    authorize @survey
+    if @survey.status.downcase == "select friends"
+      @survey.status = "Select questions"
+    elsif @survey.status.downcase == "select questions"
+      @survey.status = "Select questions"
     end
     @survey.save
     redirect_to survey_path(@survey)

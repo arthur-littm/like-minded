@@ -12,6 +12,8 @@ Rails.application.routes.draw do
       patch '/update_status', to: 'surveys#update_friends', as: :update_friends
       patch '/update_cover_picture', to: 'surveys#update_cover_picture', as: :update_cover_picture
       patch '/update', to: 'surveys#update_status', as: :update_status
+      patch '/reverse_status', to: 'surveys#reverse_status', as: :reverse_status
+
     end
   end
 

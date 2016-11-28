@@ -41,4 +41,8 @@ class SurveyPolicy < ApplicationPolicy
     record.user == user  # Only survey creator can update it
   end
 
+  def reverse_status?
+    record.user == user
+  end
+
 end
