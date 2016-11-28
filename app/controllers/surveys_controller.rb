@@ -85,6 +85,7 @@ class SurveysController < ApplicationController
       @survey.status = "Preview Survey"
     elsif @survey.status.downcase == "preview survey"
       @survey.status = "Sent"
+      UserMailer.answer(@survey).deliver_now
     end
     @survey.save
     redirect_to survey_path(@survey)
