@@ -67,6 +67,19 @@
     opacity: 0;
     transition: ease-in-out, opacity .3s ease-in-out;
   }
+  .trip-avatar {
+    position: absolute;
+    bottom: 5px;
+    left: 10px;
+  }
+  .trip-sender {
+    position: absolute;
+    bottom: 0px;
+    left: 45px;
+    font-size: 12px;
+    font-weight: 100;
+    color: #424855;
+  }
   .card-image {
     background-size: cover !important;
     background-position: center;
