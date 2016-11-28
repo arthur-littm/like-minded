@@ -2,23 +2,39 @@
   <div class="row">
     <div class="col-xs-11">
       <h1>Here is a preview of the survey your friends will receive:</h1>
-
-      <%= simple_form_for @survey, url: answer_update_survey_path(@survey) do |survey_form| %>
-        <% @survey.questions.each do |q| %>
-          <%= field_set_tag q.content do %>
-            <%= survey_form.simple_fields_for :questions, q do |question_form| %>
-              <%= question_form.simple_fields_for :answers, Answer.new(question: q) do |f| %>
-                <%= f.input :content, label: 'Your answer' %>
+      <div class="row">
+        <div class="col-xs-8">
+          <%= simple_form_for @survey, url: answer_update_survey_path(@survey) do |survey_form| %>
+            <% @survey.questions.each do |q| %>
+              <%= field_set_tag q.content do %>
+                <%= survey_form.simple_fields_for :questions, q do |question_form| %>
+                  <%= question_form.simple_fields_for :answers, Answer.new(question: q) do |f| %>
+                    <%= f.input :content, label: 'Your answer' %>
+                  <% end %>
+                <% end %>
               <% end %>
             <% end %>
           <% end %>
-        <% end %>
-      <% end %>
+        </div>
+        <div class="col-xs-4">
+          <div class="survey-summary">
+            <h3>Here is the list of friends yo have selected:</h3>
+            <ul>
+              <% @survey.friends.each do |friend| %>
+              <li><%= friend.first_name.capitalize %> <%= friend.last_name.capitalize %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
 
-      <p>Click send below if you are sure you are done. otherwise click 'Back' and continue to edit your survey!</p>
 
-      <button class="btn btn-primary">Send</button>
-      <button class="btn btn-primary">Back</button>
+      <div class="text-center">
+        <p class="text-center">Click send below if you are sure you are done. otherwise click 'Back' and continue to edit your survey!</p>
+
+        <button class="btn btn-primary">Send</button>
+        <button class="btn btn-primary">Back</button>
+      </div>
     </div>
   </div>
 </div>
