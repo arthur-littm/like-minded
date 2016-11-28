@@ -7,8 +7,15 @@
   <% end %>
 );">
   <div class="answering-banner-phrase text-center">
-    <h1>Make <%= @survey.user.first_name.capitalize %>'s trip to <%= @survey.city.split(",").first %> special!</h1>
-    <h3>Answer the questions in the questionnaire below: </h3>
+    <p><%= @survey.user.first_name.capitalize %>'s asked for your advice on <%= @survey.city.split(",").first %></p>
+  </div>
+  <div class="answering-avatar">
+  <img src="<% if @survey.user.facebook_picture_url %>
+      <%= @survey.user.facebook_picture_url %>
+      <% elsif @survey.user.profile_picture %>
+      <%= @survey.user.profile_picture %>
+      <% end %>
+      " alt="", class="avatar-large">
   </div>
 </div>
 <div class="container">

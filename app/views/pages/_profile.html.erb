@@ -1,5 +1,5 @@
 <div class="container-fluid profile-banner" style="background-image: url(
-  <% if current_user.surveys.last.cover_picture? %>
+  <% if current_user.surveys.count > 0 && current_user.surveys.last.cover_picture? %>
   <%= cl_image_path current_user.surveys.last.cover_picture.path, width: 2000, height: 1000, crop: :fill %>
   <% else %>
   <%= image_path("plane.jpg") %>
