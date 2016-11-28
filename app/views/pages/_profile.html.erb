@@ -1,0 +1,13 @@
+<div class="container-fluid">
+  <div class="dashboard-profile">
+    <img src="<% if @user.facebook_picture_url %>
+    <%= @user.facebook_picture_url %>
+    <% elsif @user.profile_picture %>
+    <%= @user.profile_picture %>
+    <% else %>
+    <%= image_path("ninja.png") %>
+    <% end %>
+    " alt="", class="avatar-large">
+    <h1><%= @user.first_name %> <%= @user.last_name %></h1>
+  </div>
+</div>
