@@ -1,14 +1,29 @@
 .answering-banner-phrase {
-  color: white;
-  margin-top: 40px;
-    .h1 {
-    font-size: 45px;
+  background-color: rgba(47, 47, 47, 0.38);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin: 0;
+    p {
+    font-size: 22px;
     font-weight: 100;
-    color: #2F323A;
+    color: white;
+    margin-bottom: 0;
     }
 }
 
 .answer {
   margin-top: 25px;
   margin-bottom: 25px;
+  font-weight: 100;
+  font-size: 18px;
+  textarea {
+    height: 100px;
+  }
+}
+
+.answering-avatar {
+  position: absolute;
+  top: 10px;
+  left: 10px;
 }
