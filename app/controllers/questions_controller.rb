@@ -53,7 +53,7 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     authorize @question
     @question.user = current_user
-  unless  @survey.questions.include?(@question)
+  unless @survey.questions.include?(@question)
       @question.delete
       redirect_to survey_path(@survey), notice: "Question successfully deleted"
     else
