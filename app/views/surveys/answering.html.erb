@@ -6,7 +6,7 @@
   <% end %>
 );">
   <div class="answering-banner-phrase text-center">
-    <h1>Help to make <%= @survey.user.first_name.capitalize %>'s trip to <%= @survey.city.split(",").first %> special!</h1>
+    <h1>Make <%= @survey.user.first_name.capitalize %>'s trip to <%= @survey.city.split(",").first %> special!</h1>
     <h3>Answer the questions in the questionnaire below: </h3>
   </div>
 </div>
@@ -25,7 +25,7 @@
             <% end %>
         <% end %>
         <div class="text-center">
-          <%= survey_form.submit "Submit your answers!", data: { confirm: 'Are you sure?' }, class: "btn btn-danger survey-button" %>
+          <%= survey_form.submit "Submit your answers", data: { confirm: 'Are you sure?' }, class: "btn btn-danger survey-button" %>
         </div>
       <% end %>
     </div>
