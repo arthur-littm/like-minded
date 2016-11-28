@@ -5,6 +5,8 @@ class Question < ApplicationRecord
   has_many :surveys, through: :survey_questions
   has_many :answers
 
+  validates :category, presence: true
+
   accepts_nested_attributes_for :answers
 
   validates :content, length: {minimum: 5, maximum: 70}, allow_blank: false

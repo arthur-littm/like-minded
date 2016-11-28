@@ -6,7 +6,11 @@ class Survey < ApplicationRecord
   has_many :friends, through: :survey_friends
   has_many :answers
 
+  validates :city, presence: true
+
   has_attachment :cover_picture
 
   accepts_nested_attributes_for :questions
+
+
 end
