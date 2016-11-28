@@ -16,6 +16,8 @@ class User < ApplicationRecord
 
   validates :first_name, presence: true
   validates :last_name, presence: true
+  validates :email, format: { with: /\A.*@.*\.com\z/ }, uniqueness: true
+  validates :password, presence: true
 
   def self.find_for_facebook_oauth(auth)
     user_params = auth.to_h.slice(:provider, :uid)
