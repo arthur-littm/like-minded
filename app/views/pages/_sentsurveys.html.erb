@@ -1,6 +1,5 @@
 <div class="row">
-<h1>Surveys I recieved below</h1>
-<% Survey.where(friends: current_user).each do |survey| %>
+  <% Survey.where(friends: current_user).each do |survey| %>
   <div class="col-xs-11 col-sm-5 col-md-3 dashboard-trip-card filter">
     <div class="card-image" style="background-image: url(
       <% if survey.cover_picture? %>
@@ -8,27 +7,27 @@
       <% else %>
       <%= image_path("default-card.jpg") %>
       <% end %>
-      );"></div>
-      <div class="trip-title">
-        <p><%= survey.city.split(",").first %></p>
-      </div>
-      <div class="trip-date">
-        <p><%= survey.start_date %></p>
-      </div>
-      <div class="trip-info">
-        <p><%= survey.user.first_name %> <%= survey.user.last_name %></p>
-      </div>
-      <% if survey.answers.count > 0 %>
-      <div class="trip-status-sent">
-        <p>Done</p>
-      </div>
-      <% else %>
-      <div class="trip-status-tosend">
-        <p>Respond</p>
-      </div>
-      <% end %>
-      <%= link_to "", survey_answer_survey_path(survey), class: "trip-card-link" %>
+      );">
+    </div>
+    <div class="trip-title">
+      <p><%= survey.city.split(",").first %></p>
+    </div>
+    <div class="trip-date">
+      <p><%= survey.start_date %></p>
+    </div>
+    <div class="trip-info">
+      <p><%= survey.user.first_name %> <%= survey.user.last_name %></p>
+    </div>
+    <% if survey.answers.count > 0 %>
+    <div class="trip-status-sent">
+      <p>Done</p>
+    </div>
+    <% else %>
+    <div class="trip-status-tosend">
+      <p>Respond</p>
     </div>
     <% end %>
+    <%= link_to "", survey_answer_survey_path(survey), class: "trip-card-link" %>
   </div>
+  <% end %>
 </div>

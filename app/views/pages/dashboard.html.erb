@@ -26,28 +26,28 @@
         <!-- SIDEBAR MENU -->
         <div class="profile-usermenu">
           <ul class="nav">
-            <li class="active" id="toProfile">
-              <a href="#">
+            <li class="active">
+              <a href="#profile" data-toggle="tab">
                 <i class="fa fa-home" aria-hidden="true"></i>
                 Profile
               </a>
             </li>
-            <li id="toMytrips">
-              <a href="#">
+            <li>
+              <a href="#mytrips" data-toggle="tab">
                 <i class="fa fa-paper-plane" aria-hidden="true"></i>
                 My trips
               </a>
             </li>
-            <li id="toSentsurveys">
-              <a href="#">
+            <li>
+              <a href="#sentsurveys" data-toggle="tab">
                 <i class="fa fa-users" aria-hidden="true"></i>
                 Friends trips
               </a>
             </li>
             <li>
-              <a href="#">
-                <i class="glyphicon glyphicon-flag"></i>
-                Help
+              <a href="#mysettings" data-toggle="tab">
+                <i class="fa fa-wrench" aria-hidden="true"></i>
+                Settings
               </a>
             </li>
           </ul>
@@ -56,52 +56,20 @@
       </div>
     </div>
     <div class="col-md-10">
-      <div class="profile-content">
-        <div class="" id="profile">
+      <div class="profile-content tab-content">
+        <div class="tab-pane active" id="profile">
           <%= render 'profile' %>
         </div>
-        <div class="hidden" id="mytrips">
+        <div class="tab-pane" id="mytrips">
           <%= render 'mytrips' %>
         </div>
-        <div class="hidden" id="sentsurveys">
+        <div class="tab-pane" id="sentsurveys">
           <%= render 'sentsurveys' %>
+        </div>
+        <div class="tab-pane" id="mysettings">
+          <%= render 'users/edit' %>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-<%= content_for (:after_js) do %>
-<script>
- $("#toProfile").click(function(e){
-  e.preventDefault();
-  $("#toProfile").toggleClass("active");
-  $("#toMytrips").removeClass("active");
-  $("#toSentsurveys").removeClass("active");
-  $('#profile').removeClass("hidden");
-  $('#mytrips').toggleClass("hidden");
-  $('#sentsurveys').toggleClass("hidden");
-});
-
-$("#toMytrips").click(function(e){
-  e.preventDefault();
-  $("#toMytrips").toggleClass("active");
-  $("#toProfile").removeClass("active");
-  $("#toSentsurveys").removeClass("active");
-  $('#mytrips').removeClass("hidden");
-  $('#profile').toggleClass("hidden");
-  $('#sentsurveys').toggleClass("hidden");
-});
-
-$("#toSentsurveys").click(function(e){
-  e.preventDefault();
-  $("#toSentsurveys").toggleClass("active");
-  $("#toProfile").removeClass("active");
-  $("#toMytrips").removeClass("active");
-  $('#sentsurveys').removeClass("hidden");
-  $('#profile').toggleClass("hidden");
-  $('#mytrips').toggleClass("hidden");
-});
-
-</script>
-<% end %>
