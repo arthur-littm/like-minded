@@ -1,13 +1,35 @@
 
-<%= simple_form_for @survey, url: answer_update_survey_path(@survey) do |survey_form| %>
-  <% @survey.questions.each do |q| %>
-    <%= field_set_tag q.content do %>
-      <%= survey_form.simple_fields_for :questions, q do |question_form| %>
-        <%= question_form.simple_fields_for :answers, Answer.new(question: q) do |f| %>
-          <%= f.input :content %>
-        <% end %>
-      <% end %>
-    <% end %>
+<div class="container-fluid response-survey-banner filter" style="background-image: url(
+  <% if @survey.cover_picture? %>
+    <%= cl_image_path @survey.cover_picture.path, width: 2000, height: 1000, crop: :fill %>
+  <% else %>
+    <%= image_path("plane.jpg") %>
   <% end %>
-  <%= survey_form.submit "submit answers", class: "btn btn-primary" %>
-<% end %>
+);">
+  <div class="answering-banner-phrase text-center">
+    <h1>Help to make <%= @survey.user.first_name.capitalize %>'s trip to <%= @survey.city.split("-" || ",").first %> special!</h1>
+    <h3>Answer the questions in the questionnaire below: </h3>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1 answer">
+
+      <%= simple_form_for @survey, url: answer_update_survey_path(@survey) do |survey_form| %>
+        <% @survey.questions.each do |q| %>
+            <%= field_set_tag q.content do %>
+              <%= survey_form.simple_fields_for :questions, q do |question_form| %>
+                <%= question_form.simple_fields_for :answers, Answer.new(question: q) do |f| %>
+                  <%= f.input :content, label: false, as: :text %>
+                <% end %>
+              <% end %>
+            <% end %>
+        <% end %>
+        <div class="text-center">
+          <%= survey_form.submit "Submit your answers!", data: { confirm: 'Are you sure?' }, class: "btn btn-danger survey-button" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
