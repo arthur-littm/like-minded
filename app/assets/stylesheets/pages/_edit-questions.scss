@@ -1,0 +1,10 @@
+#list-of-questions {
+  list-style: none;
+}
+
+.link_to_edit_quest {
+  text-decoration: none;
+    &:hover {
+      text-decoration: none;
+    }
+}
