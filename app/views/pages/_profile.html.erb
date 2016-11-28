@@ -1,13 +1,41 @@
-<div class="container-fluid">
-  <div class="dashboard-profile">
-    <img src="<% if @user.facebook_picture_url %>
-    <%= @user.facebook_picture_url %>
-    <% elsif @user.profile_picture %>
-    <%= @user.profile_picture %>
-    <% else %>
-    <%= image_path("ninja.png") %>
-    <% end %>
-    " alt="", class="avatar-large">
-    <h1><%= @user.first_name %> <%= @user.last_name %></h1>
+<div class="container-fluid profile-banner" style="background-image: url(
+  <% if current_user.surveys.last.cover_picture? %>
+  <%= cl_image_path current_user.surveys.last.cover_picture.path, width: 2000, height: 1000, crop: :fill %>
+  <% else %>
+  <%= image_path("plane.jpg") %>
+  <% end %>
+  );">
+  <div class="profile-banner-info">
+    <div class="profile-banner-image">
+      <img src="<% if @user.facebook_picture_url %>
+      <%= @user.facebook_picture_url %>
+      <% elsif @user.profile_picture %>
+      <%= @user.profile_picture %>
+      <% else %>
+      <%= image_path("ninja.png") %>
+      <% end %>
+      " alt="", class="avatar-large">
+    </div>
+    <div class="profile-banner-user">
+      <p><%= @user.first_name %> <%= @user.last_name %></p>
+    </div>
+  </div>
+</div>
+<div class="row profile-content">
+  <div class="profile-stats col-xs-12 col-sm-6">
+    <h4>Overview</h4>
+    <div class="stats-container">
+      <div class="stats-fact">
+        <h4><%= current_user.surveys.count %></h4>
+        <p><%= "trip".pluralize(current_user.surveys.count) %></p>
+      </div>
+      <div class="stats-fact">
+        <h4><%= current_user.answers.count %></h4>
+        <p><%= "answer".pluralize(current_user.surveys.count) %></p>
+      </div>
+    </div>
+  </div>
+  <div class="profile-map col-xs-12 col-sm-6">
+
   </div>
 </div>
