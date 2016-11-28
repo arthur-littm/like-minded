@@ -12,7 +12,6 @@ class SurveysController < ApplicationController
   def show
     @question = Question.new
     authorize @survey
-    # authorize @survey
   end
 
   def new

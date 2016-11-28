@@ -8,6 +8,9 @@ class Survey < ApplicationRecord
 
   validates :city, presence: true
 
+  geocoded_by :city
+  after_validation :geocode, if: :address_changed?
+
   has_attachment :cover_picture
 
   accepts_nested_attributes_for :questions
