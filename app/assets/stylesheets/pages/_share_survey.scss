@@ -1,0 +1,28 @@
+.share_container{
+  height: 300px;
+  width: 100;
+  background-color: #2F323A;
+}
+.share_container a{
+  text-decoration: none;
+}
+
+.btnz {
+    display: block;
+    float: left;
+    padding: 10px 15px;
+    border:none;
+    background-color: #ececec;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+}
+.btnz:hover {
+    color: #efefef;
+}
+.facebook {
+    background-color: #3b5998;
+}
+.share_link{
+  color: red;
+}

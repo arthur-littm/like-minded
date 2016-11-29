@@ -89,6 +89,10 @@ class SurveysController < ApplicationController
     redirect_to survey_path(@survey)
   end
 
+  def original_url
+    base_url + original_fullpath
+  end
+
   def reverse_status
     authorize @survey
     if @survey.status.downcase == "share survey"
