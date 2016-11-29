@@ -1,7 +1,7 @@
   <% if @survey.status.downcase == "select questions" %>
     <%= render 'select_questions', survey: @survey, question: @question %>
   <% elsif @survey.status.downcase == "select friends" %>
-    <%= render 'select_friends', survey: @survey %>
+    <%= render 'shared_survey', survey: @survey %>
   <% elsif @survey.status.downcase == "preview survey" %>
     <%= render 'preview_survey', survey: @survey %>
   <% elsif @survey.status.downcase == "sent" %>
