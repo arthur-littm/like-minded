@@ -15,5 +15,14 @@ class Survey < ApplicationRecord
 
   accepts_nested_attributes_for :questions
 
+  before_create :add_token
+
+  private
+
+  def add_token
+      self.token = SecureRandom.hex[0,10].upcase
+      while self.class.exists?(token: token)
+    end
+  end
 
 end
