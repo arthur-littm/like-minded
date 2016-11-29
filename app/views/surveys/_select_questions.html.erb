@@ -29,24 +29,24 @@
     <div class="fixed-cards">
       <ul>
         <% if @survey.questions %>
-        <% @survey.survey_questions.each do |sq| %>
+        <% @survey.survey_questions.each_with_index do |sq, index| %>
         <li class="summary-question-card">
+          <span class="index"><%= index + 1%></span>
           <%= sq.question.content %>
-          <i class="<%= sq.question.category.icon_name %> card-category" aria-hidden="true"></i>
           <%= link_to survey_survey_question_path(survey_id: @survey.id, id: sq.id), method: :delete, class: "delete-questions" do %>
           <i class="fa fa-times" aria-hidden="true"></i>
           <% end %>
+        </li>
+        <% end %>
+        <% if @survey.survey_questions.count > 0 %>
+        <li class="summary-question-button">
+          <%= link_to "Share trip survey", update_status_survey_path, method: :patch, class: "btn btn-danger survey-button" %>
         </li>
         <% end %>
         <% end %>
       </ul>
     </div>
   </div>
-  <% if @survey.survey_questions.count > 0 %>
-  <div class="survey-button-container">
-    <%= link_to "Go to friends selection", update_status_survey_path, method: :patch, class: "btn btn-danger survey-button" %>
-  </div>
-  <% end %>
 </div>
 </div>
 </div>

@@ -1,108 +1,115 @@
  <div id="tab_content_questions">
 
-      <div class="tab-content">
-        <div role="tabpanel" class="tab-pane" id="myquestions">
-          <% if survey.user.questions %>
-          <%= simple_form_for [survey] do |f| %>
-          <% f.association :questions, label: false, as: :check_boxes, collection: survey.user.questions, label_method: :content, selected: survey.questions, wrapper_html:{ id: "#{f.object.id}", class: "question-container"} %>
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane" id="myquestions">
+      <% if survey.user.questions %>
+      <%= simple_form_for [survey] do |f| %>
+      <% f.association :questions, label: false, as: :check_boxes, collection: survey.user.questions, label_method: :content, selected: survey.questions, wrapper_html:{ id: "#{f.object.id}", class: "question-container"} %>
 
-          <div role="tabpanel" class="tab-pane" id="my questions">
-          <%= simple_form_for [survey] do |f| %>
-          <div class="form-group check_boxes optional survey_questions question-container">
-            <input type="hidden" name="survey[question_ids][]" value="">
-            <% survey.user.questions.each do |question| %>
-              <% in_survey = @survey.questions.include? question %>
-              <label for="survey_question_ids_<%= question.id%>" class="checkbox <%= in_survey ? 'check' : '' %>">
-                <div class="question-content">
-                  <%= question.content %>
-                </div>
-                <div class="question-check">
-                  <div class="check-container"><i class="fa <%= in_survey ? 'fa-check' : 'fa-times' %>"></i></div>
-                  <input class="check_boxes checkbox-trigger optional hidden" type="checkbox" value="<%= question.id%>" name="survey[question_ids][]" id="survey_question_ids_<%= question.id%>">
-                </div>
-              </label>
-            <% end %>
-          </div>
+      <div role="tabpanel" class="tab-pane" id="my questions">
+        <%= simple_form_for [survey] do |f| %>
+        <div class="form-group check_boxes optional survey_questions question-container">
+          <input type="hidden" name="survey[question_ids][]" value="">
 
-
-          <% end %>
-        </div>
-          <%= f.submit "Add to survey", class: "btn btn-primary add-to-button" %>
-          <% end %>
-          <% end %>
-          <!-- Button trigger modal -->
-          <button type="button" class="new-question-button" data-toggle="modal" data-target="#myModal">
-            <i class="fa fa-plus" aria-hidden="true"></i>
-          </button>
-
-          <!-- Button trigger modal -->
-          <button type="button" class="edit-question-button" data-toggle="modal" data-target="#editModal">
-            <i class="fa fa-pencil" aria-hidden="true"></i>
-          </button>
-          <!-- Modal -->
-          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                  <h4 class="modal-title" id="myModalLabel">Add new question</h4>
-                </div>
-                <div class="modal-body">
-                  <div id="new_question_form">
-                    <%= render 'surveys/question_form', question: question, survey: survey %>
-                  </div>
-                </div>
-              </div>
+          <label for="survey_question_ids_<%= question.id%>" class="checkbox">
+            <div class="question-content">
+              <!-- Button trigger modal -->
+              <button type="button" class="new-question-button" data-toggle="modal" data-target="#myModal">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+              </button>
             </div>
-          </div>
-        </div>
+          </label>
 
-        <!-- Modal -->
-        <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-                <h4 class="modal-title" id="myModalLabel">Edit or delete your questions</h4>
-              </div>
-              <div class="modal-body">
-                <div id="new_question_form">
-                  <%= render 'surveys/edit_questions', question: question, survey: survey %>
-                </div>
-              </div>
+          <% survey.user.questions.each do |question| %>
+          <% in_survey = @survey.questions.include? question %>
+          <label for="survey_question_ids_<%= question.id%>" class="checkbox <%= in_survey ? 'check' : '' %>">
+            <div class="question-content">
+              <%= question.content %>
             </div>
-          </div>
-        </div>
-
-        <% Category.all.sort.each_with_index do |category, index| %>
-        <div role="tabpanel" class="tab-pane <%= index == 0 ? 'active' : '' %>" id="<%= category.name.downcase %>">
-          <%= simple_form_for [survey] do |f| %>
-          <div class="form-group check_boxes optional survey_questions question-container">
-            <input type="hidden" name="survey[question_ids][]" value="">
-            <% category.questions.each do |question| %>
-
-              <% in_survey = @survey.questions.include? question %>
-              <label for="survey_question_ids_<%= question.id%>" class="checkbox <%= in_survey ? 'check' : '' %>">
-                <div class="question-content">
-                  <%= question.content %>
-                </div>
-                <div class="question-check">
-                  <div class="check-container"><i class="fa <%= in_survey ? 'fa-check' : 'fa-times' %>"></i></div>
-                  <input class="check_boxes checkbox-trigger optional hidden" type="checkbox" value="<%= question.id%>" name="survey[question_ids][]" id="survey_question_ids_<%= question.id%>">
-                </div>
-              </label>
-            <% end %>
-          </div>
-
-
-          <%= f.hidden_field :category, value: category.id %>
-          <%= f.submit "Add to survey", class: "btn btn-primary add-to-button" %>
+            <div class="question-check">
+              <div class="check-container"><i class="fa <%= in_survey ? 'fa-check' : 'fa-times' %>"></i></div>
+              <input class="check_boxes checkbox-trigger optional hidden" type="checkbox" value="<%= question.id%>" name="survey[question_ids][]" id="survey_question_ids_<%= question.id%>">
+            </div>
+          </label>
           <% end %>
         </div>
+
+
         <% end %>
       </div>
-    </div> <!-- End of tab_content_questions  -->
+      <%= f.submit "Add to survey", class: "btn btn-primary add-to-button" %>
+      <% end %>
+      <% end %>
+
+
+      <!-- Button trigger modal -->
+      <button type="button" class="edit-question-button" data-toggle="modal" data-target="#editModal">
+        <i class="fa fa-pencil" aria-hidden="true"></i>
+      </button>
+      <!-- Modal -->
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <h4 class="modal-title" id="myModalLabel">Add new question</h4>
+            </div>
+            <div class="modal-body">
+              <div id="new_question_form">
+                <%= render 'surveys/question_form', question: question, survey: survey %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel">Edit or delete your questions</h4>
+          </div>
+          <div class="modal-body">
+            <div id="new_question_form">
+              <%= render 'surveys/edit_questions', question: question, survey: survey %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%= simple_form_for [survey] do |f| %>
+    <% Category.all.sort.each_with_index do |category, index| %>
+    <div role="tabpanel" class="tab-pane <%= index == 0 ? 'active' : '' %>" id="<%= category.name.downcase %>">
+      <div class="form-group check_boxes optional survey_questions question-container">
+        <input type="hidden" name="survey[question_ids][]" value="">
+        <% category.questions.each do |question| %>
+
+        <% in_survey = @survey.questions.include? question %>
+        <label for="survey_question_ids_<%= question.id%>" class="checkbox <%= in_survey ? 'check' : '' %>">
+          <div class="question-content">
+            <%= question.content %>
+          </div>
+          <div class="question-check">
+            <div class="check-container"><i class="fa <%= in_survey ? 'fa-check' : 'fa-times' %>"></i></div>
+            <input class="check_boxes checkbox-trigger optional hidden" type="checkbox" value="<%= question.id%>" name="survey[question_ids][]" id="survey_question_ids_<%= question.id%>">
+          </div>
+        </label>
+        <% end %>
+      </div>
+
+
+      <%= f.hidden_field :category, value: category.id %>
+    </div>
+    <% end %>
+    <%= f.submit "Add to survey", class: "btn btn-primary add-to-button" %>
+    <% end %>
+  </div>
+</div> <!-- End of tab_content_questions  -->

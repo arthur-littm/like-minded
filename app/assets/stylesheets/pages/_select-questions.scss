@@ -5,6 +5,7 @@
   overflow: scroll;
   position: relative;
   padding-top: 30px;
+  padding-bottom: 70px;
   .checkbox {
     background-color: #f9f9f9;
     margin: 10px auto;
@@ -37,10 +38,6 @@
   // height: 85vh;
   margin: 20px auto;
   border-radius: 0 0 5px 5px;
-  .tab.active {
-    background-color: white;
-    margin-bottom: -1px;
-  }
 }
 
 .survey-button-container {
