@@ -21,7 +21,7 @@
     <%= link_to dashboard_path(anchor: "sentsurveys"), class: "navbar-wagon-item navbar-wagon-link", id: "toUserNotifications" do %>
     <div class="badge-container">
       <i class="fa fa-envelope-o"></i>
-      <div class="badge badge-blue"><%= current_user.surveys.count %></div>
+      <div class="badge badge-blue"><%= Survey.where(friends: current_user).count %></div>
     </div>
     <% end %>
 

@@ -6,13 +6,13 @@
   position: relative;
   button {
     transition: ease-in-out, opacity .8s ease-in-out;
-    opacity: 0;
+    opacity: 0.5;
   }
 }
 
 .response-survey-banner:hover {
   button {
-    opacity: 0.8;
+    opacity: 1;
   }
 }
 
