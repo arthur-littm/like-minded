@@ -8,10 +8,11 @@
   <div class="profile-banner-info">
     <div class="profile-banner-image">
       <% if @user.photo? %>
-        <%= cl_image_tag @user.photo.path, width: 45, height: 300, crop: :fill %>
+        <%= cl_image_tag@user.photo.path, height: 100, width: 100, crop: :fill, class: "avatar-large" %>
+      <% elsif @user.facebook_picture_url? %>
+        <%= image_tag @user.facebook_picture_url.gsub("type=square", "type=large") %>
       <% else %>
-        <% avatar_url = @user.facebook_picture_url || "ninja.png" %>
-        <%= image_tag avatar_url, class: "avatar-large" %>
+        <%= image_tag "ninja.png" %>
       <% end %>
     </div>
     <div class="profile-banner-user">
