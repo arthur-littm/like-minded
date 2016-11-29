@@ -14,20 +14,31 @@
   border: none !important;
 }
 .tabs h3 {
-  font-size: 17px;
-  font-weight: 100;
-  margin-top: 0;
+  font-size: 14px !important;
+  font-weight: bold !important;
+  margin-top: 15px !important;
+  color: black !important;
 }
 .tabs p {
   opacity: 0.5;
   margin-bottom: 0;
 }
 .tab {
-  background: #3E9CDA;
+  background: white;
+  margin-bottom: -1px;
+  border: none  !important;
+  color: black !important;
   flex: 0 0 20%;
   text-align: center;
   padding: 0;
   border-left: 0.3px solid whitesmoke;
+  opacity: 0.4;
+  a {
+    font-size: 14px !important;
+    font-weight: bold !important;
+    margin-top: 5px !important;
+    color: black !important;
+  }
 }
 
 .tab i {
@@ -44,8 +55,9 @@
 }
 .tab.active {
   background: rgba(62, 156, 218, 0.21);
-  color: #3E9CDA;
+  color: #00C3C7;
   margin-bottom: 0;
+  opacity: 1;
   a {
     border: 0px !important;
     background: rgba(62, 156, 218, -0.79) !important;

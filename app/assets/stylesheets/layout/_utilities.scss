@@ -10,6 +10,15 @@
   padding-bottom: 5em;
 }
 
+body {
+  padding-top: 70px;
+}
+
+.surveys_new {
+  padding-top: 0px;
+}
+
+
 // Backgrounds
 .bg-black {
   background: #4a4a4a;
@@ -22,13 +31,6 @@
 }
 .bg-dark-blue {
   background: #3b5998;
-}
-
-body {
-  font-family: 'Roboto', sans-serif;
-  h1, h2, h3, h4, h5 {
-  font-family: 'Montserrat', sans-serif;
-}
 }
 
 .datepicker {

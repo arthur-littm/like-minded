@@ -1,14 +1,14 @@
-<div class="banner filter" style="background-image: url(<%= image_path ("background.jpg") %>)">
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.85) 50%), url(<%= image_path ("background.jpg") %>)">
   <div class="banner-content">
     <div class="banner-phrase">
-      <p>Get <span style="color: #EE6352">personal travel advice</span> from your friends</p>
+      <p>Get <span>personal travel advice</span> from your friends</p>
     </div>
     <div class="banner-form">
       <%= simple_form_for @survey, html: { class: "new-survey-form"} do |f| %>
       <%= f.input :city, placeholder: "Where to ?", class: "new-survey-from-city", label: false, required: true %>
       <%= f.input :start_date, placeholder: "When ?", as: :string, input_html: { type: "text", class: "new-survey-form-date datepicker" }, label: false %>
       <%= button_tag(type: 'submit', class: "new-survey-form-button") do %>
-      <i class="fa fa-paper-plane"></i>
+       <i class="fa fa-paper-plane"></i> Start
       <% end %>
       <% end %>
     </div>
