@@ -1,12 +1,35 @@
-<%= link_to "Back to Questions", reverse_status_survey_path, method: :patch, class: "btn btn-danger survey-button back-button" %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-4">
+      <div class="survey-summary">
 
-<div class= 'share_container'>
-  <div>
-    <div>
-    <p class= 'share_link'> <%= "http://#{request.host+request.fullpath}" %> </p>
-     <%= link_to "Back to Questions", reverse_status_survey_path, method: :patch, class: "btn btn-danger survey-button back-button" %>
-     <!-- Facebook Share Button -->
-     <a class="btnz share facebook" href="#"><i class="fa fa-facebook"></i> Share</a>
-   </div>
- </div>
-</div>
+        <h3><%= link_to reverse_status_survey_path, method: :patch, class: "back-link" do %>
+          <i class="fa fa-share fa-flip-horizontal fa-spin" aria-hidden="true"></i>
+        <% end %> Your trip survey</h3>
+        <ul>
+          <% @survey.survey_questions.each_with_index do |sq, index| %>
+          <li class="summary-question-card">
+            <span class="index"><%= index + 1 %></span>
+            <span style="padding: 0 5px"><%= sq.question.content %></span>
+            <span></span>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <div class="col-xs-8">
+      <div class="box-white">
+        <h4 class="text-center">Here is the URL to send to your friends so they can answer your survey:</h4>
+        <input class='share_link form-control text-center', value='<%= request.original_url %>/answering/<%= survey.token %>', readonly='readonly'></input>
+        <h4 class="text-center">Also, you can share this link on facebook:</h5>
+          <div class="actions text-center">
+            <!-- Facebook Share Button -->
+            <%= link_to "#", class: "btn btn-block btn-social btn-facebook facebook-button" do %>
+              <span class="fa fa-facebook"></span>
+              Share on Facebook
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
