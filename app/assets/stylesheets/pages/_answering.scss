@@ -1,15 +1,18 @@
 .answering-banner-phrase {
-  background-color: rgba(47, 47, 47, 0.38);
   position: absolute;
   bottom: 0;
   width: 100%;
-  margin: 0;
-    p {
-    font-size: 22px;
-    font-weight: 100;
-    color: white;
+  margin-bottom: 19px;
+  p {
+    font-weight: bold;
+    letter-spacing: -2px;
+    color: black;
     margin-bottom: 0;
+    font-size: 40px;
+    span {
+      color: #fd5988;
     }
+  }
 }
 
 .answer {
@@ -24,6 +27,11 @@
 
 .answering-avatar {
   position: absolute;
-  top: 10px;
-  left: 10px;
+  top: 20px;
+  left: 42%;
+  img {
+    width: 150px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+  }
+
 }

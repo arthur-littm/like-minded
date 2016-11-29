@@ -1,9 +1,11 @@
 .response-survey-banner {
-  height: 40vh;
+  height: 45vh;
   background-size: cover !important;
   background-position: center;
   padding: 0;
-  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   button {
     transition: ease-in-out, opacity .8s ease-in-out;
     opacity: 0.5;
