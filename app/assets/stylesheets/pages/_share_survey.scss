@@ -1,15 +1,21 @@
 .share_container{
   height: 300px;
   width: 100;
-  background-color: #2F323A;
 }
 .share_container a{
   text-decoration: none;
 }
+.box-white {
+  background-color: white;
+  padding: 30px;
+  margin: 40px 0;
+  border-radius: 4px;
+  h4 {
+    padding-top: 15px;
+  }
+}
 
 .btnz {
-    display: block;
-    float: left;
     padding: 10px 15px;
     border:none;
     background-color: #ececec;
@@ -24,5 +30,5 @@
     background-color: #3b5998;
 }
 .share_link{
-  color: red;
+  margin: 20px 0;
 }
