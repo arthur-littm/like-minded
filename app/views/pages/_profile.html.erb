@@ -7,12 +7,12 @@
   );">
   <div class="profile-banner-info">
     <div class="profile-banner-image">
-      <img src="<% if @user.facebook_picture_url %>
-      <%= @user.facebook_picture_url %>
-      <% elsif @user.profile_picture %>
-      <%= @user.profile_picture %>
+      <% if @user.photo? %>
+        <%= cl_image_tag @user.photo.path, width: 45, height: 300, crop: :fill %>
+      <% else %>
+        <% avatar_url = @user.facebook_picture_url || "ninja.png" %>
+        <%= image_tag avatar_url, class: "avatar-large" %>
       <% end %>
-      " alt="", class="avatar-large">
     </div>
     <div class="profile-banner-user">
       <p><%= @user.first_name %> <%= @user.last_name %></p>

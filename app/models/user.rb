@@ -12,12 +12,12 @@ class User < ApplicationRecord
   has_many :survey_friends, dependent: :destroy
   has_many :answered_surveys, through: :survey_friends, dependent: :destroy
 
-  has_attachment :profile_picture
+  has_attachment :photo
 
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :email, format: { with: /\A.*@.*\.com\z/ }, uniqueness: true
-  validates :password, presence: true
+  validates :password, presence: true, on: :create
 
   def self.find_for_facebook_oauth(auth)
     user_params = auth.to_h.slice(:provider, :uid)

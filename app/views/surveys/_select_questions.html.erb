@@ -15,12 +15,28 @@
         </a>
       </li>
       <!-- Button trigger modal -->
-      <button type="button" class="new-question-button-add" data-toggle="modal" data-target="#myModal">
+      <button type="button" class="new-question-button" data-toggle="modal" data-target=".new-question-modal">
         <i class="fa fa-plus" aria-hidden="true"></i>
       </button>
 
       <% end %>
-
+      <div class="modal fade new-question-modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <h4 class="modal-title" id="myModalLabel">Add new question</h4>
+            </div>
+            <div class="modal-body">
+              <div id="new_question_form">
+                <%= render 'surveys/question_form', question: question, survey: survey %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
     </ul>
    <%= render 'surveys/tab_content_questions', question: question, survey: survey %>
