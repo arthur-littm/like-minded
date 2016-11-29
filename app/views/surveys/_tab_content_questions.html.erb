@@ -1,5 +1,5 @@
 <div class="tab-content">
-  <div role="tabpanel" class="tab-pane" id="myquestions">
+  <div role="tabpanel" class="tab-pane" id="category-5">
     <% if survey.user.questions %>
     <%= simple_form_for [survey] do |f| %>
     <% f.association :questions, label: false, as: :check_boxes, collection: survey.user.questions, label_method: :content, selected: survey.questions, wrapper_html:{ id: "#{f.object.id}", class: "question-container"} %>
@@ -74,7 +74,7 @@
 
   <%= simple_form_for [survey] do |f| %>
   <% Category.all.sort.each_with_index do |category, index| %>
-  <div role="tabpanel" class="tab-pane <%= index == 0 ? 'active' : 'hidden' %>" id="category-<%= category.id %>">
+  <div role="tabpanel" class="tab-pane <%= index == 0 ? '' : 'hidden' %>" id="category-<%= category.id %>">
     <div class="form-group check_boxes optional survey_questions question-container">
       <input type="hidden" name="survey[question_ids][]" value="">
       <% category.questions.each do |question| %>
