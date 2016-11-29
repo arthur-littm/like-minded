@@ -5,10 +5,11 @@
         <!-- SIDEBAR USERPIC -->
         <div class="profile-userpic">
           <% if @user.photo? %>
-            <%= cl_image_tag @user.photo.path %>
+            <%= cl_image_tag@user.photo.path, height: 100, width: 100, crop: :fill %>
+          <% elsif @user.facebook_picture_url? %>
+            <%= image_tag @user.facebook_picture_url.gsub("type=square", "type=large") %>
           <% else %>
-            <% avatar_url = @user.facebook_picture_url || "ninja.png" %>
-            <%= image_tag avatar_url, class: "avatar-large" %>
+            <%= image_tag "ninja.png" %>
           <% end %>
         </div>
         <!-- END SIDEBAR USERPIC -->
