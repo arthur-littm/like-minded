@@ -1,6 +1,6 @@
 .new-survey-form {
  margin: 30px auto;
- width: 42%;
+ width: 60%;
  position: relative;
  background-color: #2F323A;
  opacity: 0.85;
@@ -13,33 +13,33 @@
 #survey_city {
   border: none;
   box-shadow: none;
-  font-size: 18px;
+  font-size: 19px;
   font-weight: bold;
   width: 360px;
   border-radius: 4px;
-  height: 61px;
+  height: 62px;
   position: absolute;
   left: 0;
   top: 20px;
   transition: ease-in-out, color .8s ease-in-out;
 }
 #survey_city:focus {
-color: #EE6352;
+color: #FF5887;
 box-shadow: none;
 
 }
 
 #survey_start_date:focus {
-color: #EE6352;
+color: #FF5887;
 box-shadow: none;
 }
 
 #survey_start_date {
-  width: 200px;
-  font-size: 18px;
+  width: 240px;
+  font-size: 19px;
   font-weight: bold;
-  margin-left: -10px;
-  height: 61px;
+  margin-left: 0px;
+  height: 62px;
   border: none;
   position: absolute;
   right: 0;
@@ -53,7 +53,7 @@ box-shadow: none;
   font-size: 20px;
   background: none;
   border: none;
-  color: #EE6352;
+  color: #00C3C7;
   margin-left: -51px;
   position: absolute;
   right: 5px;
@@ -61,7 +61,7 @@ box-shadow: none;
   outline: none;
   font-weight: bold;
   margin-top: 9px;
-  padding-left: 20px;
+  padding: 0px 20px;
   border-left: 1px solid lightgrey;
 }
 .new-survey-form-button:hover {
