@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :survey_questions, only: [:destroy]
     resources :survey_friends, only: [:destroy]
     member do
-      get '/answering', to: 'surveys#answering', as: :survey_answer
+      get '/answering/:token', to: 'surveys#answering', as: :survey_answer
       patch '/answerupdate', to: 'surveys#answer_update', as: :answer_update
       patch '/update_status', to: 'surveys#update_friends', as: :update_friends
       patch '/update_cover_picture', to: 'surveys#update_cover_picture', as: :update_cover_picture
