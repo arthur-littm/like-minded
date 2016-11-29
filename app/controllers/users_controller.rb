@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   def update
     authorize current_user
      current_user.update(user_params)
+
       redirect_to dashboard_path
     # else
     #   render :edit
