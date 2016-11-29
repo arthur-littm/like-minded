@@ -2,11 +2,13 @@
   p {
     font-size: 40px;
     margin: 30px auto;
-    font-weight: 100;
-    color: white;
+    font-weight: bold;
+    letter-spacing: -2px;
+    color: #464646;
   }
   img {
-    width: 60px;
+    height: 35px;
+    margin-bottom: 10px;
   }
 }
 
@@ -20,6 +22,11 @@
   h2 {
     margin: 20px auto ;
   }
+}
+
+.devise-button {
+  background-color: #00C3C7 !important;
+  border: 0.5px solid #17B8BD !important;
 }
 
 .signup-content {

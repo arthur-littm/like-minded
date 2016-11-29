@@ -4,7 +4,29 @@
         <div role="tabpanel" class="tab-pane" id="myquestions">
           <% if survey.user.questions %>
           <%= simple_form_for [survey] do |f| %>
-          <%= f.association :questions, label: false, as: :check_boxes, collection: survey.user.questions, label_method: :content, selected: survey.questions, wrapper_html:{ id: "#{f.object.id}", class: "question-container"} %>
+          <% f.association :questions, label: false, as: :check_boxes, collection: survey.user.questions, label_method: :content, selected: survey.questions, wrapper_html:{ id: "#{f.object.id}", class: "question-container"} %>
+
+          <div role="tabpanel" class="tab-pane" id="my questions">
+          <%= simple_form_for [survey] do |f| %>
+          <div class="form-group check_boxes optional survey_questions question-container">
+            <input type="hidden" name="survey[question_ids][]" value="">
+            <% survey.user.questions.each do |question| %>
+              <% in_survey = @survey.questions.include? question %>
+              <label for="survey_question_ids_<%= question.id%>" class="checkbox <%= in_survey ? 'check' : '' %>">
+                <div class="question-content">
+                  <%= question.content %>
+                </div>
+                <div class="question-check">
+                  <div class="check-container"><i class="fa <%= in_survey ? 'fa-check' : 'fa-times' %>"></i></div>
+                  <input class="check_boxes checkbox-trigger optional hidden" type="checkbox" value="<%= question.id%>" name="survey[question_ids][]" id="survey_question_ids_<%= question.id%>">
+                </div>
+              </label>
+            <% end %>
+          </div>
+
+
+          <% end %>
+        </div>
           <%= f.submit "Add to survey", class: "btn btn-primary add-to-button" %>
           <% end %>
           <% end %>
@@ -59,9 +81,6 @@
         <% Category.all.sort.each_with_index do |category, index| %>
         <div role="tabpanel" class="tab-pane <%= index == 0 ? 'active' : '' %>" id="<%= category.name.downcase %>">
           <%= simple_form_for [survey] do |f| %>
-          <% f.association :questions, label: false, as: :check_boxes, collection: category.questions.all, label_method: :content, selected: survey.questions, wrapper_html:{class: "question-container"} %>
-
-
           <div class="form-group check_boxes optional survey_questions question-container">
             <input type="hidden" name="survey[question_ids][]" value="">
             <% category.questions.each do |question| %>
