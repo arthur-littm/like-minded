@@ -3,14 +3,9 @@
     <div class="col-xs-8">
       <div class="questions">
         <ul class="tabs nav nav-tabs" role="tablist">
-          <li role="presentation" class="tab active"><a href="#myquestions" aria-controls="My Questions" role="tab" data-toggle="tab">
-            <i class="fa fa-question-circle"></i>
-            <h3>My Questions</h3>
-          </a>
-        </li>
-        <% Category.all.sort.each do |category| %>
-        <li role="presentation" class="tab"><a href="#<%= category.name.downcase %>" aria-controls="<%= category.name.downcase %>" role="tab" data-toggle="tab">
-          <i class="<%= category.icon_name %>"></i>
+        <% Category.all.sort.each_with_index do |category, index| %>
+        <li role="presentation" class="tab <%= index == 0 ? 'active' : '' %>"><a href="#<%= category.name.downcase %>" aria-controls="<%= category.name.downcase %>" role="tab" data-toggle="tab">
+        <%= image_tag "#{category.name.downcase}.png", height: "30px"%>
           <h3><%= category.name %></h3>
         </a>
       </li>
@@ -37,7 +32,13 @@
           </div>
         </div>
       </div>
+      <% end %>
 
+      <li role="presentation" class="tab"><a href="#myquestions" aria-controls="My Questions" role="tab" data-toggle="tab">
+        <%= image_tag "plus.png", height: "30px"%>
+          <h3>My Questions</h3>
+        </a>
+      </li>
     </ul>
    <%= render 'surveys/tab_content_questions', question: question, survey: survey %>
 
@@ -45,7 +46,7 @@
 </div>
 <div class="col-xs-4">
   <div class="survey-summary">
-    <h3>Summary</h3>
+    <h3>Your trip survey</h3>
     <div class="fixed-cards">
       <ul>
         <% if @survey.questions %>

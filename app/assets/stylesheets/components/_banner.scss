@@ -1,11 +1,20 @@
 .banner {
   color: white;
   text-align: center;
-  height: calc(100vh - 70px);
+  height: 100vh;
   background-size: cover !important;
-  background-position: top;
+  background-position: bottom;
   display: flex;
   justify-content: center;
+  align-items: center;
+  p {
+    font-weight: bold;
+    letter-spacing: -2px;
+    color: #464646;
+    span {
+      color: #fd5988;
+    }
+  }
 }
 
 .filter {
@@ -14,10 +23,7 @@
   filter: contrast(65%) brightness(120%) saturate(110%) grayscale(10%);
 }
 
-.banner-content {
-  margin-top: 150px;
-  position: relative;
-}
+
 
 .banner-phrase {
   font-size: 45px;
@@ -27,7 +33,7 @@
 }
 
 .banner-form {
-  margin-top: 75px;
+  margin-top: 15px;
 }
 
 .login-message {

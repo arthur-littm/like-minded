@@ -11,7 +11,7 @@
   <!-- <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto:100,400" rel="stylesheet"> -->
 
 </head>
-<body style="background-color: whitesmoke">
+<body style="background-color: whitesmoke" class="<%= params[:controller].gsub('devise/','')%>_<%= params[:action]%>">
   <%= render 'shared/navbar' %>
   <%= render 'shared/flashes' %>
   <%= yield %>

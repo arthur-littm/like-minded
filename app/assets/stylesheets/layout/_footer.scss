@@ -9,6 +9,11 @@
   h4 {
     margin-top: 0px;
     color: #5D737E;
+    font-size: 15px;
+  }
+
+  .icons {
+    font-size: 23px;
   }
 }
 
@@ -31,7 +36,8 @@
   padding: 10px 120px;
   img {
     margin: 15px 20px 0px 20px;
-    width: 65px;
+    width: 46px;
+    margin-top: 10px;
   }
   img:hover {
     opacity: 0.3;
@@ -45,7 +51,7 @@
     list-style: none;
     text-align: left;
     padding-left: 0px;
-    margin-top: 20px;
+    margin-top: 8px;
     font-weight: 100;
     li {
       margin: 10px auto;

@@ -1,0 +1,16 @@
+.check-container {
+  width: 40px;
+  height: 40px;
+  background: lightgrey;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 10px auto;
+  color: white;
+  border-radius: 50%;
+  transition: all ease 0.3s;
+}
+
+.check .check-container {
+  background: #00C3C7;
+}

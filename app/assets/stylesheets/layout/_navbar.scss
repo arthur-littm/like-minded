@@ -8,6 +8,11 @@
   padding: 0px 30px;
   align-items: center;
   justify-content: space-between;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background-color: transparent;
+  box-shadow: none;
 }
 
 /* Optional class to fix the navbar on top */
@@ -30,6 +35,7 @@
   font-size: 20px;
   p {
     margin: 0;
+    font-weight: bold;
   }
 }
 
@@ -51,7 +57,7 @@
 .navbar-wagon-link {
   color: #616668;
   font-size: 16px;
-  font-weight: 100;
+  font-weight: bold;
 }
 .navbar-wagon-link:hover {
   color: #da552f;
