@@ -80,10 +80,8 @@ class SurveysController < ApplicationController
   def update_status
     authorize @survey
     if @survey.status.downcase == "select questions"
-      @survey.status = "Select friends"
-    elsif @survey.status.downcase == "select friends"
-      @survey.status = "Preview Survey"
-    elsif @survey.status.downcase == "preview survey"
+      @survey.status = "Share survey"
+    elsif @survey.status.downcase == "share survey"
       @survey.status = "Sent"
       UserMailer.answer(@survey).deliver_now
     end
