@@ -1,13 +1,14 @@
 Hi <%= @friend.first_name.capitalize %>,
 <br>
+I'm going to <%= @survey.city %> soon, would you mind answering a few of my questions on LikeMinded?
 <br>
-Your friend needs your help to make their travle experience unique!
-<br>
-<br>
-Click <%= link_to "here", survey_answer_survey_url(@survey) %> to see where <%= @survey.user.first_name.capitalize %> is going, and how you can help!
+<%= link_to "Click here", survey_answer_survey_url(@survey) %> to go see the questions!
 <br>
 <br>
 Thanks,
 <br>
 <br>
-The LikeMinded Team!
+--
+<%= @survey.user.first_name.capitalize %> <%= @survey.user.last_name.capitalize %>
+
+
