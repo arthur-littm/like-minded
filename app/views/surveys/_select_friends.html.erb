@@ -4,7 +4,7 @@
       <div class="friends">
         <h4>Select friends to ask: </h4>
         <%= simple_form_for survey, url: update_friends_survey_path do |f| %>
-        <%= f.association :friends, label: false, as: :check_boxes, collection: User.all, label_method: :first_name, selected: survey.friends, wrapper_html:{class: "friends-container"} %>
+        <%= f.association :friends, label: false, as: :check_boxes, collection: User.where.not(id: current_user.id), label_method: :first_name, selected: survey.friends, wrapper_html:{class: "friends-container"} %>
         <%= link_to "Back to Questions", reverse_status_survey_path, method: :patch, class: "btn btn-danger survey-button back-button" %>
         <%= f.submit "Add friends", class: "btn btn-primary add-to-button" %>
         <% end %>
@@ -32,7 +32,7 @@
       </div>
       <% if @survey.survey_friends.count > 0 %>
       <div class="survey-button-container">
-        <%= link_to "Send", update_status_survey_path, method: :patch, class: "btn btn-danger survey-button" %>
+        <%= link_to "Preview", update_status_survey_path, method: :patch, class: "btn btn-danger survey-button" %>
       </div>
       <% end %>
     </div>

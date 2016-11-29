@@ -1,5 +1,5 @@
 <div class="row">
-  <% Survey.where(friends: current_user).each do |survey| %>
+  <% Survey.where(friends: current_user).where.not(user: current_user).each do |survey| %>
   <div class="col-xs-11 col-sm-5 col-md-3 dashboard-trip-card filter">
     <div class="card-image" style="background-image: url(
       <% if survey.cover_picture? %>

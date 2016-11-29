@@ -95,7 +95,7 @@ class SurveysController < ApplicationController
     authorize @survey
     if @survey.status.downcase == "select friends"
       @survey.status = "Select questions"
-    elsif @survey.status.downcase == "select questions"
+    elsif @survey.status.downcase == "preview survey"
       @survey.status = "Select questions"
     end
     @survey.save

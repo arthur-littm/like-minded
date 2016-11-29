@@ -16,7 +16,34 @@
     <% end %>
     " alt="", class="avatar-larger">
   </div>
+
+  <button type="button" class="survey-image-button" data-toggle="modal" data-target="#pictureModal">
+    <i class="fa fa-camera" aria-hidden="true"></i>
+  </button>
+
 </div>
+
+<div class="modal fade" id="pictureModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Add picture</h4>
+      </div>
+      <div class="modal-body">
+        <div id="new_cover_picture_form">
+          <%= simple_form_for @survey, url: update_cover_picture_survey_path do |f| %>
+          <%= f.input :cover_picture, as: :attachinary %>
+          <%= f.button :submit %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="container">
   <div class="row">
     <div class="col-xs-10 col-xs-offset-1 answer">
@@ -31,10 +58,10 @@
       <% end %>
       <% end %>
       <% end %>
-      <div class="text-center">
-       <%= link_to "Send the survey!", update_status_survey_path, method: :patch, class: "btn btn-primary survey-button" %>
-        <%= link_to "Back to editing", reverse_status_survey_path, method: :patch, class: "btn btn-danger survey-button" %>
+      <div class="survey-button-container text-center" style="width: 40%;">
+       <%= link_to "Send", update_status_survey_path, method: :patch, class: "btn btn-danger survey-button" %>
      </div>
+     <%= link_to "Edit", reverse_status_survey_path, method: :patch, class: "btn btn-primary survey-button" %>
      <% end %>
    </div>
  </div>
