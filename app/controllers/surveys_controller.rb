@@ -31,7 +31,7 @@ class SurveysController < ApplicationController
   end
 
   def answering
-      authorize @survey
+    authorize @survey
   end
 
   def answer_update
