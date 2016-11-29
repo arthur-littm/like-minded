@@ -10,9 +10,9 @@
       <% if @user.photo? %>
         <%= cl_image_tag@user.photo.path, height: 100, width: 100, crop: :fill, class: "avatar-large" %>
       <% elsif @user.facebook_picture_url? %>
-        <%= image_tag @user.facebook_picture_url.gsub("type=square", "type=large") %>
+        <%= image_tag @user.facebook_picture_url.gsub("type=square", "type=large"), class: "avatar-large" %>
       <% else %>
-        <%= image_tag "ninja.png" %>
+        <%= image_tag "ninja.png", class: "avatar-large" %>
       <% end %>
     </div>
     <div class="profile-banner-user">
