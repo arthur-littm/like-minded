@@ -7,7 +7,7 @@
   <% end %>
 );">
   <div class="answering-banner-phrase text-center">
-    <p><%= @survey.user.first_name.capitalize %>'s asked for your advice on <%= @survey.city.split(",").first %></p>
+    <p><%= @survey.user.first_name.capitalize %> asked for your advice on <%= @survey.city.split(",").first %></p>
   </div>
   <div class="answering-avatar">
   <img src="<% if @survey.user.facebook_picture_url %>
