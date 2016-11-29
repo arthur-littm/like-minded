@@ -18,8 +18,7 @@ Rails.application.routes.draw do
   end
 
   resources :questions, except: [:index, :destroy]
-  devise_for :users,
-  controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   resources :users, only: [:edit, :update]
   resources :answers, only: [:show, :new, :create]
 

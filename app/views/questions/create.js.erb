@@ -5,7 +5,7 @@
   var new_tab_content_questions = "<%= j render 'surveys/tab_content_questions', survey: @survey, question: @question %>";
   console.log(new_tab_content_questions);
   $('#tab_content_questions').html(new_tab_content_questions);
-  $('#myModal').modal('hide');
+  $('.new-question-modal').modal('hide');
   $('body').removeClass('modal-open');
   $('.modal-backdrop').remove();
 <% end %>

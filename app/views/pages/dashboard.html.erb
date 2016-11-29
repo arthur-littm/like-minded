@@ -4,13 +4,12 @@
       <div class="profile-sidebar">
         <!-- SIDEBAR USERPIC -->
         <div class="profile-userpic">
-          <img src="<% if @user.facebook_picture_url %>
-          <%= @user.facebook_picture_url.gsub("type=square","type=large") %>
-          <% elsif @user.profile_picture %>
-          <%= @user.profile_picture %>
+          <% if @user.photo? %>
+            <%= cl_image_tag @user.photo.path %>
           <% else %>
-          <%= image_path("ninja.png") %>
-          <% end %>" class="img-responsive" alt="">
+            <% avatar_url = @user.facebook_picture_url || "ninja.png" %>
+            <%= image_tag avatar_url, class: "avatar-large" %>
+          <% end %>
         </div>
         <!-- END SIDEBAR USERPIC -->
         <!-- SIDEBAR USER TITLE -->
