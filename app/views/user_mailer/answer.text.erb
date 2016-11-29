@@ -1,0 +1,9 @@
+Hi <%= @friend.first_name.capitalize %>,
+
+Your friend needs your help to make their travle experience unique!
+
+Click <%= link_to "here", survey_answer_survey_url(@survey) %> to see where <%= @survey.user.first_name %> is going, and how you can help!
+
+Thanks,
+
+The LikeMinded Team!

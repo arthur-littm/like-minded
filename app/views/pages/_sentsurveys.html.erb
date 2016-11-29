@@ -1,5 +1,5 @@
 <div class="row">
-  <% Survey.where(friends: current_user).each do |survey| %>
+  <% Survey.where(friends: current_user).where.not(user: current_user).each do |survey| %>
   <div class="col-xs-11 col-sm-5 col-md-3 dashboard-trip-card filter">
     <div class="card-image" style="background-image: url(
       <% if survey.cover_picture? %>
@@ -10,13 +10,29 @@
       );">
     </div>
     <div class="trip-title">
+      <% if survey.city %>
       <p><%= survey.city.split(",").first %></p>
+      <% end %>
     </div>
     <div class="trip-date">
+      <% if survey.start_date %>
       <p><%= survey.start_date %></p>
+      <% end %>
     </div>
     <div class="trip-info">
-      <p><%= survey.user.first_name %> <%= survey.user.last_name %></p>
+      <p><%= pluralize(survey.questions.count, 'question') %></p>
+    </div>
+    <div class="trip-avatar">
+       <img src="<% if survey.user.facebook_picture_url %>
+          <%= survey.user.facebook_picture_url %>
+          <% elsif survey.user.profile_picture %>
+          <%= survey.user.profile_picture %>
+          <% else %>
+          <%= image_path("ninja.png") %>
+          <% end %>" alt="" class="avatar-bordered">
+    </div>
+    <div class="trip-sender">
+      <p><%= survey.user.first_name %></p>
     </div>
     <% if survey.answers.count > 0 %>
     <div class="trip-status-sent">

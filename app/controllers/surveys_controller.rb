@@ -12,7 +12,6 @@ class SurveysController < ApplicationController
   def show
     @question = Question.new
     authorize @survey
-    # authorize @survey
   end
 
   def new
@@ -86,6 +85,7 @@ class SurveysController < ApplicationController
       @survey.status = "Preview Survey"
     elsif @survey.status.downcase == "preview survey"
       @survey.status = "Sent"
+      UserMailer.answer(@survey).deliver_now
     end
     @survey.save
     redirect_to survey_path(@survey)
@@ -95,7 +95,7 @@ class SurveysController < ApplicationController
     authorize @survey
     if @survey.status.downcase == "select friends"
       @survey.status = "Select questions"
-    elsif @survey.status.downcase == "select questions"
+    elsif @survey.status.downcase == "preview survey"
       @survey.status = "Select questions"
     end
     @survey.save

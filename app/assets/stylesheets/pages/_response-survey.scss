@@ -1,17 +1,18 @@
 .response-survey-banner {
-  height: 35vh;
+  height: 40vh;
   background-size: cover !important;
   background-position: center;
+  padding: 0;
   position: relative;
   button {
     transition: ease-in-out, opacity .8s ease-in-out;
-    opacity: 0;
+    opacity: 0.5;
   }
 }
 
 .response-survey-banner:hover {
   button {
-    opacity: 0.8;
+    opacity: 1;
   }
 }
 

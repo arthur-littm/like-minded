@@ -11,6 +11,10 @@ gem 'jbuilder', '~> 2.0'
 gem 'devise'
 gem 'redis'
 
+source 'https://rails-assets.org' do
+  gem "rails-assets-underscore"
+end
+
 # Photo attachement
 gem 'cloudinary', '1.1.0'
 gem "attachinary", github: "assembler/attachinary"
@@ -22,6 +26,8 @@ end
 
 #Pundit
 gem "pundit"
+
+#Google maps
 
 gem "coffee-rails"
 gem "gmaps4rails"
@@ -47,6 +53,8 @@ gem 'bootstrap-datepicker-rails'
 gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
+
+gem "letter_opener", group: :development
 
 group :development, :test do
   gem 'binding_of_caller'

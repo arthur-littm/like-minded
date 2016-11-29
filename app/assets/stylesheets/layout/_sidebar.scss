@@ -14,6 +14,7 @@
   width: 100%;
   position: absolute;
   left: 0;
+  border-bottom: 0.5px solid #566B74;
 }
 
 .profile-userpic img {
@@ -34,7 +35,7 @@
 .profile-usertitle-name {
   color: white;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 100;
   margin-bottom: 7px;
 }
 
@@ -89,7 +90,7 @@
 }
 
 .profile-usermenu ul li a:hover {
-  background-color: #fafcfd;
+  background-color: #575D6C;
   color: #5b9bd1;
 }
 
