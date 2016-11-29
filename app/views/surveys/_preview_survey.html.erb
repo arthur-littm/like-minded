@@ -50,7 +50,7 @@
 
       <%= simple_form_for @survey, url: answer_update_survey_path(@survey) do |survey_form| %>
       <% @survey.questions.each do |q| %>
-      <%= image_tag "#{q.category.name.downcase}.png", height: "30px"%>
+      <%= image_tag "#{q.category.name.downcase}.png", height: "30px" %>
       <%= field_set_tag q.content do %>
       <%= survey_form.simple_fields_for :questions, q do |question_form| %>
       <%= question_form.simple_fields_for :answers, Answer.new(question: q) do |f| %>
@@ -60,9 +60,8 @@
       <% end %>
       <% end %>
       <div class="survey-button-container text-center" style="width: 40%;">
-       <%= link_to "Send", update_status_survey_path, method: :patch, class: "btn btn-danger survey-button" %>
+       <%= link_to "Share your tips", update_status_survey_path, method: :patch, class: "btn btn-danger answer-button" %>
      </div>
-     <%= link_to "Edit", reverse_status_survey_path, method: :patch, class: "btn btn-primary survey-button" %>
      <% end %>
    </div>
  </div>
