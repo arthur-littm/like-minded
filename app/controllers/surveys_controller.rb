@@ -91,9 +91,7 @@ class SurveysController < ApplicationController
 
   def reverse_status
     authorize @survey
-    if @survey.status.downcase == "select friends"
-      @survey.status = "Select questions"
-    elsif @survey.status.downcase == "preview survey"
+    if @survey.status.downcase == "share survey"
       @survey.status = "Select questions"
     end
     @survey.save
