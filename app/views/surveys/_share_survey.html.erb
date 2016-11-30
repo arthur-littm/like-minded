@@ -24,7 +24,7 @@
         <h4 class="text-center">Also, you can share this link on facebook:</h5>
           <div class="actions text-center">
             <!-- Facebook Share Button -->
-            <%= link_to "https://www.facebook.com/sharer/sharer.php?u=www.like-minded.tech/surveys/#{survey.id}/answering/#{survey.token}", class: "btn btn-block btn-social btn-facebook facebook-button" do %>
+            <%= link_to "https://www.facebook.com/sharer/sharer.php?u=www.like-minded.tech/surveys/#{survey.id}/answering/#{survey.token}", target: 'blank', class: "btn btn-block btn-social btn-facebook facebook-button" do %>
               <span class="fa fa-facebook"></span>
               Share
             <% end %>
