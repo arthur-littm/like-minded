@@ -59,17 +59,18 @@
 
 .answer {
   margin: 10px auto;
-  .answer-title {
-    text-align: left;
-    display: flex;
-    justify-content: space-around;
-    flex-direction: row;
-  }
   width: 65%;
 }
 
+.answer-title {
+  text-align: left;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+}
+
 .answer-category {
-  height: 20px;
+  height: 35px;
 }
 
 
