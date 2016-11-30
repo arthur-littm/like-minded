@@ -42,7 +42,7 @@ class SurveysController < ApplicationController
     authorize @survey
     params[:survey][:questions_attributes].each do |k,v|
       q = Question.find(v[:id].to_i)
-      answer = Answer.new(question: q, content: v['answers_attributes']['0'][:content])
+      answer = Answer.new(question: q, content: v['answers_attributes']['0'][:content], location: v['answers_attributes']['0'][:location])
       answer.update(question_id: q.id)
       answer.user = current_user
       answer.survey = @survey
