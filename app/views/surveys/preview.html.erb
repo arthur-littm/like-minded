@@ -60,7 +60,7 @@
       <% end %>
       <% end %>
       <div class="survey-button-container text-center" style="width: 40%;">
-       <%= link_to "Share your tips", update_status_survey_path, method: :patch, class: "btn btn-danger answer-button" %>
+       <%= link_to "Share your tips", survey_path(@survey), class: "btn btn-danger answer-button" %>
      </div>
      <% end %>
    </div>

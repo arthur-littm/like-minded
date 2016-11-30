@@ -33,6 +33,10 @@ class SurveyPolicy < ApplicationPolicy
     true #going to be survey_friends .each ... or something like this
   end
 
+  def preview?
+    true
+  end
+
   def answer_update?
     true
   end

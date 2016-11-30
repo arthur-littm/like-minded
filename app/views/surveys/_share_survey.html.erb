@@ -2,7 +2,6 @@
   <div class="row">
     <div class="col-xs-4">
       <div class="survey-summary">
-
         <h3><%= link_to reverse_status_survey_path, method: :patch, class: "back-link" do %>
           <i class="fa fa-share fa-flip-horizontal fa-spin" aria-hidden="true"></i>
         <% end %> Your trip survey</h3>
@@ -15,6 +14,7 @@
           </li>
           <% end %>
         </ul>
+        <%= link_to "Preview", survey_preview_survey_path(@survey), class: 'btn btn-danger'  %>
       </div>
     </div>
     <div class="col-xs-8">
