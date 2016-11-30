@@ -11,7 +11,6 @@
   height: 45px;
   position: absolute;
   bottom: 0;
-  background-color: rgba(47, 47, 47, 0.64);
   .profile-banner-image {
     position: absolute;
     bottom : 10px;
@@ -28,7 +27,6 @@
 }
 
 .profile-stats {
-  background-color: white;
   h4 {
     text-align: center;
   }
@@ -42,11 +40,17 @@
 }
 
 .stats-fact {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  width : 40%;
-  height : 100px;
-  border-radius: 10px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
   margin: 10px;
+  font-weight: 100;
+  background-color: #F55A88;
+  color: white;
   h4 {
     font-size: 60px;
     margin: 0;
@@ -55,7 +59,7 @@
     font-size: 20px;
   }
   font-weight: 100;
-  background-color: #EE6352;
+  background-color: #F55A88;
   color: white;
 }
 
