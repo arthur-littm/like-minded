@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20161130150528) do
+
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +26,7 @@ ActiveRecord::Schema.define(version: 20161130150528) do
     t.string   "guest_name"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "location"
     t.index ["question_id"], name: "index_answers_on_question_id", using: :btree
     t.index ["survey_id"], name: "index_answers_on_survey_id", using: :btree
     t.index ["user_id"], name: "index_answers_on_user_id", using: :btree

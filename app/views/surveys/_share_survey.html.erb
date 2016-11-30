@@ -15,6 +15,7 @@
           <% end %>
         </ul>
         <%= link_to "Preview", survey_preview_survey_path(@survey), class: 'btn btn-danger', target: "blank"  %>
+        <%= link_to "See answers", update_status_survey_path, method: :patch, class: 'btn btn-danger', target: "blank" %>
       </div>
     </div>
     <div class="col-xs-8">
