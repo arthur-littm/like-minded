@@ -7,6 +7,7 @@ class PagesController < ApplicationController
     authorize @user
 
     @surveys = Survey.where.not(latitude: nil, longitude: nil)
+    @survey = @surveys.last
 
     @hash = Gmaps4rails.build_markers(@user.surveys) do |survey, marker|
       marker.lat survey.latitude
