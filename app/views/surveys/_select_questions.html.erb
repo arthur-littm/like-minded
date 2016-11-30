@@ -57,7 +57,9 @@
         </div>
       <% end %>
       <% if @survey.survey_questions.count > 0 %>
-      <%= link_to "Confirm trip survey", update_status_survey_path, method: :patch, class: "btn btn-danger summary-question-button" %>
+
+      <%= link_to "Confirm trip survey", update_status_survey_path(@survey), method: :patch, class: "btn btn-danger summary-question-button" %>
+
       <% end %>
     </ul>
   </div>
