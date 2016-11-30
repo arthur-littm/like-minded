@@ -1,22 +1,19 @@
-<div class="container-fluid response-survey-banner filter" style="background-image: url(
+<div class="container-fluid answer-banner" style="background-image: linear-gradient(-225deg, rgba(255,255,255,0.75) 0%, rgba(255,255,255,0.75) 50%), url(
   <% if @survey.cover_picture? %>
   <%= cl_image_path @survey.cover_picture.path, width: 2000, height: 1000, crop: :fill %>
   <% else %>
   <%= image_path("plane.jpg") %>
   <% end %>
   );">
-  <div class="response-banner-phrase">
-    <p>Almost <span style="color: #EE6352">there</span></p>
-  </div>
-  <div class="response-survey-title">
-    <span><%= @survey.city %></span>
+  <div class="answer-banner-phrase text-center">
+    <p>Here are your travel tips on <span><%= @survey.city.split(",").first %></span></p>
   </div>
 
-  <button type="button" class="survey-image-button" data-toggle="modal" data-target="#pictureModal">
+  <button type="button" class="answer-image-button" data-toggle="modal" data-target="#pictureModal">
     <i class="fa fa-camera" aria-hidden="true"></i>
   </button>
-
 </div>
+
 <div class="modal fade" id="pictureModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -37,8 +34,7 @@
     </div>
   </div>
 </div>
-</div>
-</div>
+
 <div class="container response-survey-answers-container">
   <% @survey.questions.each do |question|%>
   <div class="response-question">
