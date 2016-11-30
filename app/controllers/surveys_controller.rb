@@ -48,7 +48,7 @@ class SurveysController < ApplicationController
       answer.survey = @survey
       answer.save
     end
-    redirect_to survey_path(@survey)
+    redirect_to root_path, notice: "Thanks for your tips, try LikeMinded yourself!"
   end
 
   def update
