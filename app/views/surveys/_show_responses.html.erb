@@ -51,7 +51,7 @@
           <% elsif answer.user.facebook_picture_url %>
           <img src="<%= answer.user.facebook_picture_url %>" alt="" class="avatar">
           <% else %>
-          <%= image_tag "ninja.png" %>
+          <%= image_tag "ninja.png", class: "avatar" %>
           <% end %>
         </div>
         <div class="response-user"><%= answer.user.first_name %></div>
@@ -61,7 +61,11 @@
         <p><%= answer.content %></p>
       </div>
       <ul class="list-inline product-controls hidden-sm hidden-xs">
-        <li><a href=""><i class="fa fa-trash"></i></a></li>
+        <li>
+          <%= link_to answer_path(answer), method: :delete do  %>
+            <i class="fa fa-trash"></i>
+          <% end %>
+        </li>
       </ul>
     </div>
       </div>
