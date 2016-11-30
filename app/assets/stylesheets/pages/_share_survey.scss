@@ -7,31 +7,50 @@
 }
 .box-white {
   background-color: white;
-  padding: 30px;
+  padding-left: 7%;
+  padding-right: 7%;
   margin: 40px 0;
   border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 45vh;
   h4 {
-    padding-top: 15px;
+    font-size: 18px;
   }
+}
+
+.preview-button {
+  width: 90%
 }
 
 .fa-share {
   font-size: 30px;
 }
 
-.btnz {
-    padding: 10px 15px;
-    border:none;
-    background-color: #ececec;
-    text-decoration: none;
-    font-size: 18px;
-    color: white;
+.share-facebook-button {
+  width: 100%;
+  align-self: center;
+  margin-bottom: 20px;
 }
-.btnz:hover {
-    color: #efefef;
+
+.see-answers-button {
+  width: 60%;
+  border-radius: 6px;
+  font-weight: lighter;
+  font-size: 22px;
+  color: #fff;
+  background-color: #FF5887;
+  border-color: #E0507A;
 }
+
+.see-answers-button:hover {
+  background-color: #D34B73;
+  border-color: #C04569;
+}
+
 .facebook {
-    background-color: #3b5998;
+  background-color: #3b5998;
 }
 .share_link{
   margin: 20px 0;

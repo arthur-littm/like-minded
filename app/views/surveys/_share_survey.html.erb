@@ -5,33 +5,32 @@
         <h3><%= link_to reverse_status_survey_path, method: :patch, class: "back-link" do %>
           <i class="fa fa-share fa-flip-horizontal" aria-hidden="true"></i>
           <span> </span>
-        <% end %> Your trip survey</h3>
-        <ul>
-          <% @survey.survey_questions.each_with_index do |sq, index| %>
-          <li class="summary-question-card">
-            <span class="index"><%= index + 1 %></span>
-            <span style="padding: 0 5px"><%= sq.question.content %></span>
-            <span></span>
-          </li>
-          <% end %>
-        </ul>
-        <%= link_to "Preview", survey_preview_survey_path(@survey), class: 'btn btn-danger', target: "blank"  %>
-        <%= link_to "See answers", update_status_survey_path, method: :patch, class: 'btn btn-danger', target: "blank" %>
+          <% end %> Your trip survey</h3>
+          <ul>
+            <% @survey.survey_questions.each_with_index do |sq, index| %>
+            <li class="summary-question-card">
+              <span class="index"><%= index + 1 %></span>
+              <span style="padding: 0 5px"><%= sq.question.content %></span>
+              <span></span>
+            </li>
+            <% end %>
+          </ul>
+          <%= link_to "Preview", survey_preview_survey_path(@survey), class: 'btn btn-primary preview-button', target: "blank"  %>
+
+        </div>
       </div>
-    </div>
-    <div class="col-xs-8">
-      <div class="box-white">
-        <h4 class="text-center">Here is the URL to send to your friends so they can answer your survey:</h4>
+      <div class="col-xs-8 box-white">
+        <h4 class="text-center">Share your trip survey with the URL</h4>
         <input class='share_link form-control text-center', value='<%= request.original_url %>/answering/<%= survey.token %>', readonly='readonly'></input>
-        <h4 class="text-center">Also, you can share this link on facebook:</h5>
-          <div class="actions text-center">
+        <h4 class="text-center">or share it on Facebook</h4>
+          <div class="actions text-center share-facebook-button">
             <!-- Facebook Share Button -->
             <%= link_to "https://www.facebook.com/sharer/sharer.php?u=www.like-minded.tech/surveys/#{survey.id}/answering/#{survey.token}", target: 'blank', class: "btn btn-block btn-social btn-facebook facebook-button" do %>
-              <span class="fa fa-facebook"></span>
-              Share
+            <span class="fa fa-facebook"></span>
+            Share
             <% end %>
           </div>
         </div>
+        <%= link_to "See answers", update_status_survey_path, method: :patch, class: 'btn btn-danger see-answers-button', target: "blank" %>
       </div>
     </div>
-  </div>
