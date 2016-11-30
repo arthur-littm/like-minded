@@ -4,7 +4,7 @@
   flex-wrap: wrap;
   overflow: scroll;
   position: relative;
-  padding-top: 30px;
+  padding-top: 0px;
   .checkbox {
     background-color: #f9f9f9;
     margin: 10px auto;
@@ -30,6 +30,12 @@
     padding: 10px;
     min-height: 60px;
   }
+}
+
+.flex-container-questions {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .questions {
@@ -79,8 +85,10 @@
 }
 
 .add-to-button {
+  width: 30%;
   align-self: flex-end;
-  margin-top: 30px 10px;
+  margin: 10px 15px 0 15px;
+  border-radius: 30px;
 }
 
 .back-button {

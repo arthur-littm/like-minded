@@ -40,7 +40,7 @@
   <div class="survey-summary">
     <h3>Your trip survey</h3>
     <ul>
-      <% if @survey.questions %>
+      <% if @survey.survey_questions.count > 0 %>
       <% @survey.survey_questions.each_with_index do |sq, index| %>
       <li class="summary-question-card">
         <span class="index"><%= index + 1 %></span>
@@ -50,9 +50,16 @@
         <% end %>
       </li>
       <% end %>
+      <% else %>
+        <div class="instructions">
+          <p>No question selected</p>
+          <p>Select the questions you want to ask your friends on the left, then add them to your trip survey by pressing the "Add selection"</p>
+        </div>
       <% end %>
       <% if @survey.survey_questions.count > 0 %>
-      <%= link_to "Share trip survey", update_status_survey_path(@survey), method: :patch, class: "btn btn-danger summary-question-button" %>
+
+      <%= link_to "Confirm trip survey", update_status_survey_path(@survey), method: :patch, class: "btn btn-danger summary-question-button" %>
+
       <% end %>
     </ul>
   </div>
