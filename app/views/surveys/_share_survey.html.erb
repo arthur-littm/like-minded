@@ -4,6 +4,7 @@
       <div class="survey-summary">
         <h3><%= link_to reverse_status_survey_path, method: :patch, class: "back-link" do %>
           <i class="fa fa-share fa-flip-horizontal" aria-hidden="true"></i>
+          <span> </span>
         <% end %> Your trip survey</h3>
         <ul>
           <% @survey.survey_questions.each_with_index do |sq, index| %>
