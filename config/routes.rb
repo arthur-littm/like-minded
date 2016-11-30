@@ -2,10 +2,10 @@ Rails.application.routes.draw do
 
   resources :surveys, except: [:index] do
     resources :questions, only: [ :index, :edit, :update, :destroy ] do
-      resources :answers, only: [ :show, :new, :create, :destroy ]
+      resources :answers, only: [ :show, :new, :create ]
     end
-    resources :survey_questions, only: [:destroy]
-    resources :survey_friends, only: [:destroy]
+    resources :survey_questions, only: [ :destroy ]
+    resources :survey_friends, only: [ :destroy ]
     member do
       get '/answering/:token', to: 'surveys#answering', as: :survey_answer
       get '/preview', to: 'surveys#preview', as: :survey_preview
@@ -18,10 +18,10 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :questions, except: [:index, :destroy]
+  resources :questions, except: [ :index, :destroy ]
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
-  resources :users, only: [:edit, :update]
-  resources :answers, only: [:show, :new, :create]
+  resources :users, only: [ :edit, :update ]
+  resources :answers, only: [ :show, :new, :create, :destroy ]
 
   root to: 'surveys#new'
   get '/dashboard', to: 'pages#dashboard'

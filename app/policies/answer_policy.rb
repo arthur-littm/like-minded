@@ -17,5 +17,9 @@ class AnswerPolicy < ApplicationPolicy
     create?
   end
 
+  def destroy?
+    true
+  end
+
 end
 
