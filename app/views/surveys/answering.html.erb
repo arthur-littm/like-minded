@@ -32,7 +32,10 @@
 
 
       <% @survey.questions.each do |q| %>
-      <%= field_set_tag q.content do %>
+      <div class="answer-title">
+        <legend><%= q.content %></legend>
+        <%= image_tag "#{q.category.name.downcase}.png", class: "answer-category" %>
+      </div>
       <%= survey_form.simple_fields_for :questions, q do |question_form| %>
       <%= question_form.simple_fields_for :answers, Answer.new(question: q) do |f| %>
       <%= f.input :content, label: false, as: :text %>
@@ -40,15 +43,6 @@
       <% end %>
       <% end %>
       <% end %>
-      <% end %>
-
-
-
-
-
-
-
-
       <div class="survey-button-container text-center" style="width: 40%;">
         <%= survey_form.submit "Submit your answers", data: { confirm: 'Are you sure?' }, class: "btn btn-danger answer-button" %>
       </div>
