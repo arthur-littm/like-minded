@@ -12,7 +12,9 @@
 
 </head>
 <body style="background-color: whitesmoke" class="<%= params[:controller].gsub('devise/','')%>_<%= params[:action]%>">
+  <% unless params[:action] == "dashboard" %>
   <%= render 'shared/navbar' %>
+  <% end %>
   <%= render 'shared/flashes' %>
   <%= yield %>
   <%= render 'shared/footer' %>
