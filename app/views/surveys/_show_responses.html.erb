@@ -35,21 +35,31 @@
   </div>
 </div>
 
-<div class="container response-survey-answers-container">
+<div class="container">
   <% @survey.questions.each do |question|%>
   <div class="response-question">
-    <p><%= question.content %> (<%= question.category.name %>)</p>
-    <ul>
-      <% question.answers.where(survey_id: @survey.id).each do |answer| %>
-      <div class="response-answer">
-        <li>
-          <h4><%= answer.content %></h4>
-          <h4><%= answer.location %></h4>
-          <p> (by <%= answer.user.first_name %> <%= answer.user.last_name %>)</p>
-        </li>
-      </div>
+    <h4><%= question.content %> (<%= question.category.name %>)</h4>
+  </div>
+  <div class="response-container">
+  <% question.answers.where(survey_id: @survey.id).each do |answer| %>
+  <div class="response-answer">
+    <div class="response-content">
+      <p><%= answer.content %></p>
+    </div>
+    <div class="response-location">
+      <p><%= answer.location %></p>
+    </div>
+    <div class="response-avatar">
+      <% if answer.user.photo %>
+      <%=  image_tag answer.user.photo, class: "avatar" %>
+      <% elsif answer.user.facebook_picture_url %>
+      <img src="<%= answer.user.facebook_picture_url %>" alt="" class="avatar">
       <% end %>
-    </ul>
+    </div>
+    <p> (by <%= answer.user.first_name %> <%= answer.user.last_name %>)</p>
   </div>
   <% end %>
+</ul>
+</div>
+<% end %>
 </div>
