@@ -1,4 +1,4 @@
-<div class="container-fluid profile-banner" style="background-image: url(
+<div class="container-fluid profile-banner" style="background-image: linear-gradient(-225deg, rgba(255,255,255,0.75) 0%, rgba(255,255,255,0.75) 50%), url(
   <% if current_user.surveys.count > 0 && current_user.surveys.last.cover_picture? %>
   <%= cl_image_path current_user.surveys.last.cover_picture.path, width: 2000, height: 1000, crop: :fill %>
   <% else %>
@@ -6,18 +6,18 @@
   <% end %>
   );">
   <div class="profile-banner-info">
-    <div class="profile-banner-image">
-      <% if @user.photo? %>
-        <%= cl_image_tag@user.photo.path, height: 100, width: 100, crop: :fill, class: "avatar-large" %>
-      <% elsif @user.facebook_picture_url? %>
-        <%= image_tag @user.facebook_picture_url.gsub("type=square", "type=large"), class: "avatar-large" %>
-      <% else %>
-        <%= image_tag "ninja.png", class: "avatar-large" %>
-      <% end %>
-    </div>
-    <div class="profile-banner-user">
-      <p><%= @user.first_name %> <%= @user.last_name %></p>
-    </div>
+<!--     <div class="profile-banner-image">
+      <%# if @user.photo? %>
+        <%# cl_image_tag@user.photo.path, height: 100, width: 100, crop: :fill, class: "avatar-large" %>
+      <%# elsif @user.facebook_picture_url? %>
+        <%# image_tag @user.facebook_picture_url.gsub("type=square", "type=large"), class: "avatar-large" %>
+      <%# else %>
+        <%# image_tag "ninja.png", class: "avatar-large" %>
+      <%# end %>
+    </div> -->
+    <!-- <div class="profile-banner-user"> -->
+      <p><%# @user.first_name %> <%# @user.last_name %></p>
+    <!-- </div> -->
   </div>
 </div>
 <div class="row profile-content">
