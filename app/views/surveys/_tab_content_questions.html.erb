@@ -18,7 +18,8 @@
     </div>
   </div> -->
 
-  <%= simple_form_for [survey] do |f| %>
+  <%= simple_form_for [survey], html: { class: "flex-container-questions"} do |f| %>
+  <%= f.submit "Add selection", class: "btn btn-primary add-to-button" %>
   <% Category.all.sort.each_with_index do |category, index| %>
   <div role="tabpanel" class="tab-pane <%= index == 0 ? '' : 'hidden' %>" id="category-<%= category.id %>">
     <div class="form-group check_boxes optional survey_questions question-container">
@@ -36,10 +37,7 @@
       </label>
       <% end %>
     </div>
-
-
     <%= f.hidden_field :category, value: category.id %>
-    <%= f.submit "Add to survey", class: "btn btn-primary add-to-button" %>
   </div>
   <% end %>
   <div role="tabpanel" class="tab-pane hidden" id="category-5">
@@ -59,7 +57,6 @@
       </label>
       <% end %>
     </div>
-    <%= f.submit "Add to survey", class: "btn btn-primary add-to-button" %>
     <% end %>
     <!-- Button trigger modal -->
     <button type="button" class="new-question-button" data-toggle="modal" data-target=".new-question-modal">
