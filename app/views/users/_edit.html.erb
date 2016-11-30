@@ -1,13 +1,39 @@
-<h1><%= current_user.first_name %></h1>
+<div class="container">
+  <div class="row">
+  <div class="col-xs-8 col-xs-offset-1">
+      <div class="box-white">
 
-<div class="form-container">
-  <h2>Profile settings</h2>
-  <%= simple_form_for current_user, url: user_path(current_user) do |f| %>
-    <%= f.input :first_name %>
-    <%= f.input :last_name %>
-    <%= f.input :email %>
-    <%= f.input :photo, as: :attachinary %>
-    <%= f.button :submit, class: "btn btn-primary" %>
-    <%= link_to "Cancel", class: "btn btn-default" %>
-  <% end %>
+        <div class="form-container">
+          <h2 class="text-center">Profile Information</h2>
+          <%= simple_form_for current_user, url: user_path(current_user) do |f| %>
+          <div class="row">
+          <div class="col-xs-6">
+            <%= f.input :first_name %>
+          </div>
+          <div class="col-xs-6">
+            <%= f.input :last_name %>
+          </div>
+          </div>
+          <div class="row">
+          <div class="col-xs-8 col-xs-offset-2">
+            <%= f.input :email %>
+          </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-6 col-xs-offset-3">
+              <%= f.input :photo, as: :attachinary %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 text-center">
+              <%= f.button :submit, "Update", class: "btn btn-primary" %>
+              <%= link_to "Cancel", dashboard_path, class: "btn btn-default" %>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
