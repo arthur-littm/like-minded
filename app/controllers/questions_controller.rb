@@ -12,12 +12,12 @@ class QuestionsController < ApplicationController
   def create
     @survey = Survey.find(params[:survey][:id])
     @question = Question.new(question_params)
+    @category = @question.category
     authorize @question
     @question.user = current_user
-
     if @question.save
       respond_to do |format|
-        format.html { redirect_to survey_path(@survey) }
+        format.html { redirect_to survey_path (@survey) }
         format.js
       end
     else

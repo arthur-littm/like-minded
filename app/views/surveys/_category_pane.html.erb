@@ -1,0 +1,48 @@
+<div role="tabpanel" class="tab-pane <%= index == 0 ? '' : 'hidden' %>" id="category-<%= category.id %>">
+  <div class="form-group check_boxes optional survey_questions question-container">
+    <input type="hidden" name="survey[question_ids][]" value="">
+    <% category.questions.each do |question| %>
+    <% in_survey = @survey.questions.include? question %>
+    <label for="survey_question_ids_<%= question.id%>" class="checkbox <%= in_survey ? 'check' : '' %>">
+      <div class="question-content">
+        <%= question.content %>
+      </div>
+      <div class="question-check">
+        <div class="check-container"><i class="fa fa-check"></i></div>
+        <input class="check_boxes checkbox-trigger optional hidden" type="checkbox" value="<%= question.id%>" name="survey[question_ids][]" id="survey_question_ids_<%= question.id%>">
+      </div>
+    </label>
+    <% end %>
+  </div>
+  <%= f.hidden_field :category, value: category.id %>
+</div>
+<% end %>
+<div role="tabpanel" class="tab-pane hidden" id="category-5">
+  <%= simple_form_for [survey] do |f| %>
+  <div class="form-group check_boxes optional survey_questions question-container">
+    <input type="hidden" name="survey[question_ids][]" value="">
+    <% survey.user.questions.each do |question| %>
+    <% in_survey = @survey.questions.include? question %>
+    <label for="survey_question_ids_<%= question.id%>" class="checkbox <%= in_survey ? 'check' : '' %>">
+      <div class="question-content">
+        <%= question.content %>
+      </div>
+      <div class="question-check">
+        <div class="check-container"><i class="fa fa-check"></i></div>
+        <input class="check_boxes checkbox-trigger optional hidden" type="checkbox" value="<%= question.id%>" name="survey[question_ids][]" id="survey_question_ids_<%= question.id%>">
+      </div>
+    </label>
+    <% end %>
+  </div>
+  <% end %>
+  <button type="button" class="new-question-button" data-toggle="modal" data-target=".new-question-modal">
+    <i class="fa fa-plus" aria-hidden="true"></i>
+  </button>
+
+  <!-- Button trigger modal -->
+  <button type="button" class="edit-question-button" data-toggle="modal" data-target="#editModal">
+    <i class="fa fa-pencil" aria-hidden="true"></i>
+  </button>
+  <!-- Button trigger modal -->
+  <% end %>
+</div>
