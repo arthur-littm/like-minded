@@ -11,6 +11,9 @@ gem 'jbuilder', '~> 2.0'
 gem 'devise'
 gem 'redis'
 
+#facebook
+gem "koala", "~> 2.2"
+
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
 end
