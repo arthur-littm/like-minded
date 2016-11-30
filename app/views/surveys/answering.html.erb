@@ -28,28 +28,31 @@
     <div class="col-xs-10 col-xs-offset-1 answers-container text-center">
 
       <%= simple_form_for @survey, url: answer_update_survey_path(@survey) do |survey_form| %>
+
+
+
       <% @survey.questions.each do |q| %>
-
-      <div class="answer">
-          <fieldset>
-          <div class="answer-title">
-            <legend><%= q.content %></legend>
-          <%= image_tag "#{q.category.name.downcase}.png", height: "30px" %>
-
-          </div>
-          <div class="form-group text optional survey_questions_answers_content">
-            <textarea class="form-control text optional" name="survey[questions_attributes][0][answers_attributes][0][content]" id="survey_questions_attributes_0_answers_attributes_0_content">
-            </textarea>
-          </div>
-          <input type="hidden" value="2" name="survey[questions_attributes][0][id]" id="survey_questions_attributes_0_id">
-        </fieldset>
-      </div>
-
+      <%= field_set_tag q.content do %>
+      <%= survey_form.simple_fields_for :questions, q do |question_form| %>
+      <%= question_form.simple_fields_for :answers, Answer.new(question: q) do |f| %>
+      <%= f.input :content, label: false, as: :text %>
+      <%= f.input :location, label: false, as: :text %>
       <% end %>
+      <% end %>
+      <% end %>
+      <% end %>
+
+
+
+
+
+
+
+
       <div class="survey-button-container text-center" style="width: 40%;">
-          <%= survey_form.submit "Submit your answers", data: { confirm: 'Are you sure?' }, class: "btn btn-danger answer-button" %>
-     </div>
-     <% end %>
-   </div>
- </div>
+        <%= survey_form.submit "Submit your answers", data: { confirm: 'Are you sure?' }, class: "btn btn-danger answer-button" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
 </div>
