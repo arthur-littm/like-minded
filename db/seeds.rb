@@ -19,7 +19,7 @@ d = Category.create(name: "Accomodation", icon_name: "fa fa-bed")
 
 Question.create(category: a, content: "Best local delicacy, and where do I get it?")
 Question.create(category: a, content: "Best pizza in town?")
-Question.create(category: a, content: "Where sho I go to have brunch?")
+Question.create(category: a, content: "Where should I go to have brunch?")
 Question.create(category: a, content: "What is your all time favorite restaurant?")
 Question.create(category: a, content: "Any places that I should absolutely avoid?")
 Question.create(category: a, content: "Most unusual restaurant?")
