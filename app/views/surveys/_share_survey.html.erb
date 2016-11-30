@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container flex-container">
   <div class="row">
     <div class="col-xs-4">
       <div class="survey-summary">
@@ -15,22 +15,22 @@
             </li>
             <% end %>
           </ul>
-          <%= link_to "Preview", survey_preview_survey_path(@survey), class: 'btn btn-primary preview-button', target: "blank"  %>
+          <%= link_to "Preview", survey_preview_survey_path(@survey), class: 'btn btn-primary summary-question-button', target: "blank"  %>
 
         </div>
       </div>
       <div class="col-xs-8 box-white">
-        <h4 class="text-center">Share your trip survey with the URL</h4>
+        <h4 class="text-center">Share your trip survey</h4>
         <input class='share_link form-control text-center', value='<%= request.original_url %>/answering/<%= survey.token %>', readonly='readonly'></input>
-        <h4 class="text-center">or share it on Facebook</h4>
-          <div class="actions text-center share-facebook-button">
-            <!-- Facebook Share Button -->
-            <%= link_to "https://www.facebook.com/sharer/sharer.php?u=www.like-minded.tech/surveys/#{survey.id}/answering/#{survey.token}", target: 'blank', class: "btn btn-block btn-social btn-facebook facebook-button" do %>
-            <span class="fa fa-facebook"></span>
-            Share
-            <% end %>
-          </div>
+        <div class="actions text-center share-facebook-button">
+          <!-- Facebook Share Button -->
+          <%= link_to "https://www.facebook.com/sharer/sharer.php?u=www.like-minded.tech/surveys/#{survey.id}/answering/#{survey.token}", target: 'blank', class: "btn btn-block btn-social btn-facebook facebook-button" do %>
+          <span class="fa fa-facebook"></span>
+          Share on Facebook
+          <% end %>
         </div>
+        <h4 class="text-center">then</h4>
         <%= link_to "See answers", update_status_survey_path, method: :patch, class: 'btn btn-danger see-answers-button', target: "blank" %>
       </div>
     </div>
+  </div>
