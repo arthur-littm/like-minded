@@ -12,19 +12,6 @@
   padding: 0;
   background-color: white;
   border: 0.5px solid rgba(167, 185, 221, 0.43);
-  .trip-status-sent {
-    position: absolute;
-    top: -5px;
-    left: -5px;
-    background-color: #00C3C7;
-    border-radius: 15px;
-    color: white;
-    width: 60px;
-    height: 25px;
-    padding-top: 2px;
-    text-align: center;
-    font-weight: 100;
-  }
   .trip-status-tosend {
     position: absolute;
     top: -5px;
@@ -33,9 +20,10 @@
     border-radius: 15px;
     text-align: center;
     color: white;
-    width: 80px;
-    height: 25px;
-    padding-top: 2px;
+    width: 30px;
+    height: 30px;
+    padding-top: 5px;
+    padding-right: 2px;
     font-weight: 100;
   }
   .trip-title {

@@ -1,42 +1,44 @@
-<div class="row">
-  <div class="col-xs-11 col-sm-5 col-md-3 dashboard-trip-card dashboard-card-new">
-    <i class="fa fa-paper-plane" aria-hidden="true"></i>
-    <p>New trip</p>
-    <%= link_to "", new_survey_path, class: "trip-card-link" %>
-  </div>
-  <% @user.surveys.each do |survey| %>
-  <div class="col-xs-11 col-sm-5 col-md-3 dashboard-trip-card filter">
-    <div class="card-image" style="background-image: url(
-    <% if survey.cover_picture? %>
-    <%= cl_image_path survey.cover_picture.path, width: 500, height: 500, crop: :fill %>
-    <% else %>
-    <%= image_path("default-card.jpg") %>
-    <% end %>
-    );">
+<div class="container">
+  <div class="row">
+    <div class="col-xs-11 col-sm-5 col-md-3 dashboard-trip-card dashboard-card-new">
+      <i class="fa fa-paper-plane" aria-hidden="true"></i>
+      <p>New trip</p>
+      <%= link_to "", new_survey_path, class: "trip-card-link" %>
     </div>
-    <div class="trip-title">
-      <% if survey.city %>
-      <p><%= survey.city.split(",").first %></p>
+    <% @user.surveys.each do |survey| %>
+    <div class="col-xs-11 col-sm-5 col-md-3 dashboard-trip-card filter">
+      <div class="card-image" style="background-image: url(
+        <% if survey.cover_picture? %>
+        <%= cl_image_path survey.cover_picture.path, width: 500, height: 500, crop: :fill %>
+        <% else %>
+        <%= image_path("default-card.jpg") %>
+        <% end %>
+        );">
+      </div>
+      <div class="trip-title">
+        <% if survey.city %>
+        <p><%= survey.city.split(",").first %></p>
+        <% end %>
+      </div>
+      <div class="trip-date">
+        <% if survey.start_date %>
+        <p><%= survey.start_date %></p>
+        <% end %>
+      </div>
+      <div class="trip-info">
+        <% if survey.status.downcase == "sent" %>
+        <p><%= pluralize(survey.answers.count, 'answer') %></p>
+        <% else %>
+        <p><%= survey.status %></p>
+        <% end %>
+      </div>
+      <% if survey.status.downcase != "sent" %>
+      <div class="trip-status-tosend">
+        <i class="fa fa-cogs" aria-hidden="true"></i>
+      </div>
       <% end %>
-    </div>
-    <div class="trip-date">
-      <% if survey.start_date %>
-      <p><%= survey.start_date %></p>
-      <% end %>
-    </div>
-    <div class="trip-info">
-      <p><%= pluralize(survey.answers.count, 'answer') %></p>
-    </div>
-    <% if survey.status == "Sent" %>
-    <div class="trip-status-sent">
-      <p>Sent</p>
-    </div>
-    <% else %>
-    <div class="trip-status-tosend">
-      <p>To send</p>
+      <%= link_to "", survey_path(survey), class: "trip-card-link" %>
     </div>
     <% end %>
-    <%= link_to "", survey_path(survey), class: "trip-card-link" %>
   </div>
-  <% end %>
 </div>
