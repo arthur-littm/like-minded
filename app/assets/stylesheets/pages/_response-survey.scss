@@ -27,14 +27,16 @@
 }
 
 .response-question {
-  margin: 5px;
-  padding: 15px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.13);
+  margin: 15px auto;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
 }
 
 .response-container {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .response-answer {
@@ -57,4 +59,8 @@
   .response-avatar {
 
   }
+}
+
+.response-global {
+  width: 60%
 }

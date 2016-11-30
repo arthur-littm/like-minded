@@ -35,31 +35,52 @@
   </div>
 </div>
 
-<div class="container">
+<div class="container response-global">
   <% @survey.questions.each do |question|%>
   <div class="response-question">
-    <h4><%= question.content %> (<%= question.category.name %>)</h4>
+    <h4><%= question.content %></h4>
+    <%= image_tag "#{question.category.name.downcase}.png", class: "answer-category" %>
   </div>
+    <% question.answers.where(survey_id: @survey.id).each do |answer| %>
   <div class="response-container">
-  <% question.answers.where(survey_id: @survey.id).each do |answer| %>
-  <div class="response-answer">
-    <div class="response-content">
-      <p><%= answer.content %></p>
+    <div class="product">
+      <div class='product-upvote'>
+        <div class="response-avatar">
+          <% if answer.user.photo %>
+          <%=  image_tag answer.user.photo, class: "avatar" %>
+          <% elsif answer.user.facebook_picture_url %>
+          <img src="<%= answer.user.facebook_picture_url %>" alt="" class="avatar">
+          <% else %>
+          <%= image_tag "ninja.png" %>
+          <% end %>
+        </div>
+        <div class="response-user"><%= answer.user.first_name %></div>
+      </div>
+      <div class='product-body'>
+        <h3><%= answer.location %></h3>
+        <p><%= answer.content %></p>
+      </div>
+      <ul class="list-inline product-controls hidden-sm hidden-xs">
+        <li><a href=""><i class="fa fa-trash"></i></a></li>
+      </ul>
     </div>
-    <div class="response-location">
-      <p><%= answer.location %></p>
-    </div>
-    <div class="response-avatar">
-      <% if answer.user.photo %>
-      <%=  image_tag answer.user.photo, class: "avatar" %>
-      <% elsif answer.user.facebook_picture_url %>
-      <img src="<%= answer.user.facebook_picture_url %>" alt="" class="avatar">
-      <% end %>
-    </div>
-    <p> (by <%= answer.user.first_name %> <%= answer.user.last_name %>)</p>
-  </div>
+      </div>
+
+    <% end %>
   <% end %>
-</ul>
+
+  <div class="box-white">
+    <h4 class="text-center">Here is the URL to send to your friends so they can answer your survey:</h4>
+    <input class='share_link form-control text-center', value='<%= request.original_url %>/answering/<%= survey.token %>', readonly='readonly'></input>
+    <h4 class="text-center">Also, you can share this link on facebook:</h5>
+      <div class="actions text-center">
+        <!-- Facebook Share Button -->
+        <%= link_to "https://www.facebook.com/sharer/sharer.php?u=www.like-minded.tech/surveys/#{survey.id}/answering/#{survey.token}", target: 'blank', class: "btn btn-block btn-social btn-facebook facebook-button" do %>
+        <span class="fa fa-facebook"></span>
+        Share
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
-<% end %>
-</div>
+
