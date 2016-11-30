@@ -1,0 +1,69 @@
+<div class="container-fluid response-survey-banner filter" style="background-image: linear-gradient(-225deg, rgba(255,255,255,0.75) 0%, rgba(255,255,255,0.75) 50%), url(
+  <% if @survey.cover_picture? %>
+  <%= cl_image_path @survey.cover_picture.path, width: 2000, height: 1000, crop: :fill %>
+  <% else %>
+  <%= image_path("plane.jpg") %>
+  <% end %>
+  );">
+  <div class="answering-banner-phrase text-center">
+    <p><%= @survey.user.first_name.capitalize %> wants your travel tips on <span><%= @survey.city.split(",").first %></span></p>
+  </div>
+  <div class="answering-avatar">
+    <img src="<% if @survey.user.facebook_picture_url %>
+    <%= @survey.user.facebook_picture_url.gsub("type=square","type=large") %>
+    <% elsif @survey.user.profile_picture %>
+    <%= @survey.user.profile_picture %>
+    <% end %>
+    " alt="", class="avatar-larger">
+  </div>
+
+  <button type="button" class="survey-image-button" data-toggle="modal" data-target="#pictureModal">
+    <i class="fa fa-camera" aria-hidden="true"></i>
+  </button>
+
+</div>
+
+<div class="modal fade" id="pictureModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Add picture</h4>
+      </div>
+      <div class="modal-body">
+        <div id="new_cover_picture_form">
+          <%= simple_form_for @survey, url: update_cover_picture_survey_path do |f| %>
+          <%= f.input :cover_picture, as: :attachinary %>
+          <%= f.button :submit %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1 answer">
+
+      <%= simple_form_for @survey, url: answer_update_survey_path(@survey) do |survey_form| %>
+      <% @survey.questions.each do |q| %>
+      <%= image_tag "#{q.category.name.downcase}.png", height: "30px" %>
+      <%= field_set_tag q.content do %>
+      <%= survey_form.simple_fields_for :questions, q do |question_form| %>
+      <%= question_form.simple_fields_for :answers, Answer.new(question: q) do |f| %>
+      <%= f.input :content, label: false, as: :text %>
+      <% end %>
+      <% end %>
+      <% end %>
+      <% end %>
+      <div class="survey-button-container text-center" style="width: 40%;">
+       <%= link_to "Share your tips", survey_path(@survey), class: "btn btn-danger answer-button" %>
+     </div>
+     <% end %>
+   </div>
+ </div>
+</div>
+
