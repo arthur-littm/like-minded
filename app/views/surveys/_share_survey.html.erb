@@ -1,11 +1,12 @@
 <div class="container flex-container">
   <div class="row">
-    <div class="col-xs-4">
+    <div class="col-xs-5">
       <div class="survey-summary">
         <h3><%= link_to reverse_status_survey_path, method: :patch, class: "back-link" do %>
-          <i class="fa fa-share fa-flip-horizontal" aria-hidden="true"></i>
+          <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
           <span> </span>
           <% end %> Your trip survey</h3>
+          <div class="fixed-summary">
           <ul>
             <% @survey.survey_questions.each_with_index do |sq, index| %>
             <li class="summary-question-card">
@@ -15,13 +16,15 @@
             </li>
             <% end %>
           </ul>
+          </div>
           <%= link_to "Preview", survey_preview_survey_path(@survey), class: 'btn btn-primary summary-question-button', target: "blank"  %>
-
+          <%= link_to "See answers", update_status_survey_path, method: :patch, class: 'btn btn-danger see-answers-button', target: "blank" %>
         </div>
       </div>
-      <div class="col-xs-8 box-white">
-        <h4 class="text-center">Share your trip survey</h4>
+      <div class="col-xs-7 box-white">
+        <h4 class="text-center">Send this URL to your friends</h4>
         <input class='share_link form-control text-center', value='<%= request.original_url %>/answering/<%= survey.token %>', readonly='readonly'></input>
+        <h4 class="text-center">or share on your trip survey on Facebook</h4>
         <div class="actions text-center share-facebook-button">
           <!-- Facebook Share Button -->
           <%= link_to "https://www.facebook.com/sharer/sharer.php?u=www.like-minded.tech/surveys/#{survey.id}/answering/#{survey.token}", target: 'blank', class: "btn btn-block btn-social btn-facebook facebook-button" do %>
@@ -29,8 +32,6 @@
           Share on Facebook
           <% end %>
         </div>
-        <h4 class="text-center">then</h4>
-        <%= link_to "See answers", update_status_survey_path, method: :patch, class: 'btn btn-danger see-answers-button', target: "blank" %>
       </div>
     </div>
   </div>
