@@ -1,72 +1,86 @@
-<div class="questions-wrapper">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-8">
-        <div class="questions">
-          <ul class="tabs nav nav-tabs" role="tablist">
-            <% Category.all.sort.each_with_index do |category, index| %>
-            <li role="presentation" class="tab <%= index == 0 ? 'active' : '' %>" data-target="#category-<%= category.id %>"><a href="#" aria-controls="<%= category.name.downcase %>" role="tab" data-toggle="tab">
-              <%= image_tag "#{category.name.downcase}.png", height: "30px"%>
-              <h3><%= category.name %></h3>
-            </a>
-          </li>
-          <% end %>
-          <div class="modal fade new-question-modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                  <h4 class="modal-title" id="myModalLabel">Add new question</h4>
-                </div>
-                <div class="modal-body">
-                  <div id="new_question_form">
-                    <%= render 'surveys/question_form', question: question, survey: survey %>
-                  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-8">
+      <div class="questions">
+        <ul class="tabs nav nav-tabs" role="tablist">
+          <% Category.all.sort.each_with_index do |category, index| %>
+          <li role="presentation" class="tab <%= index == 0 ? 'active' : '' %>" data-target="#category-<%= category.id %>"><a href="#" aria-controls="<%= category.name.downcase %>" role="tab" data-toggle="tab">
+            <%= image_tag "#{category.name.downcase}.png", height: "30px"%>
+            <h3><%= category.name %></h3>
+          </a>
+        </li>
+        <% end %>
+        <div class="modal fade new-question-modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Add new question</h4>
+              </div>
+              <div class="modal-body">
+                <div id="new_question_form">
+                  <%= render 'surveys/question_form', question: question, survey: survey %>
                 </div>
               </div>
             </div>
           </div>
-          <li role="presentation" class="tab" data-target="#category-5"><a href="#myquestions" aria-controls="My Questions" role="tab" data-toggle="tab" id="custom-questions">
-            <%= image_tag "plus.png", height: "30px"%>
-            <h3>My Questions</h3>
-          </a>
-        </li>
-      </ul>
-      <div id="tab_content_questions-container">
-        <%= render 'surveys/tab_content_questions', question: question, survey: survey %>
-      </div>
+        </div>
+        <li role="presentation" class="tab" data-target="#category-5"><a href="#myquestions" aria-controls="My Questions" role="tab" data-toggle="tab" id="custom-questions">
+          <%= image_tag "plus.png", height: "30px"%>
+          <h3>My Questions</h3>
+        </a>
+      </li>
+    </ul>
+    <div id="tab_content_questions-container">
+      <%= render 'surveys/tab_content_questions', question: question, survey: survey %>
     </div>
   </div>
-  <div class="col-xs-4">
-    <div class="survey-summary">
-      <h3>Your trip survey</h3>
-      <ul>
-        <% if @survey.survey_questions.count > 0 %>
-        <% @survey.survey_questions.each_with_index do |sq, index| %>
-        <li class="summary-question-card">
-          <span class="index"><%= index + 1 %></span>
-          <span style="padding: 0 5px"><%= sq.question.content %></span>
-          <%= link_to survey_survey_question_path(survey_id: @survey.id, id: sq.id), method: :delete, class: "delete-questions" do %>
-          <i class="fa fa-times" aria-hidden="true"></i>
-          <% end %>
-        </li>
-        <% end %>
-        <% else %>
-          <div class="instructions">
-            <p>No question selected</p>
-            <p>Select questions on the left and then press "Add selection"</p>
-          </div>
-        <% end %>
-        <% if @survey.survey_questions.count > 0 %>
-
-        <%= link_to "Confirm trip survey", update_status_survey_path(@survey), method: :patch, class: "btn btn-danger summary-question-button" %>
-        <% end %>
-      </ul>
-    </div>
 </div>
-  </div>
-  </div>
+<!-- <div class="col-xs-4">
+  <div class="survey-summary">
+    <h3>Your trip survey</h3>
+    <ul>
+      <%#if @survey.survey_questions.count > 0 %>
+      <%# @survey.survey_questions.each_with_index do |sq, index| %>
+      <li class="summary-question-card">
+        <span class="index"><%# index + 1 %></span>
+        <span style="padding: 0 5px"><%# sq.question.content %></span>
+        <%# link_to survey_survey_question_path(survey_id: @survey.id, id: sq.id),
+        # method: :delete, class: "delete-questions" do %>
+        <i class="fa fa-times" aria-hidden="true"></i>  -->
+
+        <div class="col-xs-4">
+          <div class="survey-summary">
+            <h3>Your trip survey</h3>
+            <ul>
+              <% if @survey.survey_questions.count > 0 %>
+              <% @survey.survey_questions.each_with_index do |sq, index| %>
+              <li class="summary-question-card">
+                <span class="index"><%= index + 1 %></span>
+                <span style="padding: 0 5px"><%= sq.question.content %></span>
+                <%= link_to survey_survey_question_path(survey_id: @survey.id, id: sq.id), method: :delete, class: "delete-questions" do %>
+                <i class="fa fa-times" aria-hidden="true"></i>
+                <% end %>
+              </li>
+
+              <% end %>
+              <% else %>
+              <div class="instructions">
+                <p>No question selected</p>
+                <p>Select questions on the left and then press "Add selection"</p>
+              </div>
+              <% end %>
+              <% if @survey.survey_questions.count > 0 %>
+
+              <%= link_to "Confirm trip survey", update_status_survey_path(@survey), method: :patch, class: "btn btn-danger summary-question-button" %>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+
 
 

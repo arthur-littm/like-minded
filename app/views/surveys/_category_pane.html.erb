@@ -2,16 +2,19 @@
   <div class="form-group check_boxes optional survey_questions question-container">
     <input type="hidden" name="survey[question_ids][]" value="">
     <% category.questions.each do |question| %>
-    <% in_survey = @survey.questions.include? question %>
-    <label for="survey_question_ids_<%= question.id%>" class="checkbox <%= in_survey ? 'check' : '' %>">
-      <div class="question-content">
-        <%= question.content %>
-      </div>
-      <div class="question-check">
-        <div class="check-container"><i class="fa fa-check"></i></div>
-        <input class="check_boxes checkbox-trigger optional hidden" type="checkbox" value="<%= question.id%>" name="survey[question_ids][]" id="survey_question_ids_<%= question.id%>">
-      </div>
-    </label>
+    <!-- This code renders card for the category questions -->
+      <% if question.user.nil? || question.user == current_user %>
+        <% in_survey = @survey.questions.include? question %>
+        <label for="survey_question_ids_<%= question.id%>" class="checkbox <%= in_survey ? 'check' : '' %>">
+          <div class="question-content">
+            <%= question.content %>
+          </div>
+          <div class="question-check">
+            <div class="check-container"><i class="fa fa-check"></i></div>
+            <input class="check_boxes checkbox-trigger optional hidden" type="checkbox" value="<%= question.id%>" name="survey[question_ids][]" id="survey_question_ids_<%= question.id%>">
+          </div>
+        </label>
+      <% end  %>
     <% end %>
   </div>
   <% f.hidden_field :category, value: category.id %>
@@ -21,16 +24,17 @@
   <div class="form-group check_boxes optional survey_questions question-container">
     <input type="hidden" name="survey[question_ids][]" value="">
     <% survey.user.questions.each do |question| %>
-    <% in_survey = @survey.questions.include? question %>
-    <label for="survey_question_ids_<%= question.id%>" class="checkbox <%= in_survey ? 'check' : '' %>">
-      <div class="question-content">
-        <%= question.content %>
-      </div>
-      <div class="question-check">
-        <div class="check-container"><i class="fa fa-check"></i></div>
-        <input class="check_boxes checkbox-trigger optional hidden" type="checkbox" value="<%= question.id%>" name="survey[question_ids][]" id="survey_question_ids_<%= question.id%>">
-      </div>
-    </label>
+    <!-- This code renders question cards for the user's questions -->
+      <% in_survey = @survey.questions.include? question %>
+      <label for="survey_question_ids_<%= question.id%>" class="checkbox <%= in_survey ? 'check' : '' %>">
+        <div class="question-content">
+          <%= question.content %>
+        </div>
+        <div class="question-check">
+          <div class="check-container"><i class="fa fa-check"></i></div>
+          <input class="check_boxes checkbox-trigger optional hidden" type="checkbox" value="<%= question.id%>" name="survey[question_ids][]" id="survey_question_ids_<%= question.id%>">
+        </div>
+      </label>
     <% end %>
   </div>
   <button type="button" class="new-question-button" data-toggle="modal" data-target=".new-question-modal">
