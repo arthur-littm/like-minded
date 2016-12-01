@@ -104,7 +104,15 @@
 }
 
 .add-to-button:focus {
-  outline: 0;
+  background-color: #D34B73 !important;
+  border-color: #D34B73 !important;
+  outline: none !important;
+}
+
+.add-to-button:active {
+  background-color: #D34B73 !important;
+  border-color: #D34B73 !important;
+  outline: none !important;
 }
 
 .back-button {
