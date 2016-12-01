@@ -1,5 +1,6 @@
 <div role="tabpanel" class="tab-pane <%= index == 0 ? '' : 'hidden' %>" id="category-<%= category.id %>">
   <div class="form-group check_boxes optional survey_questions question-container">
+
     <input type="hidden" name="survey[question_ids][]" value="">
     <% category.questions.each do |question| %>
     <% in_survey = @survey.questions.include? question %>
@@ -19,6 +20,18 @@
 <%#end %>
 <div role="tabpanel" class="tab-pane hidden" id="category-5">
   <div class="form-group check_boxes optional survey_questions question-container">
+
+  <!-- Button trigger modal -->
+
+  <div class="question-content checkbox">
+  <%= link_to "", ".new-question-modal", class: "trip-card-link", "data-toggle" => "modal" %>
+  <p>Add new question</p>
+  <div class="check-container question-check color"><i class="fa fa-plus"></i></div>
+  </div>
+
+  <!-- Button trigger modal -->
+
+
     <input type="hidden" name="survey[question_ids][]" value="">
     <% survey.user.questions.each do |question| %>
     <% in_survey = @survey.questions.include? question %>
@@ -33,9 +46,6 @@
     </label>
     <% end %>
   </div>
-  <button type="button" class="new-question-button" data-toggle="modal" data-target=".new-question-modal">
-    <i class="fa fa-plus" aria-hidden="true"></i>
-  </button>
 
   <!-- Button trigger modal -->
   <button type="button" class="edit-question-button" data-toggle="modal" data-target="#editModal">
