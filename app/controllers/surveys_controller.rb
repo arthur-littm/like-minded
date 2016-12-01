@@ -84,7 +84,7 @@ class SurveysController < ApplicationController
     def destroy
       authorize @survey
       @survey.destroy
-      redirect_to request.referrer, notice: "Survey deleted"
+      redirect_to (request.referrer + "#mytrips"), notice: "Survey deleted"
     end
 
     def update_status
