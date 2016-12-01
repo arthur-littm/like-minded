@@ -55,6 +55,19 @@
     opacity: 0;
     transition: ease-in-out, opacity .3s ease-in-out;
   }
+  .trip-destroy-button {
+    position: absolute;
+    bottom: 5px;
+    left: 10px;
+    opacity: 0;
+    transition: ease-in-out, opacity .3s ease-in-out;
+    i {
+      color: gray;
+    }
+    i:hover {
+      color: red;
+    }
+  }
   .trip-avatar {
     position: absolute;
     bottom: 5px;
@@ -86,6 +99,9 @@
   }
   .card-image {
     opacity: 0.5;
+  }
+  .trip-destroy-button {
+    opacity: 0.8;
   }
 }
 

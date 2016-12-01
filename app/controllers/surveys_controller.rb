@@ -82,7 +82,9 @@ class SurveysController < ApplicationController
     end
 
     def destroy
-      @survey.delete
+      authorize @survey
+      @survey.destroy
+      redirect_to request.referrer, notice: "Survey deleted"
     end
 
     def update_status
@@ -114,7 +116,7 @@ class SurveysController < ApplicationController
       authorize @survey
       @survey.update(survey_params)
       if @survey.save
-          redirect_to request.referrer
+        redirect_to request.referrer
       end
     end
 

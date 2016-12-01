@@ -14,6 +14,7 @@
         <%= image_path("default-card.jpg") %>
         <% end %>
         );">
+        <%= link_to "", survey_path(survey), class: "trip-card-link" %>
       </div>
       <div class="trip-title">
         <% if survey.city %>
@@ -23,6 +24,11 @@
       <div class="trip-date">
         <% if survey.start_date %>
         <p><%= survey.start_date %></p>
+        <% end %>
+      </div>
+      <div class="trip-destroy-button">
+        <%= link_to survey_path(survey), data: { confirm: 'Are you sure?' }, method: :delete do %>
+        <i class="fa fa-trash" aria-hidden="true"></i>
         <% end %>
       </div>
       <div class="trip-info">
@@ -37,7 +43,6 @@
         <i class="fa fa-cogs" aria-hidden="true"></i>
       </div>
       <% end %>
-      <%= link_to "", survey_path(survey), class: "trip-card-link" %>
     </div>
     <% end %>
   </div>
