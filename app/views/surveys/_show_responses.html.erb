@@ -47,7 +47,7 @@
       <div class='product-upvote'>
         <div class="response-avatar">
           <% if answer.user.photo %>
-          <%=  image_tag answer.user.photo, class: "avatar" %>
+          <%=  cl_image_tag answer.user.photo.path, width: 200, height: 200, crop: :fill , class: "avatar" %>
           <% elsif answer.user.facebook_picture_url %>
           <img src="<%= answer.user.facebook_picture_url %>" alt="" class="avatar">
           <% else %>
