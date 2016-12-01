@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  ActiveAdmin.routes(self)
   resources :surveys, except: [:index] do
     resources :questions, only: [ :index, :edit, :update, :destroy ] do
       resources :answers, only: [ :show, :new, :create ]
