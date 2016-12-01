@@ -11,7 +11,7 @@
 
   <div class="answering-avatar">
     <% if @survey.user.photo? %>
-    <%= cl_image_tag @survey.user.photo.path, height: 100, width: 100, crop: :fill %>
+    <%= cl_image_tag @survey.user.photo.path, height: 300, width: 300, crop: :fill %>
     <% elsif @survey.user.facebook_picture_url? %>
     <%= image_tag @survey.user.facebook_picture_url.gsub("type=square", "type=large") %>
     <% else %>
