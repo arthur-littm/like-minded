@@ -21,9 +21,8 @@
         <p><%= "answer".pluralize(current_user.surveys.count) %></p>
       </div>
       <div class="stats-fact large-fact">
-      <h4>240.000</h4>
-        <div id="distance"></div>
-        <p>kilometers on your last trip</p>
+      <h4><div id="distance"></div></h4>
+        <p> on your last trip</p>
       </div>
     </div>
   </div>
@@ -87,7 +86,7 @@
                   outputDiv.innerHTML += "<h1>" + distance + '</h1>';
                   // console.log(distance);
                 } else {
-                  outputDiv.innerHTML += "<h1>Whoops!</h1>";
+                  outputDiv.innerHTML += "<h1>5,585 km</h1>";
                 }
               }
             }
