@@ -8,4 +8,8 @@
 //= require cloudinary/jquery.cloudinary
 //= require attachinary
 //= require gmaps/google
-//= require_tree .
+//= require active_admin
+//= require cable
+//= require check_logic
+//= require google_maps_autocomplete
+//= require init_attachinary
