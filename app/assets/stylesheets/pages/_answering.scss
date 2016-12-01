@@ -78,8 +78,6 @@
   height: 35px;
 }
 
-
-
 .answer-button {
   background-color: #fd5988;
   width: 100%;
@@ -90,6 +88,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  &:hover, :active, :focus {
+    background-color: #D34B73 !important;
+    border-color: #D34B73 !important;
+  }
 }
+
+
 
 
