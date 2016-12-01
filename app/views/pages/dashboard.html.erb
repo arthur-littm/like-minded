@@ -21,7 +21,11 @@
           <div class="profile-usertitle-name">
             <%= @user.first_name %> <%= @user.last_name %>
           </div>
-
+          <% if @user.hometown %>
+          <div class="profile-usertitle-job">
+            <%= @user.hometown%>
+          </div>
+          <% end %>
         </div>
         <!-- END SIDEBAR USER TITLE -->
         <!-- SIDEBAR MENU -->

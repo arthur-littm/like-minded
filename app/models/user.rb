@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :answered_surveys, through: :survey_friends, dependent: :destroy
 
   has_attachment :photo
+  has_attachment :dashboard_cover
 
   validates :first_name, presence: true
   validates :last_name, presence: true
