@@ -1,24 +1,12 @@
-<div class="container-fluid profile-banner" style="background-image: linear-gradient(-225deg, rgba(255,255,255,0.75) 0%, rgba(255,255,255,0.75) 50%), url(
-  <% if current_user.surveys.count > 0 && current_user.surveys.last.cover_picture? %>
+<div class="container-fluid profile-banner" style="background-image: linear-gradient(-225deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.4) 50%), url(
+  <% if current_user.dashboard_cover %>
+  <%= cl_image_path current_user.dashboard_cover.path, width: 2000, height: 1000, crop: :fill %>
+  <% elsif current_user.surveys.count > 0 && current_user.surveys.last.cover_picture? %>
   <%= cl_image_path current_user.surveys.last.cover_picture.path, width: 2000, height: 1000, crop: :fill %>
   <% else %>
   <%= image_path("plane.jpg") %>
   <% end %>
   );">
-  <div class="profile-banner-info">
-<!--     <div class="profile-banner-image">
-      <%# if @user.photo? %>
-        <%# cl_image_tag@user.photo.path, height: 100, width: 100, crop: :fill, class: "avatar-large" %>
-      <%# elsif @user.facebook_picture_url? %>
-        <%# image_tag @user.facebook_picture_url.gsub("type=square", "type=large"), class: "avatar-large" %>
-      <%# else %>
-        <%# image_tag "ninja.png", class: "avatar-large" %>
-      <%# end %>
-    </div> -->
-    <!-- <div class="profile-banner-user"> -->
-      <p><%# @user.first_name %> <%# @user.last_name %></p>
-    <!-- </div> -->
-  </div>
 </div>
 <div class="row profile-content">
   <div class="profile-stats col-xs-12 col-sm-6">
@@ -32,10 +20,15 @@
         <h4><%= current_user.answers.count %></h4>
         <p><%= "answer".pluralize(current_user.surveys.count) %></p>
       </div>
+      <div class="stats-fact large-fact">
+      <h4>240.000</h4>
+        <div id="distance"></div>
+        <p>kilometers on your last trip</p>
+      </div>
     </div>
   </div>
   <div class="profile-map col-xs-12 col-sm-6">
-    <div id="map" style="width: 100%; height: 300px;"></div>
+    <div id="map" style="width: 100%; height: 55vh; margin-top: 2vh;"></div>
   </div>
 </div>
 
@@ -44,7 +37,7 @@
   <%= javascript_tag do %>
   $(document).ready(function() {
    var styles = [{"featureType":"landscape.natural","elementType":"geometry.fill","stylers":[{"visibility":"on"},
-   {"color":"#e0efef"}]},{"featureType":"poi","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"hue":"#1900ff"},{"color":"#c0e8e8"}]},{"featureType":"road","elementType":"geometry","stylers":[{"lightness":100},{"visibility":"simplified"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"visibility":"on"},{"lightness":700}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#00C3C7"}]}];
+   {"color":"#e0efef"}]},{"featureType":"poi","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"hue":"#1900ff"},{"color":"#c0e8e8"}]},{"featureType":"road","elementType":"geometry","stylers":[{"lightness":100},{"visibility":"simplified"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"visibility":"on"},{"lightness":700}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#7FD8D8"}]}];
    var handler = Gmaps.build('Google');
    handler.buildMap({
     provider: {
@@ -62,51 +55,43 @@
  });
   <% end %>
   <% end %>
+
+function calcDistance() {
+      var start == @user.hometown ;
+      var end = new google.maps.LatLng(= @survey.latitude , = @survey.longitude );
+      var service = new google.maps.DistanceMatrixService;
+      service.getDistanceMatrix({
+        origins: [start],
+        destinations: [end],
+        travelMode: 'DRIVING',
+        unitSystem: google.maps.UnitSystem.METRIC,
+        avoidHighways: false,
+        avoidTolls: false
+      }, function callback(response, status) {
+        if (status == 'OK') {
+          var origins = response.originAddresses;
+          var destinations = response.destinationAddresses;
+          var outputDiv = document.getElementById('distance');
+          outputDiv.innerHTML = '';
+
+          for (var i = 0; i < origins.length; i++) {
+            var results = response.rows[i].elements;
+            for (var j = 0; j < results.length; j++) {
+              var element = results[j];
+              var distance = element.distance.text;
+              var duration = element.duration.text;
+              var from = origins[i];
+              var to = destinations[j];
+              outputDiv.innerHTML += "<h1>" + distance + '</h1>';
+            }
+          }
+        }
+      }
+      )
+    }
+    var outputDiv = document.getElementById('distance');
+
 </script>
 
-<!-- <div id= "distance">
-
-  <script>
-    // function calcDistance() {
-    //   var start = = @user.hometown ;
-    //   var end = new google.maps.LatLng(= @survey.latitude , = @survey.longitude );
-    //   var service = new google.maps.DistanceMatrixService;
-    //   service.getDistanceMatrix({
-    //     origins: [start],
-    //     destinations: [end],
-    //     travelMode: 'DRIVING',
-    //     unitSystem: google.maps.UnitSystem.METRIC,
-    //     avoidHighways: false,
-    //     avoidTolls: false
-    //   }, function callback(response, status) {
-    //     if (status == 'OK') {
-    //       var origins = response.originAddresses;
-    //       var destinations = response.destinationAddresses;
-    //       var outputDiv = document.getElementById('distance');
-    //       outputDiv.innerHTML = '';
-
-    //       for (var i = 0; i < origins.length; i++) {
-    //         var results = response.rows[i].elements;
-    //         for (var j = 0; j < results.length; j++) {
-    //           var element = results[j];
-    //           var distance = element.distance.text;
-    //           var duration = element.duration.text;
-    //           var from = origins[i];
-    //           var to = destinations[j];
-    //           outputDiv.innerHTML += "<h1>" + distance + '</h1>';
-    //         }
-    //       }
-    //     }
-    //   }
-    //   )
-    // }
 
 
-
-
-
-    var outputDiv = document.getElementById('distance');
-   </script>
- </div>
-
- -->
