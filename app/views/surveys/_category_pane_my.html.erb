@@ -1,5 +1,4 @@
 <div role="tabpanel" class="tab-pane hidden" id="category-5">
-  <%= simple_form_for [survey] do |f| %>
   <div class="form-group check_boxes optional survey_questions question-container">
     <input type="hidden" name="survey[question_ids][]" value="">
     <% survey.user.questions.each do |question| %>
@@ -15,7 +14,6 @@
     </label>
     <% end %>
   </div>
-  <% end %>
   <button type="button" class="new-question-button" data-toggle="modal" data-target=".new-question-modal">
     <i class="fa fa-plus" aria-hidden="true"></i>
   </button>

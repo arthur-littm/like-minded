@@ -3,6 +3,7 @@
   $('#new_question_form').html("<%= j render 'surveys/question_form', question: @question, survey: @survey %>");
 <% else %>
   $('.new-question-modal').modal('hide');
-  $('#category-pane-<%= @category.id %>').html("<%= j render 'category_pane', category: category, survey: survey  %>");
-  $('#category-pane-my').html("<%= j render 'category_pane_my', survey: survey   %>");
+  $('#tab_content_questions-container').html("<%= j render 'surveys/tab_content_questions', question: @question, survey: @survey %>");
+  $("#custom-questions").click();
 <% end %>
+
