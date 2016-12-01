@@ -15,13 +15,19 @@
           </div>
           </div>
           <div class="row">
-          <div class="col-xs-8 col-xs-offset-2">
+          <div class="col-xs-6">
             <%= f.input :email %>
+          </div>
+          <div class="col-xs-6">
+            <%= f.input :hometown, label: "Current city" %>
           </div>
           </div>
           <div class="row">
-            <div class="col-xs-6 col-xs-offset-3">
-              <%= f.input :photo, as: :attachinary %>
+            <div class="col-xs-6">
+              <%= f.input :photo, as: :attachinary, label: "Profile picture" %>
+            </div>
+            <div class="col-xs-6">
+              <%= f.input :dashboard_cover, as: :attachinary, label: "Dashboard cover picture" %>
             </div>
           </div>
           <div class="row">

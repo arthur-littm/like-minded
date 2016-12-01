@@ -18,6 +18,15 @@ body {
   padding-top: 0px;
 }
 
+.surveys_show {
+  .alert {
+    margin-top: 0 !important;
+   }
+   .notice {
+    margin-top: 0 !important;
+   }
+}
+
 .sessions_new {
   padding-top: 0px;
 }
@@ -25,6 +34,9 @@ body {
 .pages_dashboard {
    padding-top: 0px;
    .alert {
+    margin-top: 0 !important;
+   }
+   .notice {
     margin-top: 0 !important;
    }
 }
