@@ -57,9 +57,7 @@
         <div class="response-user"><%= answer.user.first_name %></div>
       </div>
       <div class='product-body'>
-        <% if answer.location %>
-          <h3><%= answer.location.split(",").first %></h3>
-        <% end %>
+        <h3><%= answer.location.split(",").first %></h3>
         <p><%= answer.content %></p>
       </div>
       <ul class="list-inline product-controls hidden-sm hidden-xs">
