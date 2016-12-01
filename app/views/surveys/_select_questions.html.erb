@@ -47,7 +47,8 @@
       <li class="summary-question-card">
         <span class="index"><%= index + 1 %></span>
         <span style="padding: 0 5px"><%= sq.question.content %></span>
-        <%= link_to survey_survey_question_path(survey_id: @survey.id, id: sq.id), method: :delete, class: "delete-questions" do %>
+        <%= link_to survey_survey_question_path(survey_id: @survey.id, id: sq.id),
+        method: :delete, class: "delete-questions" do %>
         <i class="fa fa-times" aria-hidden="true"></i>
         <% end %>
       </li>

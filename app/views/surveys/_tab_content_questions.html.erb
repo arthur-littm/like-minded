@@ -23,7 +23,8 @@
 
   <% Category.all.sort.each_with_index do |category, index| %>
     <div id="category-pane-<%= category.id %>">
-      <%= render "surveys/category_pane", category: category, survey: survey, index: index, f: f %>
+      <%= render "surveys/category_pane", category: category, survey: survey, index: index,
+       f: f %>
     </div>
   <% end %>
 
