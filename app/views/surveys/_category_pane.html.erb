@@ -6,13 +6,13 @@
     <!-- This code renders card for the category questions -->
       <% if question.user.nil? || question.user == current_user %>
         <% in_survey = @survey.questions.include? question %>
-        <label for="survey_question_ids_<%= question.id%>" class="checkbox <%= in_survey ? 'check' : '' %>">
-          <div class="question-content">
+        <label for="survey_question_ids_<%= question.id%>" class="checkbox <%= in_survey ? 'check' : '' %> ">
+          <div class="question-content ">
             <%= question.content %>
           </div>
           <div class="question-check">
             <div class="check-container"><i class="fa fa-check"></i></div>
-            <input class="check_boxes checkbox-trigger optional hidden" type="checkbox" value="<%= question.id%>" name="survey[question_ids][]" id="survey_question_ids_<%= question.id%>">
+            <input class="check_boxes question-in-category checkbox-trigger optional hidden" type="checkbox" value="<%= question.id%>" name="survey[question_ids][]" id="survey_question_ids_<%= question.id%>">
           </div>
         </label>
       <% end  %>
@@ -45,7 +45,7 @@
         </div>
         <div class="question-check">
           <div class="check-container"><i class="fa fa-check"></i></div>
-          <input class="check_boxes checkbox-trigger optional hidden" type="checkbox" value="<%= question.id%>" name="survey[question_ids][]" id="survey_question_ids_<%= question.id%>">
+          <input class="check_boxes checkbox-trigger question-in-myquestion optional hidden" type="checkbox" value="<%= question.id%>" name="survey[question_ids][]" id="survey_question_ids_<%= question.id%>">
         </div>
       </label>
     <% end %>
