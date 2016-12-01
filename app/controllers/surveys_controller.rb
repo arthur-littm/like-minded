@@ -34,6 +34,8 @@ class SurveysController < ApplicationController
       authorize @survey
       if @survey.user == current_user
         redirect_to dashboard_path, alert: "You can't answer your own survey!"
+      elsif @survey.user.answers.each { |answer| @survey.answers.include?(answer) }
+        redirect_to root_path, alert: "You have already answered this survey!"
       end
     end
 
