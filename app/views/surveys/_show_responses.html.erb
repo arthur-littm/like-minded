@@ -41,7 +41,7 @@
     <h4><%= question.content %></h4>
     <%= image_tag "#{question.category.name.downcase}.png", class: "answer-category" %>
   </div>
-    <% question.answers.where(survey_id: @survey.id).each do |answer| %>
+  <% question.answers.where(survey_id: @survey.id).each do |answer| %>
   <div class="response-container">
     <div class="product">
       <div class='product-upvote'>
@@ -57,33 +57,32 @@
         <div class="response-user"><%= answer.user.first_name %></div>
       </div>
       <div class='product-body'>
-        <h3><%= answer.location %></h3>
+        <h3><%= answer.location.split(",").first %></h3>
         <p><%= answer.content %></p>
       </div>
       <ul class="list-inline product-controls hidden-sm hidden-xs">
         <li>
           <%= link_to answer_path(answer), method: :delete do  %>
-            <i class="fa fa-trash"></i>
+          <i class="fa fa-trash"></i>
           <% end %>
         </li>
       </ul>
     </div>
-      </div>
+  </div>
 
-    <% end %>
+  <% end %>
   <% end %>
 
   <div class="box-white">
-    <h4 class="text-center">Here is the URL to send to your friends so they can answer your survey:</h4>
+    <h4 class="text-center">Send this URL to your friends</h4>
     <input class='share_link form-control text-center', value='<%= request.original_url %>/answering/<%= survey.token %>', readonly='readonly'></input>
-    <h4 class="text-center">Also, you can share this link on facebook:</h5>
-      <div class="actions text-center">
-        <!-- Facebook Share Button -->
-        <%= link_to "https://www.facebook.com/sharer/sharer.php?u=www.like-minded.tech/surveys/#{survey.id}/answering/#{survey.token}", target: 'blank', class: "btn btn-block btn-social btn-facebook facebook-button" do %>
-        <span class="fa fa-facebook"></span>
-        Share
-        <% end %>
-      </div>
+    <h4 class="text-center">or share on Facebook</h4>
+    <div class="actions text-center share-facebook-button">
+      <!-- Facebook Share Button -->
+      <%= link_to "https://www.facebook.com/sharer/sharer.php?u=www.like-minded.tech/surveys/#{survey.id}/answering/#{survey.token}", target: 'blank', class: "btn btn-block btn-social btn-facebook facebook-button" do %>
+      <span class="fa fa-facebook"></span>
+      Share on Facebook
+      <% end %>
     </div>
   </div>
 </div>
