@@ -8,21 +8,22 @@
     <% @user.surveys.each do |survey| %>
     <div class="col-xs-11 col-sm-5 col-md-3 dashboard-trip-card filter">
       <div>
-        <div class="card-image" style="background-image: url(
-          <% if survey.cover_picture? %>
-          <%= cl_image_path survey.cover_picture.path, width: 500, height: 500, crop: :fill %>
-          <% else %>
-          <%= image_path("default-card.jpg") %>
-          <% end %>
-          );">
+        <% image = if survey.cover_picture?
+          cl_image_path(survey.cover_picture.path, width: 500, height: 500, crop: :fill)
+        else
+          image_path("default-card.jpg")
+        end
+        %>
+
+        <div class="card-image" style="background-image: url(<%= image %>);">
         </div>
         <div class="trip-info">
-            <% if survey.status.downcase == "sent" %>
-            <p><%= pluralize(survey.answers.count, 'answer') %></p>
-            <% else %>
-            <p><%= survey.status %></p>
-            <% end %>
-          </div>
+          <% if survey.status.downcase == "sent" %>
+          <p><%= pluralize(survey.answers.count, 'answer') %></p>
+          <% else %>
+          <p><%= survey.status %></p>
+          <% end %>
+        </div>
         <%= link_to "", survey_path(survey), class: "trip-card-link" %>
       </div>
       <div class="trip-title">
