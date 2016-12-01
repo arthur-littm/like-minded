@@ -3,7 +3,7 @@
     <input type="hidden" name="survey[question_ids][]" value="">
     <% survey.user.questions.each do |question| %>
     <% in_survey = @survey.questions.include? question %>
-    <label for="survey_question_ids_<%= question.id%>" class="checkbox <%= in_survey ? 'check' : '' %>">
+    <label for="survey_question_ids_<%= question.id%>" class="checkbox <%= in_survey ? 'check' : '' %> ">
       <div class="question-content">
         <%= question.content %>
       </div>
@@ -14,7 +14,7 @@
     </label>
     <% end %>
   </div>
-  <button type="button" class="new-question-button" data-toggle="modal" data-target=".new-question-modal">
+  <button type="button" class="new-question-button" data-toggle="modal" data-target="new-question-modal">
     <i class="fa fa-plus" aria-hidden="true"></i>
   </button>
 
