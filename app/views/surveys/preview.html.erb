@@ -72,3 +72,28 @@
  </div>
 </div>
 
+<%= content_for :after_js do %>
+<script>
+  $(document).ready(function() {
+
+
+    <% @survey.questions.each_with_index do |q, index| %>
+
+    var answer_location = $('#survey_questions_attributes_<%= index %>_answers_attributes_0_location').get(0);
+
+
+    if (answer_location) {
+      var autocomplete = new google.maps.places.Autocomplete(answer_location, { types: ['geocode'] });
+      google.maps.event.addDomListener(answer_location, 'keydown', function(e) {
+        if (e.keyCode == 13) {
+          e.preventDefault(); // Do not submit the form on Enter.
+        }
+      });
+    }
+
+    <% end %>
+
+  });
+</script>
+<% end %>
+
