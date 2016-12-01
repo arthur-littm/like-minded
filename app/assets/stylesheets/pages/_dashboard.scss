@@ -61,6 +61,7 @@
     left: 10px;
     opacity: 0;
     transition: ease-in-out, opacity .3s ease-in-out;
+    z-index: 3;
     i {
       color: gray;
     }
