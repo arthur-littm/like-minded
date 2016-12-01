@@ -103,6 +103,10 @@
   }
 }
 
+.add-to-button:focus {
+  outline: 0;
+}
+
 .back-button {
   position: absolute;
   left:25px;

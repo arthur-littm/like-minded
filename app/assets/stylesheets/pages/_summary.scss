@@ -42,6 +42,19 @@
   border-color: #287A80;
 }
 
+
+.summary-question-button:focus {
+  color: #ffffff;
+  background-color: #2F8D94 !important;
+  border-color: #287A80 !important;
+}
+
+.summary-question-button:active {
+  color: #ffffff;
+  background-color: #2F8D94 !important;
+  border-color: #287A80 !important;
+}
+
 .summary-question-card {
   padding: 10px;
   margin: 10px auto;
