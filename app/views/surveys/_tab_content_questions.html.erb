@@ -19,8 +19,9 @@
   </div>
 
 <%= simple_form_for [survey], html: { class: "flex-container-questions"} do |f| %>
-  <%= f.submit "Add selection", class: "btn btn-primary add-to-button" %>
-
+<%= button_tag(type: 'submit', class: "btn btn-primary add-to-button") do %> Add selection
+ <i class="fa fa-chevron-circle-right arrow" aria-hidden="true"></i>
+<% end %>
   <% Category.all.sort.each_with_index do |category, index| %>
     <div id="category-pane-<%= category.id %>">
       <%= render "surveys/category_pane", category: category, survey: survey, index: index,

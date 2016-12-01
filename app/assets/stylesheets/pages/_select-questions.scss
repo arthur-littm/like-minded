@@ -88,13 +88,19 @@
 }
 
 .add-to-button {
-  width: 30%;
+  width: 21%;
   align-self: flex-end;
   margin: 10px 15px 0 15px;
   border-radius: 30px;
   position: absolute;
   top: 10px;
   right: 10px;
+  background-color: #F55A88;
+  border-color: #F55A88;
+  &:hover {
+    background-color: #C84A6F;
+    border-color: #C84A6F;
+  }
 }
 
 .back-button {
@@ -105,4 +111,8 @@
 
 .questions-wrapper {
   min-height: calc(100vh - 185px);
+}
+
+.arrow {
+  padding-left: 14px;
 }
