@@ -27,13 +27,15 @@
             </div>
           </div>
         </div>
-        <li role="presentation" class="tab" data-target="#category-5"><a href="#myquestions" aria-controls="My Questions" role="tab" data-toggle="tab">
+        <li role="presentation" class="tab" data-target="#category-5"><a href="#myquestions" aria-controls="My Questions" role="tab" data-toggle="tab" id="custom-questions">
           <%= image_tag "plus.png", height: "30px"%>
           <h3>My Questions</h3>
         </a>
       </li>
     </ul>
-    <%= render 'surveys/tab_content_questions', question: question, survey: survey %>
+    <div id="tab_content_questions-container">
+      <%= render 'surveys/tab_content_questions', question: question, survey: survey %>
+    </div>
   </div>
 </div>
 <div class="col-xs-4">
