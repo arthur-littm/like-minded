@@ -1,10 +1,10 @@
 class Survey < ApplicationRecord
   belongs_to :user
-  has_many :survey_questions
+  has_many :survey_questions, dependent: :destroy
   has_many :questions, through: :survey_questions
-  has_many :survey_friends
+  has_many :survey_friends, dependent: :destroy
   has_many :friends, through: :survey_friends
-  has_many :answers
+  has_many :answers, dependent: :destroy
 
   validates :city, presence: true
 
