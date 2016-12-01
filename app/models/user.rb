@@ -20,6 +20,9 @@ class User < ApplicationRecord
   validates :email, format: { with: /\A.*@.*\.com\z/ }, uniqueness: true
   validates :password, presence: true, on: :create
 
+  geocoded_by :hometown
+  after_validation :geocode
+
   def self.find_for_facebook_oauth(auth)
     user_params = auth.to_h.slice(:provider, :uid)
     user_params.merge! auth.info.slice(:email, :first_name, :last_name)
