@@ -2,10 +2,7 @@
   // Render new question form with errors
   $('#new_question_form').html("<%= j render 'surveys/question_form', question: @question, survey: @survey %>");
 <% else %>
-  var new_tab_content_questions = "<%= j render 'surveys/survey_questions', survey: @survey, question: @question %>";
-  $('#tab_content_questions').html(new_tab_content_questions);
   $('.new-question-modal').modal('hide');
-  $('body').removeClass('modal-open');
-  $('.modal-backdrop').remove();
-
+  $('#category-pane-<%= @category.id %>').html("<%= j render 'category_pane', category: category, survey: survey  %>");
+  $('#category-pane-my').html("<%= j render 'category_pane_my', survey: survey   %>");
 <% end %>
