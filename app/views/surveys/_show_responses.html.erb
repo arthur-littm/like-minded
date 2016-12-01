@@ -57,8 +57,10 @@
         <div class="response-user"><%= answer.user.first_name %></div>
       </div>
       <div class='product-body'>
-        <h3><%= answer.location.split(",").first %></h3>
-        <p><%= answer.content %></p>
+        <h4><%= answer.content %></h4>
+        <% if answer.location %>
+        <p><i class="fa fa-map-marker" aria-hidden="true"></i> <%= answer.location %></p>
+        <% end %>
       </div>
       <ul class="list-inline product-controls hidden-sm hidden-xs">
         <li>
