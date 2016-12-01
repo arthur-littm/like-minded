@@ -16,9 +16,14 @@
   }
 }
 
-.fixed-cards {
+.fixed-summary {
   overflow: scroll;
-  height: 60vh;
+  max-height: 45vh;
+}
+
+.fixed-summary-questions {
+  overflow: scroll;
+  max-height: 65vh;
 }
 
 .summary-question-button {

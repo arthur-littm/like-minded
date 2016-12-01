@@ -10,6 +10,7 @@
   padding-left: 7%;
   padding-right: 7%;
   margin: 10px 0;
+  margin-top: 11vh;
   border-radius: 4px;
   display: flex;
   flex-direction: column;
@@ -24,8 +25,10 @@
   width: 90%
 }
 
-.fa-share {
-  font-size: 30px;
+.fa-chevron-circle-left {
+  font-size: 35px;
+  float: left;
+  margin: -15px;
 }
 
 .share-facebook-button {
@@ -35,7 +38,7 @@
 }
 
 .see-answers-button {
-  width: 100%;
+  width: 90%;
   border-radius: 6px;
   font-weight: lighter;
   font-size: 22px;
@@ -53,7 +56,7 @@
   background-color: #3b5998;
 }
 .share_link{
-  margin: 20px 0;
+  margin-bottom: 20px;
 }
 
 .back-link i {

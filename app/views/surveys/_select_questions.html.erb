@@ -39,6 +39,7 @@
 <div class="col-xs-4">
   <div class="survey-summary">
     <h3>Your trip survey</h3>
+    <div class="fixed-summary-questions">
     <ul>
       <% if @survey.survey_questions.count > 0 %>
       <% @survey.survey_questions.each_with_index do |sq, index| %>
@@ -57,10 +58,10 @@
         </div>
       <% end %>
       <% if @survey.survey_questions.count > 0 %>
-
-      <%= link_to "Confirm trip survey", update_status_survey_path(@survey), method: :patch, class: "btn btn-danger summary-question-button" %>
-      <% end %>
     </ul>
+    </div>
+    <%= link_to "Confirm trip survey", update_status_survey_path(@survey), method: :patch, class: "btn btn-danger summary-question-button" %>
+      <% end %>
   </div>
 
 </div>
