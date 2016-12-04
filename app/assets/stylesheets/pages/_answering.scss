@@ -26,7 +26,10 @@
     }
     .date {
       font-size: 25px;
-      color: #fd5988;
+      color: #464646;
+      span {
+        color: #fd5988;
+      }
     }
   }
   .answering-avatar {
