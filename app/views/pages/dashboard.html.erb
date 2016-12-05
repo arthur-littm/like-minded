@@ -5,6 +5,7 @@
         <%= link_to root_path, class: "sidebar-brand" do %>
         <%= image_tag "logo.png" %>
         <% end %>
+
         <!-- SIDEBAR USERPIC -->
         <div class="profile-userpic">
           <% if @user.photo? %>
@@ -15,8 +16,10 @@
           <%= image_tag "ninja.png" %>
           <% end %>
         </div>
+
         <!-- END SIDEBAR USERPIC -->
         <!-- SIDEBAR USER TITLE -->
+
         <div class="profile-usertitle">
           <div class="profile-usertitle-name">
             <%= @user.first_name %> <%= @user.last_name %>
@@ -27,6 +30,7 @@
           </div>
           <% end %>
         </div>
+
         <!-- END SIDEBAR USER TITLE -->
         <!-- SIDEBAR MENU -->
         <div class="profile-usermenu">
@@ -51,14 +55,17 @@
             </li>
             <li>
               <%= link_to destroy_user_session_path, method: :delete do %>
-                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+              <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
               <% end %>
             </li>
           </ul>
         </div>
+
         <!-- END MENU -->
       </div>
     </div>
+
+    <!-- TABS -->
     <div class="col-xs-10";">
       <div class="profile-content tab-content">
         <div class="tab-pane active" id="profile">
@@ -75,6 +82,7 @@
         </div>
       </div>
     </div>
+    <!--  -->
   </div>
 </div>
 
