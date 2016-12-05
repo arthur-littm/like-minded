@@ -56,7 +56,7 @@ class SurveysController < ApplicationController
 
     def update
       authorize @survey
-      @question_ids = params[:survey][:question_ids].select{|id| !id.blank?}
+      @question_ids = params[:survey][:question_ids].reject{ |id| id.blank? }
       @question_ids.map! { |id| id.to_i }
       ids = @survey.questions.map { |q| q.id }
       new_questions = @question_ids - ids
