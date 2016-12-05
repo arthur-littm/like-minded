@@ -42,11 +42,11 @@ var p1 = new google.maps.LatLng(<%= @user.latitude%>, <%= @user.longitude%> );
 var p2 = new google.maps.LatLng(<%= @survey.latitude %>,<%= @survey.longitude %>);
 var outputDiv = document.getElementById('distance');
 var distance = calcDistance(p1, p2)
-outputDiv.innerHTML += "<h1>" + distance + "km" + "</h1>"
+outputDiv.innerHTML += "<h1>" + distance + " " + "km" + "</h1>"
 
 //calculates distance between two points in km's
 function calcDistance(p1, p2) {
-  return (google.maps.geometry.spherical.computeDistanceBetween(p1, p2) / 1000).toFixed(2);
+  return (google.maps.geometry.spherical.computeDistanceBetween(p1, p2) / 1000).toFixed(0);
 }
 
 </script>
