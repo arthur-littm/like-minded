@@ -49,8 +49,8 @@
         <p><%= "answer".pluralize(current_user.answers.count) %> given</p>
       </div>
       <div class="stats-fact large-fact">
-        <% if @user.surveys.empty? %>
-        <p>No trips yet</p>
+        <% if @user.surveys && (@user.hometown == "" || @user.hometown == nil)%>
+        <p>No trips or hometown not set</p>
         <% else %>
         <h4><div id="distance"></div></h4>
         <p>on your latest trip:</p>
