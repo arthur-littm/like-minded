@@ -7,7 +7,35 @@
   <%= image_path("plane.jpg") %>
   <% end %>
   );">
+
+  <button type="button" class="survey-image-button" data-toggle="modal" data-target="#coverPictureModal">
+    <i class="fa fa-camera" aria-hidden="true"></i>
+  </button>
+
 </div>
+
+
+<div class="modal fade" id="coverPictureModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Add picture</h4>
+      </div>
+      <div class="modal-body">
+        <div id="new_cover_picture_form">
+        <%= simple_form_for current_user, url: user_path(current_user) do |f| %>
+          <%= f.input :dashboard_cover, as: :attachinary, label: "Dashboard cover picture" %>
+          <%= f.button :submit, "Update", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="row profile-content">
   <div class="profile-stats col-xs-12 col-sm-6">
     <h4>Overview</h4>
@@ -21,7 +49,7 @@
         <p><%= "answer".pluralize(current_user.surveys.count) %> given</p>
       </div>
       <div class="stats-fact large-fact">
-      <h4><div id="distance"></div></h4>
+        <h4><div id="distance"></div></h4>
         <p>on your latest trip:</p>
         <p><strong><%= @user.hometown %> - <%= @survey.city.split(",").first %></strong></p>
       </div>
@@ -38,11 +66,11 @@
 <% content_for(:after_js) do %>
 
 <script>
-var p1 = new google.maps.LatLng(<%= @user.latitude%>, <%= @user.longitude%> );
-var p2 = new google.maps.LatLng(<%= @survey.latitude %>,<%= @survey.longitude %>);
-var outputDiv = document.getElementById('distance');
-var distance = calcDistance(p1, p2)
-outputDiv.innerHTML += "<h1>" + distance + " " + "km" + "</h1>"
+  var p1 = new google.maps.LatLng(<%= @user.latitude%>, <%= @user.longitude%> );
+  var p2 = new google.maps.LatLng(<%= @survey.latitude %>,<%= @survey.longitude %>);
+  var outputDiv = document.getElementById('distance');
+  var distance = calcDistance(p1, p2)
+  outputDiv.innerHTML += "<h1>" + distance + " " + "km" + "</h1>"
 
 //calculates distance between two points in km's
 function calcDistance(p1, p2) {
@@ -52,26 +80,26 @@ function calcDistance(p1, p2) {
 </script>
 
 
-  <script>
-    $(document).ready(function() {
-      var styles = [{"featureType":"landscape.natural","elementType":"geometry.fill","stylers":[{"visibility":"on"},
-      {"color":"#e0efef"}]},{"featureType":"poi","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"hue":"#1900ff"},{"color":"#c0e8e8"}]},{"featureType":"road","elementType":"geometry","stylers":[{"lightness":100},{"visibility":"simplified"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"visibility":"on"},{"lightness":700}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#7FD8D8"}]}];
-      var handler = Gmaps.build('Google');
-      handler.buildMap({
+<script>
+  $(document).ready(function() {
+    var styles = [{"featureType":"landscape.natural","elementType":"geometry.fill","stylers":[{"visibility":"on"},
+    {"color":"#e0efef"}]},{"featureType":"poi","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"hue":"#1900ff"},{"color":"#c0e8e8"}]},{"featureType":"road","elementType":"geometry","stylers":[{"lightness":100},{"visibility":"simplified"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"visibility":"on"},{"lightness":700}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#7FD8D8"}]}];
+    var handler = Gmaps.build('Google');
+    handler.buildMap({
       provider: {
         styles: styles },
-      internal: {
-        id: 'map' }
-      }, function() {
-        markers = handler.addMarkers(<%= raw @hash.to_json %>);
-        handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
-        if (markers.length == 0) {
-          handler.getMap().setZoom(2);
-        } else if (markers.length == 1) {
-          handler.getMap().setZoom(2);
-        }
-      });
+        internal: {
+          id: 'map' }
+        }, function() {
+          markers = handler.addMarkers(<%= raw @hash.to_json %>);
+          handler.bounds.extendWith(markers);
+          handler.fitMapToBounds();
+          if (markers.length == 0) {
+            handler.getMap().setZoom(2);
+          } else if (markers.length == 1) {
+            handler.getMap().setZoom(2);
+          }
+        });
 
 
 
@@ -115,7 +143,7 @@ function calcDistance(p1, p2) {
       // calcDistance();
     });
   </script>
-<% end  %>
+  <% end  %>
 
 
 
