@@ -22,7 +22,8 @@
       </div>
       <div class="stats-fact large-fact">
       <h4><div id="distance"></div></h4>
-        <p> on your last trip</p>
+        <p>on your latest trip:</p>
+        <p><strong><%= @user.hometown %> - <%= @survey.city.split(",").first %></strong></p>
       </div>
     </div>
   </div>
@@ -31,10 +32,26 @@
   </div>
 </div>
 
-<div id='distance'></div>
+<!-- <div id='distance'></div> -->
 
 
 <% content_for(:after_js) do %>
+
+<script>
+var p1 = new google.maps.LatLng(<%= @user.latitude%>, <%= @user.longitude%> );
+var p2 = new google.maps.LatLng(<%= @survey.latitude %>,<%= @survey.longitude %>);
+var outputDiv = document.getElementById('distance');
+var distance = calcDistance(p1, p2)
+outputDiv.innerHTML += "<h1>" + distance + "km" + "</h1>"
+
+//calculates distance between two points in km's
+function calcDistance(p1, p2) {
+  return (google.maps.geometry.spherical.computeDistanceBetween(p1, p2) / 1000).toFixed(2);
+}
+
+</script>
+
+
   <script>
     $(document).ready(function() {
       var styles = [{"featureType":"landscape.natural","elementType":"geometry.fill","stylers":[{"visibility":"on"},
@@ -56,45 +73,46 @@
         }
       });
 
-      function calcDistance() {
-        var start = "<%= @user.hometown %>";
-        var end = new google.maps.LatLng(<%= @survey.latitude %>,<%= @survey.longitude %>);
-        var service = new google.maps.DistanceMatrixService;
-        service.getDistanceMatrix({
-          origins: [start],
-          destinations: [end],
-          travelMode: 'DRIVING',
-          unitSystem: google.maps.UnitSystem.METRIC,
-          avoidHighways: false,
-          avoidTolls: false
-        }, function callback(response, status) {
-          if (status == 'OK') {
-            var origins = response.originAddresses;
-            var destinations = response.destinationAddresses;
-            var outputDiv = document.getElementById('distance');
-            outputDiv.innerHTML = '';
 
-            for (var i = 0; i < origins.length; i++) {
-              var results = response.rows[i].elements;
-              for (var j = 0; j < results.length; j++) {
-                var element = results[j];
-                if ( element.status == "OK") {
-                  var distance = element.distance.text;
-                  // var duration = element.duration.text;
-                  var from = origins[i];
-                  var to = destinations[j];
-                  outputDiv.innerHTML += "<h1>" + distance + '</h1>';
-                  // console.log(distance);
-                } else {
-                  outputDiv.innerHTML += "<h1>5,585 km</h1>";
-                }
-              }
-            }
-          }
-        }
-        )
-      }
-      calcDistance();
+
+      // function calcDistance() {
+      //   var start = "<%# @user.hometown %>";
+      //   var end = new google.maps.LatLng(<%# @survey.latitude %>,<%# @survey.longitude %>);
+      //   var service = new google.maps.DistanceMatrixService;
+      //   service.getDistanceMatrix({
+      //     origins: [start],
+      //     destinations: [end],
+      //     unitSystem: google.maps.UnitSystem.METRIC,
+      //     avoidHighways: false,
+      //     avoidTolls: false
+      //   }, function callback(response, status) {
+      //     if (status == 'OK') {
+      //       var origins = response.originAddresses;
+      //       var destinations = response.destinationAddresses;
+      //       var outputDiv = document.getElementById('distance');
+      //       outputDiv.innerHTML = '';
+
+      //       for (var i = 0; i < origins.length; i++) {
+      //         var results = response.rows[i].elements;
+      //         for (var j = 0; j < results.length; j++) {
+      //           var element = results[j];
+      //           if ( element.status == "OK") {
+      //             var distance = element.distance.text;
+      //             // var duration = element.duration.text;
+      //             var from = origins[i];
+      //             var to = destinations[j];
+      //             outputDiv.innerHTML += "<h1>" + distance + '</h1>';
+      //             // console.log(distance);
+      //           } else {
+      //             outputDiv.innerHTML += "<h1>5,585 km</h1>";
+      //           }
+      //         }
+      //       }
+      //     }
+      //   }
+      //   )
+      // }
+      // calcDistance();
     });
   </script>
 <% end  %>

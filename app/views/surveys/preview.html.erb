@@ -21,7 +21,7 @@
 
   <div class="answer-banner-phrase text-center">
     <p><%= @survey.user.first_name.capitalize %> wants your travel tips on <span><%= @survey.city.split(",").first %></span></p>
-    <p class="date"><%= @survey.start_date %></p>
+    <p class="date">Journey starts on <span><%= @survey.start_date.strftime("%b %d, %Y") %> </span></p>
   </div>
 
   <button type="button" class="survey-image-button" data-toggle="modal" data-target="#pictureModal">
