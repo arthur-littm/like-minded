@@ -56,7 +56,8 @@
       </div>
       <div class="trip-title">
         <% if survey.city %>
-        <p><%= survey.city.split(",").first %></p>
+        <% city = survey.city.split(",").first %>
+        <p><%= city[0,18].capitalize %></p>
         <% end %>
       </div>
       <div class="trip-date">
