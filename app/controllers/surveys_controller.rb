@@ -33,7 +33,7 @@ class SurveysController < ApplicationController
     def answering
       authorize @survey
       if @survey.user == current_user
-        redirect_to dashboard_path, alert: "You can't answer your own survey!"
+        redirect_to survey_path(@survey), alert: "You can't answer your own survey!"
       end
     end
 
