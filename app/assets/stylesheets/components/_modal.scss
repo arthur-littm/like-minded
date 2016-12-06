@@ -1,0 +1,10 @@
+.new-survey-modal {
+  z-index: 1500;
+  select:-webkit-autofill {
+    z-index: 1510;
+  }
+}
+
+.modal-footer {
+  margin-top: 25px;
+}

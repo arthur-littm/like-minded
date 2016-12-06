@@ -3,8 +3,36 @@
     <div class="col-xs-11 col-sm-5 col-md-3 dashboard-trip-card dashboard-card-new">
       <i class="fa fa-paper-plane" aria-hidden="true"></i>
       <p>New trip</p>
-      <%= link_to "", root_path, class: "trip-card-link" %>
+      <%= link_to "", "#new-survey-modal", class: "trip-card-link", "data-toggle" => "modal" %>
     </div>
+
+    <!-- new survey modal -->
+
+    <div class="modal fade new-survey-modal" id="new-survey-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel">Create new trip</h4>
+          </div>
+          <div class="modal-body">
+            <%= simple_form_for Survey.new do |f| %>
+            <%= f.input :city, placeholder: "Where to ?", class: "new-survey-modal-city", label: false, required: true %>
+            <%= f.input :start_date, placeholder: "When ?", as: :string, input_html: { type: "text", class: "datepicker" }, label: false %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <%= f.submit "Create trip", class: "btn btn-primary" %>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <!-- end of modal -->
+
     <% @user.surveys.each do |survey| %>
     <div class="col-xs-11 col-sm-5 col-md-3 dashboard-trip-card filter">
       <div>
@@ -50,3 +78,20 @@
     <% end %>
   </div>
 </div>
+
+
+<%= content_for (:after_js) do %>
+<script type="text/javascript">
+  $(document).ready(function(){
+    var date = new Date();
+    var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    $('.datepicker').datepicker({
+      format: "dd/mm/yyyy",
+      todayHighlight: true,
+      autoclose: true
+    });
+
+  });
+
+</script>
+<% end %>
