@@ -54,8 +54,7 @@
           <p>No trips or hometown not set</p>
           <% else %>
           <h4><div id="distance"></div></h4>
-          <p>on your latest trip:</p>
-          <p><strong><%= @user.hometown %> - <%= @survey.city.split(",").first %></strong></p>
+          <span style="font-size: 12px;"><%= @survey.city.split(",").first.upcase %> to <%= @user.hometown.upcase %></span>
           <% end %>
         </div>
       </div>

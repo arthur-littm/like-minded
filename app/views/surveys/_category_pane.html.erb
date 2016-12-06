@@ -2,7 +2,7 @@
   <div class="form-group check_boxes optional survey_questions question-container">
 
     <input type="hidden" name="survey[question_ids][]" value="">
-    <% category.questions.each do |question| %>
+    <% category.questions.where(user: nil).each do |question| %>
     <!-- This code renders card for the category questions -->
       <% if question.user.nil? || question.user == current_user %>
         <% in_survey = @survey.questions.include? question %>
@@ -20,7 +20,7 @@
   </div>
   <% f.hidden_field :category, value: category.id %>
 </div>
-<%#end %>
+
 <div role="tabpanel" class="tab-pane hidden" id="category-5">
   <div class="form-group check_boxes optional survey_questions question-container">
 
