@@ -50,13 +50,14 @@
           <p><%= "answer".pluralize(current_user.answers.count) %> given</p>
         </div>
         <div class="stats-fact large-fact">
-          <% if @user.surveys.empty? %>
+          <% if current_user.surveys.empty? %>
           <p>No trips yet, create a new one!</p>
-          <% elsif @user.hometown == "" || @user.hometown == nil %>
+          <% elsif current_user.hometown == "" || current_user.hometown == nil %>
           <p>Set your "current city" in settings</p>
           <% else %>
           <h4><div id="distance"></div></h4>
-          <span style="font-size: 12px;"><%= @survey.city.split(",").first.upcase %> to <%= @user.hometown.upcase %></span>
+          <% city =  current_user.surveys.last.city.split(",").first %>
+          <span style="font-size: 12px;"><%= city[0,18].upcase %> to <%= current_user.hometown.upcase %></span>
           <% end %>
         </div>
       </div>
