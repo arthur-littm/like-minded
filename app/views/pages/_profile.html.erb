@@ -14,7 +14,6 @@
 
 </div>
 
-
 <div class="modal fade" id="coverPictureModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -50,13 +49,14 @@
           <p><%= "answer".pluralize(current_user.answers.count) %> given</p>
         </div>
         <div class="stats-fact large-fact">
-          <% if @user.surveys.empty? %>
+          <% if current_user.surveys.empty? %>
           <p>No trips yet, create a new one!</p>
-          <% elsif @user.hometown == "" || @user.hometown == nil %>
+          <% elsif current_user.hometown == "" || current_user.hometown == nil %>
           <p>Set your "current city" in settings</p>
           <% else %>
           <h4><div id="distance"></div></h4>
-          <span style="font-size: 12px;"><%= @survey.city.split(",").first.upcase %> to <%= @user.hometown.upcase %></span>
+          <% city =  current_user.surveys.last.city.split(",").first %>
+          <span style="font-size: 12px;"><%= city[0,18].upcase %> to <%= current_user.hometown.upcase %></span>
           <% end %>
         </div>
       </div>
@@ -72,11 +72,11 @@
 <% content_for(:after_js) do %>
 
 <script>
-  <% unless @user.surveys.empty? %>
+  <% unless current_user.surveys.empty? %>
 
 
-  var p1 = new google.maps.LatLng(<%= @user.latitude%>, <%= @user.longitude%> );
-  var p2 = new google.maps.LatLng(<%= @survey.latitude %>,<%= @survey.longitude %>);
+  var p1 = new google.maps.LatLng(<%= current_user.latitude%>, <%= current_user.longitude%> );
+  var p2 = new google.maps.LatLng(<%= current_user.surveys.last.latitude %>,<%= current_user.surveys.last.longitude %>);
   var outputDiv = document.getElementById('distance');
   var distance = calcDistance(p1, p2)
   outputDiv.innerHTML += "<h1>" + distance + " " + "km" + "</h1>"
