@@ -56,14 +56,15 @@
     li {
       margin: 10px auto;
       i {
-        font-size: 30px;
-        padding: 0px 20px;
+        font-size: 35px;
+        margin: 12px;
+        color: #E8EEF2;
+      }
+      i:hover {
+        color: #5D737E;
+        transition-duration: 1s;
       }
     }
-  }
-  i:hover {
-    color: #5D737E;
-    transition-duration: 1.25s;
   }
 }
 
