@@ -68,7 +68,4 @@ class QuestionsController < ApplicationController
     #check if permit is correct, is it survey or survey_id
   end
 
-  def survey_params
-    params.require(:survey).permit(:id)
-  end
 end
