@@ -17,7 +17,7 @@ class QuestionsController < ApplicationController
     @question.user = current_user
     if @question.save
       respond_to do |format|
-        format.html { redirect_to survey_path (@survey) }
+        format.html
         format.js
       end
     else
@@ -68,4 +68,7 @@ class QuestionsController < ApplicationController
     #check if permit is correct, is it survey or survey_id
   end
 
+  def survey_params
+    params.require(:survey).permit(:id)
+  end
 end
