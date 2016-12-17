@@ -17,7 +17,7 @@ class QuestionsController < ApplicationController
     @question.user = current_user
     if @question.save
       respond_to do |format|
-        format.html { redirect_to survey_path (@survey) }
+        format.html
         format.js
       end
     else
